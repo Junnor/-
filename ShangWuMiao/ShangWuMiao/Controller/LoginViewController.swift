@@ -46,37 +46,15 @@ class LoginViewController: UIViewController {
 
     // MARK: - Helper
     @IBAction func login(_ sender: UIButton) {
-        
-        let loginSecret = kSecretKey + "login"
-        let token = loginSecret.md5
-        let loginUrlString = kCommonUrl + kLoginRequestUrl + "&token=" + token!
         // test
         let parameters = ["uname": "宅喵报",
                           "password": "1234560"]
-        
-        print("url=\(loginUrlString)")
-    
-        let url = URL(string: loginUrlString)
-        Alamofire.request(url!, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: nil).responseJSON { [weak self] response in
-            switch response.result {
-            case .success(let json):
-                print("json = \(json)")
-                if let dic = json as? Dictionary<String, AnyObject> {
-                    if let status = dic["status"] as? Int {
-                        if status == 1 {
-                            self?.performSegue(withIdentifier: "login", sender: nil)
-                            UserDefaults.standard.setValue("1", forKeyPath: isLogin)
-                            UserDefaults.standard.synchronize()
-                        } else {
-                            let info = dic["info"] as! String
-                            print("login info = \(info)")
-                        }
-                    }
-                }
-            case .failure(let error):
-                print("error = \(error)")
+        LoginModel.login(parameters: parameters) { [weak self] status in
+            if status == 1 {
+                self?.performSegue(withIdentifier: "login", sender: nil)
+                UserDefaults.standard.setValue("1", forKeyPath: isLogin)
+                UserDefaults.standard.synchronize()
             }
-
         }
     }
     

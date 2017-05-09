@@ -21,6 +21,7 @@
 		8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */; };
 		8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */; };
 		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
+		8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */; };
 		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,7 @@
 		8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
 		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
+		8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +248,7 @@
 		8B7A48D51EC0103E00276058 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */,
 				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
+				8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ComicDetailViewController.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,
