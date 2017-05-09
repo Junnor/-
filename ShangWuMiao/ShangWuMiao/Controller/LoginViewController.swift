@@ -46,16 +46,30 @@ class LoginViewController: UIViewController {
 
     // MARK: - Helper
     @IBAction func login(_ sender: UIButton) {
+        let emptyUname = isEmptyText(parse: unameTextfield.text)
+        if emptyUname {
+            // imput uname
+            return
+        }
+        let emptyPassword = isEmptyText(parse: passwordTextfield.text)
+        if emptyPassword {
+            // imput password
+            return
+        }
+
         // test
-        let parameters = ["uname": "宅喵报",
-                          "password": "1234560"]
-        LoginModel.login(parameters: parameters) { [weak self] status in
+        let parameters = ["uname": unameTextfield.text!,
+                          "password": passwordTextfield.text!]
+        LoginModel().login(parameters: parameters) { [weak self] status, info in
             if status == 1 {
                 self?.performSegue(withIdentifier: "login", sender: nil)
                 UserDefaults.standard.setValue("1", forKeyPath: isLogin)
                 UserDefaults.standard.synchronize()
+            } else {
+                print("login failure: \(info)")
             }
         }
+        
     }
     
     @objc private func tap() {
@@ -108,6 +122,14 @@ extension LoginViewController {
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
         }
+    }
+    
+    fileprivate func isEmptyText(parse text: String?) -> Bool {
+        if text != nil {
+            let newText = text!.replacingOccurrences(of: " ", with: "")
+            return newText == "" ? true : false
+        }
+        return true
     }
 }
 
