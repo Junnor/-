@@ -22,6 +22,11 @@
 		8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */; };
 		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
 		8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */; };
+		8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */; };
+		8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380061EC1D73D001A6651 /* FeebackViewController.swift */; };
+		8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */; };
+		8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */; };
+		8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */; };
 		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +139,11 @@
 		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommisionSoldViewController.swift; sourceTree = "<group>"; };
+		8BE380061EC1D73D001A6651 /* FeebackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeebackViewController.swift; sourceTree = "<group>"; };
+		8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordViewController.swift; sourceTree = "<group>"; };
+		8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTicketViewController.swift; sourceTree = "<group>"; };
+		8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupViewController.swift; sourceTree = "<group>"; };
 		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,6 +251,11 @@
 				8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */,
 				8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */,
 				8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */,
+				8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */,
+				8BE380061EC1D73D001A6651 /* FeebackViewController.swift */,
+				8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */,
+				8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */,
+				8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -459,8 +474,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
+				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
+				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
+				8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */,
 				8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */,
 				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,
+				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
+				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ComicDetailViewController.swift in Sources */,

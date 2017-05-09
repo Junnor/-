@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Cells
 
 class AvatarCell: UITableViewCell {
     @IBOutlet weak var avatar: UIImageView!
@@ -23,6 +24,8 @@ class DetailCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
 }
 
+// MARK: - View controller
+
 class MeViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -30,13 +33,61 @@ class MeViewController: UITableViewController {
         
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
     }
+    
+    // MARK: - Navigation 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if let segueIdentifer = SegueIdentifer(rawValue: identifier) {
+                switch segueIdentifer {
+                case .topUpAction:
+                    print("..top up")
+                case .ticketSold:
+                    print(".. sold")
+                case .topUpRecord:
+                    print(".. top up record")
+                case .feedback:
+                    print(".. feedback")
+                case .ticketDelegate:
+                    print("...ticket delegate")
+                }
+            }
+        }
+    }
+    
+    // MARK: - Private 
+    
+    fileprivate enum Identifer: String {
+        case avatar = "avatarCellIdentifier"
+        case money = "moneyCellIdentifier"
+        case detail = "detailCellIdentifier"
+    }
 
-    // MARK: - Table view data source
+    fileprivate enum TitleText: String {
+        case sold = "已售出门票"
+        case topUp = "充值记录"
+        case feedback = "问题反馈"
+        case delegate = "代理售票相关"
+        case signOut = "退出账号"
+    }
 
+    fileprivate enum SegueIdentifer: String {
+        case ticketDelegate = "ticket delegate"
+        case feedback = "feedback"
+        case topUpRecord = "top up record"
+        case ticketSold = "ticket sold"
+        case topUpAction = "top up action"
+    }
+
+}
+
+// MARK: - Table view data source & delegate
+
+extension MeViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
@@ -47,20 +98,6 @@ class MeViewController: UITableViewController {
         }
     }
     
-    private enum Identifer: String {
-        case avatar = "avatarCellIdentifier"
-        case money = "moneyCellIdentifier"
-        case detail = "detailCellIdentifier"
-    }
-
-    private enum TitleText: String {
-        case sold = "已售出门票"
-        case topUp = "充值记录"
-        case feedback = "问题反馈"
-        case delegate = "代理售票相关"
-        case signOut = "退出账号"
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // identifier
         var identifer = Identifer.detail.rawValue
@@ -99,12 +136,40 @@ class MeViewController: UITableViewController {
                 cell.titleLabel.textColor = UIColor.red
             }
         }
-
+        
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return (indexPath.section == 0 && indexPath.row == 0) ? 180 : 50
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.row == 1 {
+                performSegue(withIdentifier: SegueIdentifer.topUpAction.rawValue, sender: indexPath)
+            }
+        } else if indexPath.section == 1 {
+            var identififer = ""
+            switch indexPath.row {
+            case 0: identififer = SegueIdentifer.ticketSold.rawValue
+            case 1: identififer = SegueIdentifer.topUpRecord.rawValue
+            case 2: identififer = SegueIdentifer.feedback.rawValue
+            case 3: identififer = SegueIdentifer.ticketDelegate.rawValue
+            default: break
+            }
+            performSegue(withIdentifier: identififer, sender: indexPath)
+        } else {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+            
+            if let loginvc = vc as? LoginViewController {
+                present(loginvc, animated: true, completion: {
+                    UserDefaults.standard.setValue(nil, forKey: isLogin)
+                    UserDefaults.standard.synchronize()
+                })
+            }
 
+        }
+    }
+    
 }
