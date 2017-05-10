@@ -9,13 +9,18 @@
 import UIKit
 import Alamofire
 
+let kHeaderUrl = "https://apiplus.nyato.com"
+let kSecretKey = "us8dgf30hjRJGFU21"
+let kLoginUrlString = "/index.php?app=ios&mod=Member&act=login"
+let kUserInfoUrlString = "/index.php?app=ios&mod=Member&act=getuinfo"
+
 class LoginModel: NSObject {
     
     func login(parameters: Dictionary<String, String>,
                      completionHandler: @escaping (Int, String) -> ()) {
         let loginSecret = kSecretKey + "login"
         let token = loginSecret.md5
-        let loginUrlString = kCommonUrl + kLoginRequestUrl + "&token=" + token!
+        let loginUrlString = kHeaderUrl + kLoginUrlString + "&token=" + token!
         
         let url = URL(string: loginUrlString)
         Alamofire.request(url!,
@@ -37,12 +42,11 @@ class LoginModel: NSObject {
                                                 let uid = data["uid"]!
                                                 let oauth_token = data["oauth_token"]!
                                                 let oauth_token_secret = data["oauth_token_secret"]!
-                                                
-                                                self?.uid = uid
-                                                self?.oauth_token = oauth_token
-                                                self?.oauth_token_secret = oauth_token_secret
-                                                
-                                                self?.requestUserInfo(parameters: ["uid": uid])
+                                                if self != nil {
+                                                    self?.uid = uid
+                                                    self?.oauth_token = oauth_token
+                                                    self?.oauth_token_secret = oauth_token_secret
+                                                }
                                                 // post
                                             }
                                         }
@@ -59,12 +63,27 @@ class LoginModel: NSObject {
 
     }
     
-    private func requestUserInfo(parameters: Dictionary<String, String>) {
+    
+    func requestUserInfo(completionHandler: (Int, String) -> ()) {
         let urlParameter = urlParameters()
-        let userinfoString = kCommonUrl + kLoginRequestUrl + urlParameter
+        let userinfoString = kHeaderUrl + kUserInfoUrlString + urlParameter
         let url = URL(string: userinfoString)
-        Alamofire.request(url!, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-            print("userinfo responce: \(response)")
+
+        let intUid = NSString(string: self.uid!).integerValue
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: ["uid": intUid],
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { response in
+                            print("userinfo responce: \(response)")
+
+                            switch response.result {
+                            case .success(let json):
+                                let dic = json as! Dictionary<String, AnyObject>
+
+                            case .failure(let error):
+                                print("get user info error: \(error)")
+                            }
         }
     }
 
@@ -74,20 +93,26 @@ class LoginModel: NSObject {
 
     private func urlParameters() -> String {
         let userinfoSecret = kSecretKey + "getuinfo"
-        let userinfoToken = userinfoSecret.md5
-        let appsignSecret = self.oauth_token + self.oauth_token_secret + self.uid + userinfoToken!
-        let token = appsignSecret.md5
+        let token = userinfoSecret.md5
+        let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
+        let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
         
-        let app_time = String(NSDate().timeIntervalSince1970)
-        let app_device = UIDevice.current.identifierForVendor!.uuidString
-        let uid = self.uid!
+        let sort = [app_device, app_time, token!, uid!]
+        let sorted = sort.sorted { $0 < $1 }
+        let appsignSecret = sorted.joined(separator: "&")
+        let app_sign = appsignSecret.md5
         
-        let appTimePara = "&app_time" + app_time
-        let appDeveicePara = "&app_device" + app_device
-        let tokenPara = "&token" + token!
-        let uidPara = "&uid" + uid
+        let uid_para = "&uid=" + uid!
+        let oauth_token_para = "&oauth_token=" + oauth_token!
+        let oauth_token_secret_para = "&oauth_token_secret=" + oauth_token_secret!
         
-        return appTimePara + appDeveicePara + tokenPara + uidPara
-    }
+        let app_time_para = "&app_time=" + app_time
+        let app_device_para = "&app_device=" + app_device
+        let token_para = "&token=" + token!
+        let app_sign_para = "&app_sign=" + app_sign!
+        
+        let version = "&version=2.0"
 
+        return token_para + uid_para + oauth_token_para + oauth_token_secret_para + app_time_para + app_device_para + app_sign_para + version
+    }
 }

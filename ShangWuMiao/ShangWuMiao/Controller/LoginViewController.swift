@@ -11,11 +11,6 @@ import Alamofire
 
 let isLogin = "isLogin"
 
-let kCommonUrl = "https://apiplus.nyato.com"
-let kSecretKey = "us8dgf30hjRJGFU21"
-let kLoginRequestUrl = "/index.php?app=ios&mod=Member&act=login"
-let kUserInfoUrl = "/index.php?app=ios&mod=Member&act=getuinfo"
-
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var unameTextfield: UITextField!
@@ -45,6 +40,7 @@ class LoginViewController: UIViewController {
     }
 
     // MARK: - Helper
+    private let loginModel = LoginModel()
     @IBAction func login(_ sender: UIButton) {
         let emptyUname = isEmptyText(parse: unameTextfield.text)
         if emptyUname {
@@ -60,11 +56,23 @@ class LoginViewController: UIViewController {
         // test
         let parameters = ["uname": unameTextfield.text!,
                           "password": passwordTextfield.text!]
-        LoginModel().login(parameters: parameters) { [weak self] status, info in
+        loginModel.login(parameters: parameters) { [weak self] status, info in
             if status == 1 {
-                self?.performSegue(withIdentifier: "login", sender: nil)
-                UserDefaults.standard.setValue("1", forKeyPath: isLogin)
-                UserDefaults.standard.synchronize()
+                if self != nil {
+
+                    self?.loginModel.requestUserInfo(completionHandler: { status, info in
+                        if status == 1 {
+                            if self != nil {
+                                self?.performSegue(withIdentifier: "login", sender: nil)
+                                UserDefaults.standard.setValue("1", forKeyPath: isLogin)
+                                UserDefaults.standard.synchronize()
+
+                            }
+                        } else {
+                            print("get user info failure: \(info)")
+                        }
+                    })
+                }
             } else {
                 print("login failure: \(info)")
             }
