@@ -27,6 +27,7 @@
 		8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */; };
 		8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */; };
 		8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */; };
+		8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800E1EC2A1A1001A6651 /* MeCell.swift */; };
 		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordViewController.swift; sourceTree = "<group>"; };
 		8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTicketViewController.swift; sourceTree = "<group>"; };
 		8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupViewController.swift; sourceTree = "<group>"; };
+		8BE3800E1EC2A1A1001A6651 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeCell.swift; sourceTree = "<group>"; };
 		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */,
+				8BE3800E1EC2A1A1001A6651 /* MeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
+				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
 				8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */,
 				8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */,
 				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 class LoginModel: NSObject {
+    
     func login(parameters: Dictionary<String, String>,
                      completionHandler: @escaping (Int, String) -> ()) {
         let loginSecret = kSecretKey + "login"

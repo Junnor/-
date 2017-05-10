@@ -10,19 +10,19 @@ import UIKit
 
 // MARK: - Cells
 
-class AvatarCell: UITableViewCell {
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var levelLabel: UILabel!
-}
-
-class MoneyCell: UITableViewCell {
-    @IBOutlet weak var moneyLabel: UILabel!
-}
-
-class DetailCell: UITableViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-}
+//class AvatarCell: UITableViewCell {
+//    @IBOutlet weak var avatar: UIImageView!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//    @IBOutlet weak var levelLabel: UILabel!
+//}
+//
+//class MoneyCell: UITableViewCell {
+//    @IBOutlet weak var moneyLabel: UILabel!
+//}
+//
+//class DetailCell: UITableViewCell {
+//    @IBOutlet weak var titleLabel: UILabel!
+//}
 
 // MARK: - View controller
 
@@ -111,7 +111,7 @@ extension MeViewController {
         // text and text color
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let cell = cell as! AvatarCell
+                let cell = cell as! MeCell
                 cell.usernameLabel?.text = "DQ"
                 cell.levelLabel?.text = "normal"
             } else {
