@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 import Alamofire
 
 class MeViewController: UITableViewController {
@@ -94,12 +95,16 @@ extension MeViewController {
         // text and text color
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let cell = cell as! MeCell
-                
-//                cell.avatarImageView?.image = UIImage(data: data as! Data)
+                if let cell = cell as? MeCell {
+                    let width = cell.avatarImageView.frame.width
+                    cell.avatarImageView.layer.cornerRadius = width / 2
+                    
+                    let url = URL(string: User.shared.avatarString)
+                    cell.avatarImageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                    cell.usernameLabel?.text = User.shared.uname
+                    cell.levelLabel?.text = User.shared.isBusiness
 
-                cell.usernameLabel?.text = User.shared.uname
-                cell.levelLabel?.text = User.shared.isBusiness
+                }
             } else {
                 let cell = cell as! MoneyCell
                 cell.moneyLabel?.text = "\(User.shared.mcoins)"

@@ -29,20 +29,20 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6xg-xn-ezC">
-                                            <rect key="frame" x="157.5" y="38" width="60" height="60"/>
+                                            <rect key="frame" x="152.5" y="38" width="70" height="70"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="pkO-WQ-XVn"/>
+                                                <constraint firstAttribute="width" constant="70" id="pkO-WQ-XVn"/>
                                                 <constraint firstAttribute="width" secondItem="6xg-xn-ezC" secondAttribute="height" multiplier="1:1" id="zSB-y0-NCA"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwB-AO-hXI">
-                                            <rect key="frame" x="149.5" y="113" width="76" height="21"/>
+                                            <rect key="frame" x="149.5" y="123" width="76" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgs-eq-rIe">
-                                            <rect key="frame" x="170" y="149" width="35" height="21"/>
+                                            <rect key="frame" x="170" y="159" width="35" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.51402221020000005" blue="0.69891136480000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -764,7 +764,7 @@
         <!--漫展-->
         <scene sceneID="2Lt-aE-0U8">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Lyj-09-F2f" customClass="ComicViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExhibitionViewController" automaticallyAdjustsScrollViewInsets="NO" id="Lyj-09-F2f" customClass="ExhibitionViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P3X-HZ-Eq9"/>
                         <viewControllerLayoutGuide type="bottom" id="2tC-fi-EdB"/>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B4E8BBB2299786AF4141814 /* Pods_ShangWuMiao.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE920BAE7153B51B83F0AD9 /* Pods_ShangWuMiao.framework */; };
 		4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2A81E9B19F3004166DB /* AppDelegate.swift */; };
 		4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4460C2AC1E9B19F3004166DB /* Main.storyboard */; };
 		4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4460C2AF1E9B19F3004166DB /* Assets.xcassets */; };
@@ -15,11 +16,13 @@
 		4460C2C91E9B19F3004166DB /* ShangWuMiaoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */; };
 		4460C2EF1E9B1B70004166DB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4460C2E21E9B1B5B004166DB /* Alamofire.framework */; };
 		4460C2F01E9B1B70004166DB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4460C2E21E9B1B5B004166DB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8BDB06881EC0178100F0A660 /* ComicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06871EC0178100F0A660 /* ComicViewController.swift */; };
+		8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */; };
 		8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */; };
 		8BDB068C1EC01A4F00F0A660 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068B1EC01A4F00F0A660 /* ComicDetailViewController.swift */; };
 		8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */; };
 		8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */; };
+		8BDBE14C1EC319DD00482FC2 /* GlobalFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE14B1EC319DD00482FC2 /* GlobalFunc.swift */; };
+		8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE1541EC31A4800482FC2 /* URLAct.swift */; };
 		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
 		8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */; };
 		8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */; };
@@ -33,6 +36,7 @@
 		8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */; };
 		8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */; };
 		8BE380191EC2EA37001A6651 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380181EC2EA37001A6651 /* User.swift */; };
+		8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6E7551EC3092B004FE5BB /* Exhibition.swift */; };
 		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +128,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06F52BCD767B56C449717E1A /* Pods-ShangWuMiao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.debug.xcconfig"; sourceTree = "<group>"; };
 		4460C2A51E9B19F3004166DB /* ShangWuMiao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShangWuMiao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4460C2A81E9B19F3004166DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4460C2AD1E9B19F3004166DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -137,11 +142,14 @@
 		4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShangWuMiaoUITests.swift; sourceTree = "<group>"; };
 		4460C2CA1E9B19F3004166DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4460C2D61E9B1B5A004166DB /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
-		8BDB06871EC0178100F0A660 /* ComicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewController.swift; sourceTree = "<group>"; };
+		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
+		8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionViewController.swift; sourceTree = "<group>"; };
 		8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8BDB068B1EC01A4F00F0A660 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
+		8BDBE14B1EC319DD00482FC2 /* GlobalFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunc.swift; sourceTree = "<group>"; };
+		8BDBE1541EC31A4800482FC2 /* URLAct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAct.swift; sourceTree = "<group>"; };
 		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -156,7 +164,9 @@
 		8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtTicketCell.swift; sourceTree = "<group>"; };
 		8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderCell.swift; sourceTree = "<group>"; };
 		8BE380181EC2EA37001A6651 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8BF6E7551EC3092B004FE5BB /* Exhibition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exhibition.swift; sourceTree = "<group>"; };
 		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CEE920BAE7153B51B83F0AD9 /* Pods_ShangWuMiao.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShangWuMiao.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4460C2EF1E9B1B70004166DB /* Alamofire.framework in Frameworks */,
+				2B4E8BBB2299786AF4141814 /* Pods_ShangWuMiao.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +204,8 @@
 				4460C2BC1E9B19F3004166DB /* ShangWuMiaoTests */,
 				4460C2C71E9B19F3004166DB /* ShangWuMiaoUITests */,
 				4460C2A61E9B19F3004166DB /* Products */,
+				7EF51B8EA468F8A98768E468 /* Pods */,
+				CFA0ACAAC78DE45F580AF923 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,11 +267,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7EF51B8EA468F8A98768E468 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				06F52BCD767B56C449717E1A /* Pods-ShangWuMiao.debug.xcconfig */,
+				590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8B7A48D41EC0103400276058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				8BF9B4681EC069360057531A /* LoginViewController.swift */,
-				8BDB06871EC0178100F0A660 /* ComicViewController.swift */,
+				8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */,
 				8BDB068B1EC01A4F00F0A660 /* ComicDetailViewController.swift */,
 				8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */,
 				8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */,
@@ -275,8 +297,11 @@
 		8B7A48D51EC0103E00276058 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
 				8BE380181EC2EA37001A6651 /* User.swift */,
+				8BDBE1541EC31A4800482FC2 /* URLAct.swift */,
+				8BDBE14B1EC319DD00482FC2 /* GlobalFunc.swift */,
+				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
+				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +319,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CFA0ACAAC78DE45F580AF923 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEE920BAE7153B51B83F0AD9 /* Pods_ShangWuMiao.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,10 +334,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4460C2CD1E9B19F3004166DB /* Build configuration list for PBXNativeTarget "ShangWuMiao" */;
 			buildPhases = (
+				9B7E52C1947133CC61DD8054 /* [CP] Check Pods Manifest.lock */,
 				4460C2A11E9B19F3004166DB /* Sources */,
 				4460C2A21E9B19F3004166DB /* Frameworks */,
 				4460C2A31E9B19F3004166DB /* Resources */,
 				4460C2F31E9B1B70004166DB /* Embed Frameworks */,
+				B7882AE937DF784DF1DCEDCA /* [CP] Embed Pods Frameworks */,
+				21DF1702FFFFBEE7BEE25B6C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -486,13 +522,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		21DF1702FFFFBEE7BEE25B6C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B7E52C1947133CC61DD8054 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B7882AE937DF784DF1DCEDCA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4460C2A11E9B19F3004166DB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */,
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
+				8BDBE14C1EC319DD00482FC2 /* GlobalFunc.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
@@ -510,7 +596,8 @@
 				8BDB068C1EC01A4F00F0A660 /* ComicDetailViewController.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,
-				8BDB06881EC0178100F0A660 /* ComicViewController.swift in Sources */,
+				8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */,
+				8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +750,7 @@
 		};
 		4460C2CE1E9B19F3004166DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06F52BCD767B56C449717E1A /* Pods-ShangWuMiao.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -678,6 +766,7 @@
 		};
 		4460C2CF1E9B19F3004166DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

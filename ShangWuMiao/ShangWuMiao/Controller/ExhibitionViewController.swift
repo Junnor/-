@@ -1,5 +1,5 @@
 //
-//  ComicViewController.swift
+//  ExhibitionViewController.swift
 //  ShangWuMiao
 //
 //  Created by Ju on 2017/5/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ComicViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -33,11 +33,16 @@ class ComicViewController: UIViewController, UICollectionViewDataSource, UIColle
         navigationItem.backBarButtonItem = backItem
     }
     
+    private let exhibition = Exhibition()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
+        
+        // test
+
+        exhibition.requestExhibitionList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
