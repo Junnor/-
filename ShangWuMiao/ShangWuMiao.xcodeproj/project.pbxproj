@@ -28,6 +28,10 @@
 		8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */; };
 		8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */; };
 		8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3800E1EC2A1A1001A6651 /* MeCell.swift */; };
+		8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380101EC2A38A001A6651 /* TopupRecordCell.swift */; };
+		8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380121EC2A757001A6651 /* TopupCell.swift */; };
+		8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */; };
+		8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */; };
 		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +150,10 @@
 		8BE3800A1EC1D799001A6651 /* SoldTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoldTicketViewController.swift; sourceTree = "<group>"; };
 		8BE3800C1EC1DA7B001A6651 /* TopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupViewController.swift; sourceTree = "<group>"; };
 		8BE3800E1EC2A1A1001A6651 /* MeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeCell.swift; sourceTree = "<group>"; };
+		8BE380101EC2A38A001A6651 /* TopupRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordCell.swift; sourceTree = "<group>"; };
+		8BE380121EC2A757001A6651 /* TopupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupCell.swift; sourceTree = "<group>"; };
+		8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtTicketCell.swift; sourceTree = "<group>"; };
+		8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderCell.swift; sourceTree = "<group>"; };
 		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +283,10 @@
 			children = (
 				8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */,
 				8BE3800E1EC2A1A1001A6651 /* MeCell.swift */,
+				8BE380101EC2A38A001A6651 /* TopupRecordCell.swift */,
+				8BE380121EC2A757001A6651 /* TopupCell.swift */,
+				8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */,
+				8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,10 +490,14 @@
 			files = (
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
+				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
+				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
+				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
 				8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */,
 				8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */,
+				8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */,
 				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,
 				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
 				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
