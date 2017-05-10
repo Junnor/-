@@ -26,11 +26,9 @@ class LoginModel: NSObject {
         Alamofire.request(url!,
                           method: .post,
                           parameters: parameters,
-                          encoding: URLEncoding.default, headers: nil).responseJSON { [weak self]
-                            response in
+                          encoding: URLEncoding.default, headers: nil).responseJSON {                            response in
                             switch response.result {
                             case .success(let json):
-                                print("json = \(json)")
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     if let status = dic["status"] as? Int {
                                         let info = dic["info"] as! String
@@ -39,15 +37,13 @@ class LoginModel: NSObject {
                                         if status == 1 {
                                             let data = dic["data"] as? Dictionary<String, String>
                                             if let data = data {
-                                                let uid = data["uid"]!
-                                                let oauth_token = data["oauth_token"]!
-                                                let oauth_token_secret = data["oauth_token_secret"]!
-                                                if self != nil {
-                                                    self?.uid = uid
-                                                    self?.oauth_token = oauth_token
-                                                    self?.oauth_token_secret = oauth_token_secret
-                                                }
-                                                // post
+                                                let uid = data["uid"]
+                                                let oauth_token = data["oauth_token"]
+                                                let oauth_token_secret = data["oauth_token_secret"]
+                                                
+                                                User.shared.uid = uid ?? ""
+                                                User.shared.oauth_token = oauth_token ?? ""
+                                                User.shared.oauth_token_secret = oauth_token_secret ?? ""
                                             }
                                         }
                                         
@@ -64,32 +60,63 @@ class LoginModel: NSObject {
     }
     
     
-    func requestUserInfo(completionHandler: (Int, String) -> ()) {
+    func requestUserInfo(completionHandler: @escaping (Int, String?) -> ()) {
         let urlParameter = urlParameters()
         let userinfoString = kHeaderUrl + kUserInfoUrlString + urlParameter
         let url = URL(string: userinfoString)
 
-        let intUid = NSString(string: self.uid!).integerValue
+        let intUid = NSString(string: User.shared.uid).integerValue
         Alamofire.request(url!,
                           method: .post,
                           parameters: ["uid": intUid],
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
-                            print("userinfo responce: \(response)")
 
                             switch response.result {
                             case .success(let json):
-                                let dic = json as! Dictionary<String, AnyObject>
+                                if let dic = json as? Dictionary<String, AnyObject> {
+                                    guard let status = dic["status"] as? Int, status == 1 else {
+                                        let info = dic["info"] as? String
+                                        completionHandler(0, info)
+                                        return
+                                    }
+                                    if let data = dic["data"] as? Dictionary<String, AnyObject> {
+                                        let user = User.shared
+                                        
+                                        let uname = data["uname"] as? String
+                                        let isBusiness = data["is_business"] as? String
+                                        let avatarUrlString = data["avatar"] as? String
+                                        let gender = data["sex"] as? String
+                                        
+                                        let mcoins = data["mcoins"]
+                                        if mcoins is Float {
+                                            user.mcoins = mcoins as! Float
+                                        } else if mcoins is String {
+                                            user.mcoins = Float((mcoins as! String))!
+                                        }
+                                        
+                                        user.avatarString = avatarUrlString ?? ""
+                                        user.uname = uname ?? ""
+                                        user.gender = gender ?? ""
+                                        
+                                        if isBusiness != nil {
+                                            switch isBusiness! {
+                                            case "0": user.isBusiness = "不是商户"
+                                            case "1": user.isBusiness = "普通商户"
+                                            case "2": user.isBusiness = "高级商户"
+                                            case "2": user.isBusiness = "超级商户"
+                                            default: break
+                                            }
+                                        }
 
+                                        completionHandler(status, nil)
+                                    }
+                                }
                             case .failure(let error):
                                 print("get user info error: \(error)")
                             }
         }
     }
-
-    private var oauth_token: String!
-    private var oauth_token_secret: String!
-    private var uid: String!
 
     private func urlParameters() -> String {
         let userinfoSecret = kSecretKey + "getuinfo"
@@ -97,14 +124,14 @@ class LoginModel: NSObject {
         let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
         let app_device = UIDevice.current.identifierForVendor?.uuidString ?? "0"
         
-        let sort = [app_device, app_time, token!, uid!]
+        let sort = [app_device, app_time, token!, User.shared.uid]
         let sorted = sort.sorted { $0 < $1 }
         let appsignSecret = sorted.joined(separator: "&")
         let app_sign = appsignSecret.md5
         
-        let uid_para = "&uid=" + uid!
-        let oauth_token_para = "&oauth_token=" + oauth_token!
-        let oauth_token_secret_para = "&oauth_token_secret=" + oauth_token_secret!
+        let uid_para = "&uid=" + User.shared.uid
+        let oauth_token_para = "&oauth_token=" + User.shared.oauth_token
+        let oauth_token_secret_para = "&oauth_token_secret=" + User.shared.oauth_token_secret
         
         let app_time_para = "&app_time=" + app_time
         let app_device_para = "&app_device=" + app_device

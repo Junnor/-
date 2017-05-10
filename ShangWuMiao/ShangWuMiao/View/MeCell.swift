@@ -17,7 +17,7 @@ class DetailCell: UITableViewCell {
 }
 
 class MeCell: UITableViewCell {
-    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
 }

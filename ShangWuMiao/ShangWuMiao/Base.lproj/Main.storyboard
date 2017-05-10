@@ -60,7 +60,7 @@
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="avatar" destination="6xg-xn-ezC" id="PPn-2J-hgt"/>
+                                    <outlet property="avatarImageView" destination="6xg-xn-ezC" id="bUI-M2-Iki"/>
                                     <outlet property="levelLabel" destination="lgs-eq-rIe" id="YQn-NE-MkI"/>
                                     <outlet property="usernameLabel" destination="CwB-AO-hXI" id="6Ya-0T-fWl"/>
                                 </connections>

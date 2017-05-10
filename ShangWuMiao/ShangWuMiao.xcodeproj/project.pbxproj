@@ -32,6 +32,7 @@
 		8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380121EC2A757001A6651 /* TopupCell.swift */; };
 		8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */; };
 		8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */; };
+		8BE380191EC2EA37001A6651 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380181EC2EA37001A6651 /* User.swift */; };
 		8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF9B4681EC069360057531A /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,7 @@
 		8BE380121EC2A757001A6651 /* TopupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupCell.swift; sourceTree = "<group>"; };
 		8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoughtTicketCell.swift; sourceTree = "<group>"; };
 		8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketOrderCell.swift; sourceTree = "<group>"; };
+		8BE380181EC2EA37001A6651 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8BF9B4681EC069360057531A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
+				8BE380181EC2EA37001A6651 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				8BE380131EC2A757001A6651 /* TopupCell.swift in Sources */,
 				8BE3800F1EC2A1A1001A6651 /* MeCell.swift in Sources */,
 				8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */,
+				8BE380191EC2EA37001A6651 /* User.swift in Sources */,
 				8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */,
 				8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */,
 				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,

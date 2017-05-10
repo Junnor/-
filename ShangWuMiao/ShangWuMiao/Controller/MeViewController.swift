@@ -7,24 +7,7 @@
 //
 
 import UIKit
-
-// MARK: - Cells
-
-//class AvatarCell: UITableViewCell {
-//    @IBOutlet weak var avatar: UIImageView!
-//    @IBOutlet weak var usernameLabel: UILabel!
-//    @IBOutlet weak var levelLabel: UILabel!
-//}
-//
-//class MoneyCell: UITableViewCell {
-//    @IBOutlet weak var moneyLabel: UILabel!
-//}
-//
-//class DetailCell: UITableViewCell {
-//    @IBOutlet weak var titleLabel: UILabel!
-//}
-
-// MARK: - View controller
+import Alamofire
 
 class MeViewController: UITableViewController {
 
@@ -112,11 +95,14 @@ extension MeViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = cell as! MeCell
-                cell.usernameLabel?.text = "DQ"
-                cell.levelLabel?.text = "normal"
+                
+//                cell.avatarImageView?.image = UIImage(data: data as! Data)
+
+                cell.usernameLabel?.text = User.shared.uname
+                cell.levelLabel?.text = User.shared.isBusiness
             } else {
                 let cell = cell as! MoneyCell
-                cell.moneyLabel?.text = "12344.0"
+                cell.moneyLabel?.text = "\(User.shared.mcoins)"
             }
         } else {
             let cell = cell as! DetailCell
@@ -150,7 +136,7 @@ extension MeViewController {
                 performSegue(withIdentifier: SegueIdentifer.topUpAction.rawValue, sender: indexPath)
             }
         } else if indexPath.section == 1 {
-            var identififer = ""
+            var identififer = String()
             switch indexPath.row {
             case 0: identififer = SegueIdentifer.ticketSold.rawValue
             case 1: identififer = SegueIdentifer.topUpRecord.rawValue
@@ -166,6 +152,8 @@ extension MeViewController {
                 present(loginvc, animated: true, completion: {
                     UserDefaults.standard.setValue(nil, forKey: isLogin)
                     UserDefaults.standard.synchronize()
+                    
+                    User.shared.clean()
                 })
             }
 

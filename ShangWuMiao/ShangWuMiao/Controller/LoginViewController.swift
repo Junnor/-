@@ -44,12 +44,12 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         let emptyUname = isEmptyText(parse: unameTextfield.text)
         if emptyUname {
-            // imput uname
+            print("empty username")
             return
         }
         let emptyPassword = isEmptyText(parse: passwordTextfield.text)
         if emptyPassword {
-            // imput password
+            print("empty password")
             return
         }
 
@@ -66,10 +66,9 @@ class LoginViewController: UIViewController {
                                 self?.performSegue(withIdentifier: "login", sender: nil)
                                 UserDefaults.standard.setValue("1", forKeyPath: isLogin)
                                 UserDefaults.standard.synchronize()
-
                             }
                         } else {
-                            print("get user info failure: \(info)")
+                            print("get user info failure: \(String(describing: info))")
                         }
                     })
                 }
