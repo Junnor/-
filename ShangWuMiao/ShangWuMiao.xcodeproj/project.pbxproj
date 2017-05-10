@@ -225,10 +225,10 @@
 				8B7A48D61EC0104500276058 /* View */,
 				8B7A48D51EC0103E00276058 /* Model */,
 				8B7A48D41EC0103400276058 /* Controller */,
-				4460C2A81E9B19F3004166DB /* AppDelegate.swift */,
 				4460C2AC1E9B19F3004166DB /* Main.storyboard */,
 				4460C2AF1E9B19F3004166DB /* Assets.xcassets */,
 				4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */,
+				4460C2A81E9B19F3004166DB /* AppDelegate.swift */,
 				8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */,
 				4460C2B41E9B19F3004166DB /* Info.plist */,
 			);

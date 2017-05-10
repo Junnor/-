@@ -96,14 +96,18 @@ extension MeViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 if let cell = cell as? MeCell {
-                    let width = cell.avatarImageView.frame.width
-                    cell.avatarImageView.layer.cornerRadius = width / 2
+//                    let width = cell.avatarImageView.frame.width
+//                    cell.avatarImageView.layer.cornerRadius = width / 2
                     
-                    let url = URL(string: User.shared.avatarString)
-                    cell.avatarImageView?.kf.setImage(with: url, placeholder: nil, options: nil, progressBlock: nil, completionHandler: nil)
+                    if let url = URL(string: User.shared.avatarString) {
+                        let resource = ImageResource(downloadURL: url,
+                                                     cacheKey: url.absoluteString)
+                        
+                        cell.avatarImageView.kf.setImage(with: resource)
+                    }
+                    
                     cell.usernameLabel?.text = User.shared.uname
                     cell.levelLabel?.text = User.shared.isBusiness
-
                 }
             } else {
                 let cell = cell as! MoneyCell

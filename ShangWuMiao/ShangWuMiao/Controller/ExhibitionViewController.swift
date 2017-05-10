@@ -34,15 +34,34 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     private let exhibition = Exhibition()
+    private var hadExhibition = false
+    private var exhibitions = [Exhibition]()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
         
-        // test
+        if !hadExhibition {
+            print("..load exhibition")
+            exhibition.requestExhibitionList(completionHandler: { [weak self] success, info, exhibitions in
+                print("..success")
+                if success {
+                    print("..self: \(self)")
 
-        exhibition.requestExhibitionList()
+                    if self != nil {
+                        self!.hadExhibition = true
+                        self!.exhibitions = exhibitions
+                        self!.collectionView.reloadData()
+                        print("..self: dskfjskhfkfh")
+
+                    }
+
+                } else {
+                    print("load exhibition failure: \(info ?? "no value")")
+                }
+            })
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,16 +71,17 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.exhibitions.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: comicCellId, for: indexPath)
         if let cell = cell as? ComicViewCell {
 //            cell.comicImageView.image
-            cell.titleLabel.text = "2017广州漫展漫展漫展漫展漫展漫展漫展漫展漫展漫展"
+            let ex = self.exhibitions[indexPath.item]
+            cell.titleLabel.text = ex.name
             cell.dateLabel.text = "2017年03月20日 - 07月20日"
-            cell.addressLabel.text = "广州"
+            cell.addressLabel.text = ex.addr
         }
         return cell
     }
