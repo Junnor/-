@@ -19,7 +19,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
 
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.itemSize = CGSize(width: view.bounds.width, height: 150)
+        layout?.itemSize = CGSize(width: view.bounds.width, height: 120)
         layout?.minimumLineSpacing = 0
         collectionView.collectionViewLayout = layout!
         

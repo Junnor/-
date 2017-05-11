@@ -152,7 +152,7 @@ extension MeViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (indexPath.section == 0 && indexPath.row == 0) ? 180 : 50
+        return (indexPath.section == 0 && indexPath.row == 0) ? 180 : 60
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -178,7 +178,6 @@ extension MeViewController {
                     User.shared.clean()
                 })
             }
-
         }
     }
     
