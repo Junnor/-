@@ -10,12 +10,63 @@ import UIKit
 
 class TopupViewController: UIViewController {
     
+    @IBOutlet weak var mcoinsLabel: UILabel!
+    @IBOutlet weak var mcoinsSumLabel: UIView!
+    @IBOutlet weak var sumIndicatorLabel: UILabel!
     
-    static let topupIdentifier = "top up identifier"
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self
+        }
+    }
+    
+    fileprivate let topupIdentifier = "top up identifier"
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "充值喵币"
 
-        // Do any additional setup after loading the view.
+        mcoinsLabel?.text = "\(User.shared.mcoins)"
+    }
+    
+    @IBAction func mcoinsPlusAction(_ sender: UIButton) {
+        if sender.currentTitle == "+100" {    // +100
+        } else {  // +10
+        }
+    }
+    
+    @IBAction func mcoinsMinusAction(_ sender: Any) {   // -10
+    }
+}
+
+extension TopupViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:topupIdentifier, for: indexPath)
+        cell.selectionStyle = .none
+        if let cell = cell as? TopupCell {
+            let image = indexPath.row == 0 ? #imageLiteral(resourceName: "pay-alipay") : #imageLiteral(resourceName: "pay-wenxin")
+            let title = indexPath.row == 0 ? "使用支付宝支付" : "使用微信支付"
+            cell.payImageView?.image = image
+            cell.titleLabel?.text = title
+            
+        }
+        return cell
+    }
+}
+
+extension TopupViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {   // alipay
+            print("using alipay")
+        } else {  // wechat
+            print("using wechat")
+        }
     }
 }

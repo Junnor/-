@@ -14,7 +14,17 @@ class MeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // set navigation bar
+        let backImage = UIImage(named: "nav-expoed")
+        backImage?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: backImage!.size.width - 1, bottom: 0, right: 0))
         
+        let appearance = UIBarButtonItem.appearance()
+        appearance.setBackButtonBackgroundImage(backImage, for: .normal, barMetrics: .default)
+        
+        let backItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+
+        // 在Group模式下隐藏头部空白区域
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
     }
     
@@ -32,7 +42,7 @@ class MeViewController: UITableViewController {
             })
         }
     }
-    
+        
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

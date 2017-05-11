@@ -1,5 +1,5 @@
 //
-//  ComicDetailViewController.swift
+//  ExhibitionDetailViewController.swift
 //  ShangWuMiao
 //
 //  Created by Ju on 2017/5/8.
@@ -9,8 +9,7 @@
 
 import UIKit
 
-class ComicDetailViewController: UIViewController, UIScrollViewDelegate {
-    
+class ExhibitionDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
@@ -18,12 +17,20 @@ class ComicDetailViewController: UIViewController, UIScrollViewDelegate {
             scrollView.showsHorizontalScrollIndicator = false
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setNaviView()
         scrollView.contentSize = CGSize(width: view.bounds.width, height: 1000)
-        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    private var naviView: CustomNaviBarView!
+    private func setNaviView() {
+        // custom navigation bar view
+        naviView = CustomNaviBarView.naviBarViewFromNib()
+        naviView.alpha = 0.0
+        
+        self.navigationController?.view.insertSubview(naviView, belowSubview: (navigationController?.navigationBar)!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,25 +40,14 @@ class ComicDetailViewController: UIViewController, UIScrollViewDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.navigationBar.alpha = 1.0
-    }
-    
     // set navigation bar
     private let naviBarHeight: CGFloat = 64
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         if offsetY > 0 {
             let alpha = min(offsetY/naviBarHeight, 1.0)
-            self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-            self.navigationController?.navigationBar.shadowImage = nil
-            self.navigationController?.navigationBar.alpha = alpha
+            self.naviView.alpha = alpha
         } else {
-            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-            self.navigationController?.navigationBar.shadowImage = UIImage()
         }
     }
-
 }

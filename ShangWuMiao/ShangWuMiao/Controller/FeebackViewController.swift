@@ -15,5 +15,11 @@ class FeebackViewController: UIViewController {
     
     @IBAction func publish() {
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        title = "反馈"
+    }
 
 }

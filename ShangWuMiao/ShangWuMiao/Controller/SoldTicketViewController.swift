@@ -13,7 +13,7 @@ class SoldTicketViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = "已购票的漫展"
     }
 
     override func didReceiveMemoryWarning() {

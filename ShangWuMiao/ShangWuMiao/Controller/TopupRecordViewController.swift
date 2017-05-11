@@ -13,7 +13,7 @@ class TopupRecordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        title = "充值记录"
     }
 
     override func didReceiveMemoryWarning() {

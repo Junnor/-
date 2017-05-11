@@ -58,12 +58,6 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.exhibitions.count
     }
