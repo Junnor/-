@@ -948,7 +948,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="KWG-hX-fPW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="Czg-q5-LGx" kind="presentation" identifier="search" id="PmC-HU-RaW"/>
+                                <segue destination="Czg-q5-LGx" kind="presentation" identifier="search" animates="NO" id="PmC-HU-RaW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

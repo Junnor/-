@@ -36,6 +36,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         navigationItem.backBarButtonItem = backItem
         
         
+        // refresh
         let headerHandler = #selector(loadExhibition)
         let loadMoreHandler = #selector(loadMore)
         let headerRefresh = MJRefreshHeader(refreshingTarget: self,
@@ -106,7 +107,9 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
                 cell.comicImageView?.kf.setImage(with: resourcce)
             }
             cell.titleLabel?.text = ex.name
-            cell.dateLabel?.text = "2017年03月20日 - 07月20日"
+            let startTime = ex.exhibition(stringTime: ex.start_time, digit: false)
+            let endTime = ex.exhibition(stringTime: ex.end_time, digit: false)
+            cell.dateLabel?.text = "\(startTime) - \(endTime)"
             cell.addressLabel?.text = ex.addr
         }
         return cell

@@ -53,6 +53,24 @@ class Exhibition: NSObject {
     fileprivate var exhibitions = [Exhibition]()
 }
 
+extension Exhibition {    
+    // digit == true -> 05-11 10:00
+    func exhibition(stringTime time: String, digit: Bool) -> String {
+        let value = NSString(string: time).doubleValue
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        if digit {
+            formatter.dateFormat = "MM-dd HH:mm"
+        } else {
+            formatter.dateFormat = "yyyy年MM月dd日"
+        }
+        let date = Date(timeIntervalSince1970: value)
+
+        return formatter.string(from: date)
+    }
+}
+
 // Data request
 extension Exhibition {
     
@@ -76,7 +94,6 @@ extension Exhibition {
                             case .success(let json):
 //                                 print("exhibition list json: \(json)")
 //                                 print("........................................")
-                                
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     if let status = dic["result"] as? Int {
                                         if status == 1 {

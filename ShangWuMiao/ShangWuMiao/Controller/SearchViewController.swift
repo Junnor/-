@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func backAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 
     /*
