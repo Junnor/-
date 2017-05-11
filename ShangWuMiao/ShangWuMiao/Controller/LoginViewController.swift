@@ -56,19 +56,8 @@ class LoginViewController: UIViewController {
                           "password": passwordTextfield.text!]
         loginModel.login(parameters: parameters) { [weak self] status, info in
             if status == 1 {
-                if self != nil {
-
-                    self?.loginModel.requestUserInfo(completionHandler: { status, info in
-                        if status == 1 {
-                            if self != nil {
-                                self?.performSegue(withIdentifier: "login", sender: nil)
-                                storeOauthData()
-                            }
-                        } else {
-                            print("get user info failure: \(String(describing: info))")
-                        }
-                    })
-                }
+                self?.performSegue(withIdentifier: "login", sender: nil)
+                storeOauthData()
             } else {
                 print("login failure: \(info)")
             }

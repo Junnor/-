@@ -18,6 +18,21 @@ class MeViewController: UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
     }
     
+    private var hadUserInfo = false
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !hadUserInfo {
+            User.requestUserInfo(completionHandler: { [weak self] (success, statusInfo) in
+                if success {
+                    self?.tableView.reloadData()
+                } else {
+                    print("request user info ffailure: \(String(describing: statusInfo))")
+                }
+            })
+        }
+    }
+    
     // MARK: - Navigation 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -96,8 +111,9 @@ extension MeViewController {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 if let cell = cell as? MeCell {
-//                    let width = cell.avatarImageView.frame.width
-//                    cell.avatarImageView.layer.cornerRadius = width / 2
+                    let width = cell.avatarImageView.frame.width
+                    cell.avatarImageView.layer.cornerRadius = width / 2
+                    cell.avatarImageView.layer.masksToBounds = true
                     
                     if let url = URL(string: User.shared.avatarString) {
                         let resource = ImageResource(downloadURL: url,
