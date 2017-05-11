@@ -823,28 +823,28 @@
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-addr-2" translatesAutoresizingMaskIntoConstraints="NO" id="NT2-1T-hLf" userLabel="Address Image View">
-                                                    <rect key="frame" x="91" y="58" width="12" height="12"/>
+                                                    <rect key="frame" x="91" y="66" width="20" height="20"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="buy-2" translatesAutoresizingMaskIntoConstraints="NO" id="Gdi-Vs-eLh">
-                                                    <rect key="frame" x="255" y="44.5" width="50" height="25"/>
+                                                    <rect key="frame" x="260" y="44.5" width="50" height="25"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="2017年03月20日 - 07月09日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-ch-TFO">
-                                                    <rect key="frame" x="113" y="39" width="132" height="17"/>
+                                                    <rect key="frame" x="121" y="43" width="129" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="广州" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snd-gT-Jhl">
-                                                    <rect key="frame" x="113" y="56" width="132" height="17"/>
+                                                    <rect key="frame" x="121" y="68" width="129" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-addr-2" translatesAutoresizingMaskIntoConstraints="NO" id="1Sx-Dg-8wT" userLabel="Date Image View">
-                                                    <rect key="frame" x="91" y="41" width="12" height="12"/>
+                                                    <rect key="frame" x="91" y="41" width="20" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="12" id="1dY-9I-ujn"/>
-                                                        <constraint firstAttribute="height" constant="12" id="syh-fa-Gr9"/>
+                                                        <constraint firstAttribute="height" constant="20" id="Krm-OV-3Nb"/>
+                                                        <constraint firstAttribute="width" constant="20" id="k7m-So-ndf"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhR-Bm-FRb" userLabel="Sepearte View">
@@ -855,13 +855,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="2017广州猫展" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rjv-8j-D73">
-                                                    <rect key="frame" x="91" y="10" width="154" height="21"/>
+                                                    <rect key="frame" x="91" y="10" width="159" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购票" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZsB-cK-0oZ">
-                                                    <rect key="frame" x="255" y="44.5" width="50" height="25"/>
+                                                    <rect key="frame" x="260" y="44.5" width="50" height="25"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.84127141500000002" green="0.83880445449999996" blue="0.39204735439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -881,7 +881,7 @@
                                             <constraint firstItem="NT2-1T-hLf" firstAttribute="top" secondItem="1Sx-Dg-8wT" secondAttribute="bottom" constant="5" id="LkJ-ew-Dpx"/>
                                             <constraint firstItem="Gdi-Vs-eLh" firstAttribute="centerY" secondItem="YO6-wK-wrM" secondAttribute="centerY" id="M1o-tP-8WJ"/>
                                             <constraint firstAttribute="trailing" secondItem="EhR-Bm-FRb" secondAttribute="trailing" id="Nnf-ex-NDr"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Gdi-Vs-eLh" secondAttribute="trailing" constant="20" id="OZK-BY-fDl"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Gdi-Vs-eLh" secondAttribute="trailing" constant="15" id="OZK-BY-fDl"/>
                                             <constraint firstItem="ZsB-cK-0oZ" firstAttribute="bottom" secondItem="Gdi-Vs-eLh" secondAttribute="bottom" id="OvF-NS-kR4"/>
                                             <constraint firstItem="NT2-1T-hLf" firstAttribute="width" secondItem="1Sx-Dg-8wT" secondAttribute="width" id="PKA-b2-Rgd"/>
                                             <constraint firstItem="ZsB-cK-0oZ" firstAttribute="top" secondItem="Gdi-Vs-eLh" secondAttribute="top" id="S1F-7a-1pg"/>
