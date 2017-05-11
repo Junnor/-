@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -43,20 +44,13 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         self.navigationController?.navigationBar.shadowImage = nil
         
         if !hadExhibition {
-            print("..load exhibition")
             exhibition.requestExhibitionList(completionHandler: { [weak self] success, info, exhibitions in
-                print("..success")
                 if success {
-                    print("..self: \(self)")
-
                     if self != nil {
                         self!.hadExhibition = true
                         self!.exhibitions = exhibitions
                         self!.collectionView.reloadData()
-                        print("..self: dskfjskhfkfh")
-
                     }
-
                 } else {
                     print("load exhibition failure: \(info ?? "no value")")
                 }
@@ -77,11 +71,15 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: comicCellId, for: indexPath)
         if let cell = cell as? ComicViewCell {
-//            cell.comicImageView.image
             let ex = self.exhibitions[indexPath.item]
-            cell.titleLabel.text = ex.name
-            cell.dateLabel.text = "2017年03月20日 - 07月20日"
-            cell.addressLabel.text = ex.addr
+
+            if let url = URL(string: kHeaderUrl + ex.cover!) {
+                let resourcce = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
+                cell.comicImageView?.kf.setImage(with: resourcce)
+            }
+            cell.titleLabel?.text = ex.name
+            cell.dateLabel?.text = "2017年03月20日 - 07月20日"
+            cell.addressLabel?.text = ex.addr
         }
         return cell
     }

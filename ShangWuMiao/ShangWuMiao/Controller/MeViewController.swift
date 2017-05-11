@@ -103,7 +103,7 @@ extension MeViewController {
                         let resource = ImageResource(downloadURL: url,
                                                      cacheKey: url.absoluteString)
                         
-                        cell.avatarImageView.kf.setImage(with: resource)
+                        cell.avatarImageView?.kf.setImage(with: resource)
                     }
                     
                     cell.usernameLabel?.text = User.shared.uname
@@ -159,9 +159,6 @@ extension MeViewController {
             
             if let loginvc = vc as? LoginViewController {
                 present(loginvc, animated: true, completion: {
-                    UserDefaults.standard.setValue(nil, forKey: isLogin)
-                    UserDefaults.standard.synchronize()
-                    
                     User.shared.clean()
                 })
             }

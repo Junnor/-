@@ -60,5 +60,7 @@ final class User {
         avatarString = ""
         isBusiness = ""
         mcoins = 0.00
+        
+        cleanStoredOauthData()
     }
 }

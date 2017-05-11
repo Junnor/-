@@ -9,8 +9,13 @@
 import Foundation
 import UIKit
 
-// 加密相关
-func stringAauthParameters() -> String {
+
+// MARK: - 加密相关
+func stringOauthParameters() -> String {
+    if User.shared.uid .isEmpty {
+        getStoredOauthData()
+    }
+    
     let uid_para = "&uid=" + User.shared.uid
     let oauth_token_para = "&oauth_token=" + User.shared.oauth_token
     let oauth_token_secret_para = "&oauth_token_secret=" + User.shared.oauth_token_secret
@@ -18,8 +23,10 @@ func stringAauthParameters() -> String {
     return uid_para + oauth_token_para + oauth_token_secret_para
 }
 
-// 登陆后的一系列需要参数
+// MARK: - 登陆后的一系列需要参数
 func stringParameters(actTo act: String) -> String {
+    let oauth_para = stringOauthParameters()
+    
     let userinfoSecret = kSecretKey + act
     let token = userinfoSecret.md5
     let app_time = String(NSDate().timeIntervalSince1970*1000).components(separatedBy: ".").first!
@@ -37,6 +44,47 @@ func stringParameters(actTo act: String) -> String {
     
     let version = "&version=2.0"
     
-    return token_para + stringAauthParameters() + app_time_para + app_device_para + app_sign_para + version
+    return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
 }
+
+// MARK: - 存在本地相关
+let isLogin = "isLogin"
+let uid = "uid"
+let oauth_token = "oauth_token"
+let oauth_token_secret = "oauth_token_secret"
+
+func storeOauthData() {
+    let standard = UserDefaults.standard
+    
+    standard.setValue("1", forKeyPath: isLogin)
+    standard.setValue(User.shared.uid, forKeyPath: uid)
+    standard.setValue(User.shared.oauth_token, forKeyPath: oauth_token)
+    standard.setValue(User.shared.oauth_token_secret, forKeyPath: oauth_token_secret)
+    
+    UserDefaults.standard.synchronize()
+}
+
+func cleanStoredOauthData() {
+    let standard = UserDefaults.standard
+    
+    standard.setValue(nil, forKey: isLogin)
+    standard.setValue(nil, forKey: uid)
+    standard.setValue(nil, forKey: oauth_token)
+    standard.setValue(nil, forKey: oauth_token_secret)
+    
+    standard.synchronize()
+}
+
+private func getStoredOauthData() {
+    let standard = UserDefaults.standard
+    
+    let stored_uid = standard.value(forKey: uid) as! String
+    let stored_oauth_token = standard.value(forKey: oauth_token) as! String
+    let stored_oauth_token_secret = standard.value(forKey: oauth_token_secret) as! String
+    
+    User.shared.uid = stored_uid
+    User.shared.oauth_token = stored_oauth_token
+    User.shared.oauth_token_secret = stored_oauth_token_secret
+}
+
 

@@ -9,8 +9,6 @@
 import UIKit
 import Alamofire
 
-let isLogin = "isLogin"
-
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var unameTextfield: UITextField!
@@ -64,8 +62,7 @@ class LoginViewController: UIViewController {
                         if status == 1 {
                             if self != nil {
                                 self?.performSegue(withIdentifier: "login", sender: nil)
-                                UserDefaults.standard.setValue("1", forKeyPath: isLogin)
-                                UserDefaults.standard.synchronize()
+                                storeOauthData()
                             }
                         } else {
                             print("get user info failure: \(String(describing: info))")

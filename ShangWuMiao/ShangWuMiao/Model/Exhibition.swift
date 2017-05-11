@@ -46,8 +46,13 @@ class Exhibition: NSObject {
         self.end_time = end_time
         self.addr = addr
     }
+    
+    
+    // For more data 
+    fileprivate var page = 0
 }
 
+// Data request
 extension Exhibition {
     
     func requestExhibitionList(completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
@@ -55,7 +60,7 @@ extension Exhibition {
         let userinfoString = kHeaderUrl + RequestURL.kExhibitionUrlString + stringPara
         
         let url = URL(string: userinfoString)
-        let parameters = ["uid": NSString(string: User.shared.uid).integerValue]
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue, "p": self.page]
         
         Alamofire.request(url!,
                           method: .post,
@@ -64,20 +69,13 @@ extension Exhibition {
                           headers: nil).responseJSON { response in
                             switch response.result {
                             case .success(let json):
-                                print("exhibition list json: \(json)")
+//                                print("exhibition list json: \(json)")
                                 
                                 if let dic = json as? Dictionary<String, AnyObject> {
-                                    print("1")
-                                    if let status = dic["status"] as? Int {
-                                        print("2")
-
+                                    if let status = dic["result"] as? Int {
                                         if status == 1 {
-                                            print("3")
-
                                             if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
                                                 var exhibitions = [Exhibition]()
-                                                print("4")
-
                                                 for data in dataArr {
                                                     // 先这样, 强制转换不好 ！！！
                                                     let addr = data["addr"] as! String
@@ -99,8 +97,6 @@ extension Exhibition {
                                                                         end_time: end_time)
                                                     exhibitions.append(ex)
                                                 }
-                                                print("5")
-
                                                 completionHandler(true, nil, exhibitions)
                                             }
                                             return
