@@ -8,5 +8,6 @@ target 'ShangWuMiao' do
   use_frameworks!
 
   pod 'Kingfisher', '~> 3.0'
+  pod 'MJRefresh'
 
 end

@@ -11,7 +11,7 @@ import UIKit
 class TopupViewController: UIViewController {
     
     @IBOutlet weak var mcoinsLabel: UILabel!
-    @IBOutlet weak var mcoinsSumLabel: UIView!
+    @IBOutlet weak var mcoinsSumLabel: UILabel!
     @IBOutlet weak var sumIndicatorLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView! {
@@ -31,13 +31,27 @@ class TopupViewController: UIViewController {
         mcoinsLabel?.text = "\(User.shared.mcoins)"
     }
     
-    @IBAction func mcoinsPlusAction(_ sender: UIButton) {
-        if sender.currentTitle == "+100" {    // +100
-        } else {  // +10
+    private var currentMcoinsCount = 10 {
+        didSet {
+            mcoinsSumLabel?.text = "\(currentMcoinsCount)"
+            sumIndicatorLabel?.text = "\(currentMcoinsCount)"
         }
     }
     
-    @IBAction func mcoinsMinusAction(_ sender: Any) {   // -10
+    @IBAction func mcoinsHundredPlusAction(_ sender: Any) {
+        currentMcoinsCount += 100
+    }
+
+    @IBAction func mcoinsTenPlusAction(_ sender: Any) {
+        currentMcoinsCount += 10
+    }
+    
+    @IBAction func mcoinsMinusAction(_ sender: Any) {
+        if currentMcoinsCount == 10 {
+            return
+        } else {
+            currentMcoinsCount -= 10
+        }
     }
 }
 

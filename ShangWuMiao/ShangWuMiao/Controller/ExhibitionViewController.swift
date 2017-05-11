@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MJRefresh
 
 class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -15,6 +16,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     
     private let comicCellId = "ComicCellIdentifer"
     
+    // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +34,19 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let backItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
+        
+        
+        let headerHandler = #selector(loadExhibition)
+        let loadMoreHandler = #selector(loadMore)
+        let headerRefresh = MJRefreshHeader(refreshingTarget: self,
+                                                              refreshingAction: headerHandler)
+        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
+                                                      refreshingAction: loadMoreHandler)
+        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
+        collectionView?.mj_header = headerRefresh
+        collectionView?.mj_footer = footerRefresh
+        
+        collectionView?.mj_header.beginRefreshing()
     }
     
     private let exhibition = Exhibition()
@@ -42,21 +57,40 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
-        
-        if !hadExhibition {
-            exhibition.requestExhibitionList(completionHandler: { [weak self] success, info, exhibitions in
-                if success {
-                    if self != nil {
-                        self!.hadExhibition = true
-                        self!.exhibitions = exhibitions
-                        self!.collectionView.reloadData()
-                    }
-                } else {
-                    print("load exhibition failure: \(info ?? "no value")")
-                }
-            })
-        }
     }
+    
+    // MARK: - Helper
+    @objc private func loadExhibition() {
+        exhibition.requestExhibitionList(loadMore: false, completionHandler: { [weak self] success, info, exhibitions in
+            self?.collectionView.mj_header.endRefreshing()
+            if success {
+                if self != nil {
+                    self!.hadExhibition = true
+                    self!.exhibitions = exhibitions
+                    self!.collectionView.reloadData()
+                }
+            } else {
+                print("load exhibition failure: \(info ?? "no value")")
+            }
+        })
+    }
+    
+    
+    @objc private func loadMore() {
+        exhibition.requestExhibitionList(loadMore: true, completionHandler: { [weak self] success, info, exhibitions in
+            self?.collectionView.mj_footer.endRefreshing()
+            if success {
+                if self != nil {
+                    self!.exhibitions = exhibitions
+                    self!.collectionView.reloadData()
+                }
+            } else {
+                print("load more exhibition failure: \(info ?? "no value")")
+            }
+        })
+    }
+
+    // MARK: - Collection view data source 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.exhibitions.count
@@ -78,8 +112,3 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
 }
-
-
-
-
-

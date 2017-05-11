@@ -258,14 +258,14 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hw8-1E-zhC">
-                                        <rect key="frame" x="134" y="88" width="46" height="32.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hw8-1E-zhC">
+                                        <rect key="frame" x="130.5" y="74.5" width="53.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ie-gU-iTh">
-                                        <rect key="frame" x="35" y="80.5" width="64" height="48"/>
+                                        <rect key="frame" x="35" y="80.5" width="60.5" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="-">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -275,13 +275,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOJ-un-wIK">
-                                        <rect key="frame" x="219" y="80.5" width="59" height="48"/>
+                                        <rect key="frame" x="223" y="80.5" width="55" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="+">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="mcoinsPlusAction:" destination="VVe-F3-70v" eventType="touchUpInside" id="nTi-z4-gxF"/>
+                                            <action selector="mcoinsTenPlusAction:" destination="VVe-F3-70v" eventType="touchUpInside" id="sjg-Ty-j0I"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FsY-8d-ViZ">
@@ -291,11 +291,11 @@
                                             <color key="titleColor" red="1" green="0.77820771339999995" blue="0.55152897700000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="mcoinsPlusAction:" destination="VVe-F3-70v" eventType="touchUpInside" id="hkf-gc-dne"/>
+                                            <action selector="mcoinsHundredPlusAction:" destination="VVe-F3-70v" eventType="touchUpInside" id="I9i-Wi-4AD"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ha6-qB-Fzw" userLabel="View2">
-                                        <rect key="frame" x="99" y="99.5" width="35" height="10"/>
+                                        <rect key="frame" x="95.5" y="99.5" width="35" height="10"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="1aO-xm-3iG"/>
@@ -303,7 +303,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RMB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-ZM-pBk">
-                                        <rect key="frame" x="142" y="132" width="30.5" height="17"/>
+                                        <rect key="frame" x="142" y="145.5" width="30.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -316,7 +316,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="po4-D7-r74" userLabel="View3">
-                                        <rect key="frame" x="180" y="99.5" width="39" height="10"/>
+                                        <rect key="frame" x="184" y="99.5" width="39" height="10"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="39" id="DNG-wz-f6c"/>
@@ -440,7 +440,7 @@
                     </view>
                     <connections>
                         <outlet property="mcoinsLabel" destination="Pem-0b-zB2" id="gKU-hu-o0x"/>
-                        <outlet property="mcoinsSumLabel" destination="EBU-yR-vuY" id="wWS-7L-bpd"/>
+                        <outlet property="mcoinsSumLabel" destination="hw8-1E-zhC" id="uM5-yU-YzF"/>
                         <outlet property="sumIndicatorLabel" destination="VFS-gr-Qfd" id="467-am-M6q"/>
                         <outlet property="tableView" destination="VrE-HZ-beX" id="eb9-TW-scw"/>
                     </connections>

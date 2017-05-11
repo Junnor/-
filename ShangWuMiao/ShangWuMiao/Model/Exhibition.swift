@@ -49,13 +49,18 @@ class Exhibition: NSObject {
     
     
     // For more data 
-    fileprivate var page = 0
+    fileprivate var page = 1
+    fileprivate var exhibitions = [Exhibition]()
 }
 
 // Data request
 extension Exhibition {
     
-    func requestExhibitionList(completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
+    // true for more, false for page 0 or refresh
+    func requestExhibitionList(loadMore: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
+        page = loadMore ? page + 1 : 1
+        print("page = \(page)")
+        
         let stringPara = stringParameters(actTo: ActType.ex_list)
         let userinfoString = kHeaderUrl + RequestURL.kExhibitionUrlString + stringPara
         
@@ -69,19 +74,20 @@ extension Exhibition {
                           headers: nil).responseJSON { response in
                             switch response.result {
                             case .success(let json):
-//                                print("exhibition list json: \(json)")
+//                                 print("exhibition list json: \(json)")
+//                                 print("........................................")
                                 
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     if let status = dic["result"] as? Int {
                                         if status == 1 {
                                             if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
-                                                var exhibitions = [Exhibition]()
+                                                var tmpExhibitions = [Exhibition]()
                                                 for data in dataArr {
                                                     // 先这样, 强制转换不好 ！！！
                                                     let addr = data["addr"] as! String
                                                     let cover = data["cover"] as! String
                                                     let start_time = data["start_time"] as! String
-                                                    let end_time = data["end_time"] as! String
+                                                    let end_time = data["end_time"] as! String                                                    
                                                     let name = data["name"] as! String
                                                     let exid = data["eid"] as! String
                                                     let location = data["location"] as! String
@@ -95,20 +101,31 @@ extension Exhibition {
                                                                         location: location,
                                                                         start_time: start_time,
                                                                         end_time: end_time)
-                                                    exhibitions.append(ex)
+                                                    tmpExhibitions.append(ex)
                                                 }
-                                                completionHandler(true, nil, exhibitions)
+                                                
+                                                if loadMore {
+                                                    for exhibition in tmpExhibitions {
+                                                        self.exhibitions.append(exhibition)
+                                                    }
+                                                } else {
+                                                    self.exhibitions.removeAll()
+                                                    self.exhibitions = tmpExhibitions
+                                                }
+                                                
+                                                completionHandler(true, nil, self.exhibitions)
                                             }
                                             return
                                         } else {
-                                            let info = dic["info"] as! String
-                                            completionHandler(false, info, [])
+                                            let errorInfo = dic["error"] as? String
+                                            completionHandler(false, errorInfo, [])
                                         }
                                     }
                                 }
                             case .failure(let error):
                                 print("get exhibition data error: \(error)")
-                            }                            
+                            }
         }
     }
+
 }
