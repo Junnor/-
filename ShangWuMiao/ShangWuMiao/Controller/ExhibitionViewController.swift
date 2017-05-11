@@ -51,7 +51,6 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     private let exhibition = Exhibition()
-    private var hadExhibition = false
     private var exhibitions = [Exhibition]()
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,7 +65,6 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
             self?.collectionView.mj_header.endRefreshing()
             if success {
                 if self != nil {
-                    self!.hadExhibition = true
                     self!.exhibitions = exhibitions
                     self!.collectionView.reloadData()
                 }
