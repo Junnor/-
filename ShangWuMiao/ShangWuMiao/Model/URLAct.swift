@@ -18,6 +18,7 @@ struct RequestURL {
     static let kTopupRecordUrlString = "/index.php?app=ios&mod=Business&act=recharge_logs"
     static let kSoldExhibitionUrlString = "/index.php?app=ios&mod=Business&act=my_list"
     static let kTicketsUrlString =  "/index.php?app=ios&mod=Business&act=sale_logs"
+    static let kTicketMsSendUrlString = "/index.php?app=ios&mod=Business&act=sendTicketSms"
 }
 
 struct ActType {
@@ -27,5 +28,6 @@ struct ActType {
     static let recharge_logs = "recharge_logs"
     static let my_list = "my_list"
     static let sale_logs = "sale_logs"
+    static let sendTicketSms = "sendTicketSms"
 }
 

@@ -38,6 +38,34 @@ class Ticket: NSObject {
 }
 
 extension Ticket {
+    static func mesageSendWithOrderId(id: String, completionHandler: @escaping (Int, String) -> ()) {
+        let stringPara = stringParameters(actTo: ActType.sendTicketSms)
+        let userinfoString = kHeaderUrl + RequestURL.kTicketMsSendUrlString + stringPara
+        
+        let url = URL(string: userinfoString)
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
+                          "orderid": NSString(string: id).integerValue]
+        
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { response in
+                            switch response.result {
+                            case .success(let json):
+//                                print("..ticket json: \(json)")
+                                guard let dic = json as? Dictionary<String, Any>,
+                                let status = dic["status"] as? Int, let info = dic["info"] as? String else {
+                                    completionHandler(0, "cast type failure")
+                                    return
+                                }
+                                completionHandler(status, info)
+                            case .failure(let error):
+                                print("send ticket message error: \(error)")
+                            }
+        }
+
+    }
     
     func requestTickets(forExhibitionId exhibitionId: String, loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Ticket]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1

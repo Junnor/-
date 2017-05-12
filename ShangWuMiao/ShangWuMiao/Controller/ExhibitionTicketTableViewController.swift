@@ -71,10 +71,24 @@ class ExhibitionTicketTableViewController: UITableViewController {
         
         print("..accessory button indexPath: \(sender.indexPath)")
         let alert = UIAlertController(title: "重发短信", message: "确定重新发送短信？", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "取消", style: .default, handler: { action in
-            self.dismiss(animated: true, completion: nil)
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+        let ok = UIAlertAction(title: "确定", style: .destructive, handler: { [weak self] _ in
+            
+            if self != nil {
+                let indexPath = sender.indexPath!
+                let ticket = self!.tickets[indexPath.row]
+                
+                Ticket.mesageSendWithOrderId(id: ticket.orderid, completionHandler: { (status, info) in
+                    if status == 1 {
+                        print("send ticket message success: \(info)")
+                    } else {
+                        print("send ticket message failure: \(info)")
+                    }
+                })
+            }
+
+            print(".........")
         })
-        let ok = UIAlertAction(title: "确定", style: .destructive, handler: { (action) in})
         alert.addAction(cancel)
         alert.addAction(ok)
         
