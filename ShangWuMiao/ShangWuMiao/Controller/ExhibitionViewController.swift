@@ -38,8 +38,9 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         
         // refresh
         let headerHandler = #selector(loadExhibition)
-        let headerRefresh = MJRefreshHeader(refreshingTarget: self,
-                                                              refreshingAction: headerHandler)
+        let headerRefresh = MJRefreshNormalHeader(refreshingTarget: self,
+                                                  refreshingAction: headerHandler)
+
         collectionView?.mj_header = headerRefresh
         collectionView?.mj_header.beginRefreshing()
     }

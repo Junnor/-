@@ -23,8 +23,10 @@ class ExhibitionTicketTableViewController: UITableViewController {
         
         // refresh
         let headerHandler = #selector(loadTickets)
-        let headerRefresh = MJRefreshHeader(refreshingTarget: self,
-                                            refreshingAction: headerHandler)
+        let headerRefresh = MJRefreshNormalHeader(refreshingTarget: self,
+                                                  refreshingAction: headerHandler)
+        headerRefresh?.ignoredScrollViewContentInsetTop = -35
+
         tableView?.mj_header = headerRefresh
         
         tableView?.mj_header.beginRefreshing()
@@ -63,6 +65,22 @@ class ExhibitionTicketTableViewController: UITableViewController {
             }
         }
     }
+    
+    
+    @objc private func showAlert(sender: AccessoryButton) {
+        
+        print("..accessory button indexPath: \(sender.indexPath)")
+        let alert = UIAlertController(title: "重发短信", message: "确定重新发送短信？", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        })
+        let ok = UIAlertAction(title: "确定", style: .destructive, handler: { (action) in})
+        alert.addAction(cancel)
+        alert.addAction(ok)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
 
     // MARK: - Table view data source
     
@@ -86,11 +104,16 @@ class ExhibitionTicketTableViewController: UITableViewController {
                 cell.orderImageView.kf.setImage(with: resource)
             }
             
+            cell.sendMessageButton.indexPath = indexPath
             cell.sendMessageButton.layer.borderWidth = 1
             cell.sendMessageButton.layer.borderColor = UIColor(red: 246/255.0, green: 208/255.0, blue: 121/255.0, alpha: 1.0).cgColor
+            cell.sendMessageButton.addTarget(self,
+                                             action: #selector(showAlert(sender:)),
+                                             for: .touchUpInside)
+            
         }
 
         return cell
     }
-
+    
 }

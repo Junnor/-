@@ -35,8 +35,10 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
         
         // refresh
         let headerHandler = #selector(loadTicketExhibition)
-        let headerRefresh = MJRefreshHeader(refreshingTarget: self,
-                                            refreshingAction: headerHandler)
+        
+        let headerRefresh = MJRefreshNormalHeader(refreshingTarget: self,
+                                                  refreshingAction: headerHandler)
+        headerRefresh?.ignoredScrollViewContentInsetTop = -35
         tableView?.mj_header = headerRefresh
         tableView?.mj_header.beginRefreshing()
     }

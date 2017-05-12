@@ -568,7 +568,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQP-DJ-D2L">
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GQP-DJ-D2L" customClass="AccessoryButton" customModule="ShangWuMiao" customModuleProvider="target">
                                             <rect key="frame" x="272" y="34.5" width="90" height="35"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="Le0-o2-1iV"/>
