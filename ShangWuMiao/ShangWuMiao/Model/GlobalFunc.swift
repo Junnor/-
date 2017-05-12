@@ -53,6 +53,8 @@ let uid = "uid"
 let oauth_token = "oauth_token"
 let oauth_token_secret = "oauth_token_secret"
 
+let kDefaultCount = 10
+
 func storeOauthData() {
     let standard = UserDefaults.standard
     

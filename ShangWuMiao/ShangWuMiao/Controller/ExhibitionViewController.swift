@@ -38,15 +38,9 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         
         // refresh
         let headerHandler = #selector(loadExhibition)
-        let loadMoreHandler = #selector(loadMore)
         let headerRefresh = MJRefreshHeader(refreshingTarget: self,
                                                               refreshingAction: headerHandler)
-        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
-                                                      refreshingAction: loadMoreHandler)
-        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
         collectionView?.mj_header = headerRefresh
-        collectionView?.mj_footer = footerRefresh
-        
         collectionView?.mj_header.beginRefreshing()
     }
     
@@ -67,6 +61,13 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
                 if self != nil {
                     self!.exhibitions = exhibitions
                     self!.collectionView.reloadData()
+                    
+                    if exhibitions.count >= kDefaultCount {
+                        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
+                                                                      refreshingAction: #selector(self!.loadMore))
+                        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
+                        self!.collectionView?.mj_footer = footerRefresh
+                    }
                 }
             } else {
                 print("load exhibition failure: \(info ?? "no value")")

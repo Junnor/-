@@ -11,24 +11,52 @@ import MJRefresh
 
 class SoldTicketViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.contentInset =  UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
+
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "已购票的漫展"
         
+        // set navigation bar
+        let backImage = UIImage(named: "nav-expoed")
+        backImage?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: backImage!.size.width - 1, bottom: 0, right: 0))
+        
+        let appearance = UIBarButtonItem.appearance()
+        appearance.setBackButtonBackgroundImage(backImage, for: .normal, barMetrics: .default)
+        
+        let backItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+
+        
         // refresh
         let headerHandler = #selector(loadTicketExhibition)
-        let loadMoreHandler = #selector(loadMore)
         let headerRefresh = MJRefreshHeader(refreshingTarget: self,
                                             refreshingAction: headerHandler)
-        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
-                                                      refreshingAction: loadMoreHandler)
-        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
         tableView?.mj_header = headerRefresh
-        tableView?.mj_footer = footerRefresh
-        
         tableView?.mj_header.beginRefreshing()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let indexPath = tableView?.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ticket order" {
+            if let desvc = segue.destination as? ExhibitionTicketTableViewController {
+                let indexPath = tableView.indexPathForSelectedRow
+                let ex = exhibitions[indexPath!.row]
+                desvc.exhibition = ex
+            }
+        }
     }
     
     private let exhibition = Exhibition()
@@ -40,6 +68,13 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
                 if self != nil {
                     self!.exhibitions = exhibitions
                     self!.tableView.reloadData()
+                    
+                    if exhibitions.count >= kDefaultCount {
+                        let footerRefresh = MJRefreshAutoNormalFooter(refreshingTarget: self,
+                                                                      refreshingAction: #selector(self!.loadMore))
+                        footerRefresh?.setTitle("已全部加载", for: .noMoreData)
+                        self!.tableView?.mj_footer = footerRefresh
+                    }
                 }
             } else {
                 print("load exhibition ticket failure: \(info ?? "no value")")
