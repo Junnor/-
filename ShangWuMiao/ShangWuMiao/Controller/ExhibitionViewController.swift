@@ -102,9 +102,13 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         if let cell = cell as? ComicViewCell {
             let ex = self.exhibitions[indexPath.item]
 
-            if let url = URL(string: kHeaderUrl + ex.cover!) {
+            if let url = URL(string: kImageHeaderUrl + ex.cover!) {
                 let resourcce = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
-                cell.comicImageView?.kf.setImage(with: resourcce)
+                cell.comicImageView.kf.setImage(with: resourcce,
+                                                placeholder: nil,
+                                                options: [.transition(.fade(1))],
+                                                progressBlock: nil,
+                                                completionHandler: nil)
             }
             cell.titleLabel?.text = ex.name
             let startTime = ex.exhibition(stringTime: ex.start_time, digit: false)

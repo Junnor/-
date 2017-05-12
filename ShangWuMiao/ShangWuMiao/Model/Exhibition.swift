@@ -12,6 +12,7 @@ import Alamofire
 
 class Exhibition: NSObject {
     
+    // for normal exhibition
     var addr: String!
     var cover: String!
     var start_time: String!
@@ -21,8 +22,14 @@ class Exhibition: NSObject {
     var location: String!
     var exDescription: String!
     
-    // For ticket exhibition
+    // for ticket exhibition
     var stauts: String!
+    
+    // for top up list
+    var orderid: String!
+    var orderTitle: String!
+    var order_price: String!
+    var pay_status: String!
     
     override init() {
         // do nothing
@@ -54,6 +61,8 @@ class Exhibition: NSObject {
     // For more data 
     fileprivate var exhibitionPage = 1
     fileprivate var ticketPage = 1
+    fileprivate var topupListPage = 1
+
     fileprivate var exhibitions = [Exhibition]()
 }
 
@@ -78,7 +87,7 @@ extension Exhibition {
 // Data request
 extension Exhibition {
     
-    func soldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
+    func requestSoldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
         print("page = \(ticketPage)")
         

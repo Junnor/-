@@ -18,6 +18,7 @@
 		4460C2F01E9B1B70004166DB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4460C2E21E9B1B5B004166DB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
+		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
 		8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */; };
 		8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */; };
 		8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */; };
@@ -149,6 +150,7 @@
 		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
 		8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionViewController.swift; sourceTree = "<group>"; };
 		8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
+				8B84EB011EC587FB001B1BFF /* TopupList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */,
+				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BE58D691EC440F200CA5953 /* CustomNaviBarView.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
 				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,

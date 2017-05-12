@@ -64,7 +64,7 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
     private let exhibition = Exhibition()
     private var exhibitions = [Exhibition]()
     @objc private func loadTicketExhibition() {
-        exhibition.soldTicketForExhibitionList(loadMore: false, completionHandler: { [weak self] success, info, exhibitions in
+        exhibition.requestSoldTicketForExhibitionList(loadMore: false, completionHandler: { [weak self] success, info, exhibitions in
             self?.tableView.mj_header.endRefreshing()
             if success {
                 if self != nil {
@@ -86,7 +86,7 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
     
     
     @objc private func loadMore() {
-        exhibition.soldTicketForExhibitionList(loadMore: true, completionHandler: { [weak self] success, info, exhibitions in
+        exhibition.requestSoldTicketForExhibitionList(loadMore: true, completionHandler: { [weak self] success, info, exhibitions in
             self?.tableView.mj_footer.endRefreshing()
             if success {
                 if self != nil {

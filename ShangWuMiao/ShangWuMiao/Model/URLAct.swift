@@ -9,13 +9,14 @@
 import Foundation
 
 let kHeaderUrl = "https://apiplus.nyato.com"
+let kImageHeaderUrl = "https://img.nyato.com/"
 let kSecretKey = "us8dgf30hjRJGFU21"
 
 struct RequestURL {
     static let kLoginUrlString = "/index.php?app=ios&mod=Member&act=login"
     static let kUserInfoUrlString = "/index.php?app=ios&mod=Member&act=getuinfo"
     static let kExhibitionUrlString = "/index.php?app=ios&mod=Business&act=ex_list"
-    static let kTopupRecordUrlString = "/index.php?app=ios&mod=Business&act=recharge_logs"
+    static let kTopupListUrlString = "/index.php?app=ios&mod=Business&act=recharge_logs"
     static let kSoldExhibitionUrlString = "/index.php?app=ios&mod=Business&act=my_list"
     static let kTicketsUrlString =  "/index.php?app=ios&mod=Business&act=sale_logs"
     static let kTicketMsSendUrlString = "/index.php?app=ios&mod=Business&act=sendTicketSms"
