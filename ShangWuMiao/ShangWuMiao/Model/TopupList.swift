@@ -54,7 +54,7 @@ extension TopupList {
                             response in
                             switch response.result {
                             case .success(let json):
-                                print("list json: \(json)")
+//                                print("list json: \(json)")
                                 
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     guard let status = dic["result"] as? Int, status == 1 else {

@@ -80,7 +80,6 @@ class TopupRecordViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: listIdentifier, for: indexPath)
         cell.selectionStyle = .none
         if let cell = cell as? TopupRecordCell {
-            print("is top up list cell: \(cell)")
             let list = topupLists[indexPath.row]
             cell.titleLabel?.text = list.orderTitle
             cell.orderIdLabel?.text = list.orderid

@@ -638,7 +638,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="suE-Ct-elg" id="0ec-TK-DG0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nyato喵币充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohy-jb-act">
@@ -727,7 +727,7 @@
         <!--Feeback View Controller-->
         <scene sceneID="4un-dV-dK5">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="0np-JJ-fP8" customClass="FeebackViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="0np-JJ-fP8" customClass="FeebackViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aiO-uM-4ki"/>
                         <viewControllerLayoutGuide type="bottom" id="FJF-8R-gkD"/>
@@ -736,11 +736,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-0G-anJ">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="请输入反馈内容" translatesAutoresizingMaskIntoConstraints="NO" id="9Xe-0G-anJ">
                                 <rect key="frame" x="16" y="72" width="343" height="167"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系QQ：3075951511（展务娘QQ）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcw-od-aRr">
@@ -761,7 +761,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cnS-Vz-bcH"/>
                                 </constraints>
-                                <state key="normal" title="发布">
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="发送">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -796,7 +797,7 @@
         <!--Commision Sold View Controller-->
         <scene sceneID="Mja-39-e9I">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="h3Z-Rj-asw" customClass="CommisionSoldViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="h3Z-Rj-asw" customClass="CommisionSoldViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a8m-LL-jBZ"/>
                         <viewControllerLayoutGuide type="bottom" id="S3j-nq-1tF"/>
