@@ -25,12 +25,6 @@ class Exhibition: NSObject {
     // for ticket exhibition
     var stauts: String!
     
-    // for top up list
-    var orderid: String!
-    var orderTitle: String!
-    var order_price: String!
-    var pay_status: String!
-    
     override init() {
         // do nothing
         super.init()
