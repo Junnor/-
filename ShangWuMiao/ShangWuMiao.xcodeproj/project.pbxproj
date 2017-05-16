@@ -27,7 +27,6 @@
 		8BDBE14C1EC319DD00482FC2 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */; };
 		8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE1541EC31A4800482FC2 /* URLAct.swift */; };
 		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
-		8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */; };
 		8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */; };
 		8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380061EC1D73D001A6651 /* FeebackViewController.swift */; };
 		8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */; };
@@ -160,7 +159,6 @@
 		8BDBE1541EC31A4800482FC2 /* URLAct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAct.swift; sourceTree = "<group>"; };
 		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
-		8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommisionSoldViewController.swift; sourceTree = "<group>"; };
 		8BE380061EC1D73D001A6651 /* FeebackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeebackViewController.swift; sourceTree = "<group>"; };
 		8BE380081EC1D77F001A6651 /* TopupRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupRecordViewController.swift; sourceTree = "<group>"; };
@@ -311,7 +309,6 @@
 				8BE380181EC2EA37001A6651 /* User.swift */,
 				8BDBE1541EC31A4800482FC2 /* URLAct.swift */,
 				8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */,
-				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
 				8B84EB011EC587FB001B1BFF /* TopupList.swift */,
@@ -609,7 +606,6 @@
 				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
 				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
-				8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */,
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,

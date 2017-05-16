@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
         // test
         let parameters = ["uname": unameTextfield.text!,
                           "password": passwordTextfield.text!]
-        loginModel.login(parameters: parameters) { [weak self] status, info in
+        User.login(parameters: parameters) { [weak self] status, info in
             if status == 1 {
                 self?.performSegue(withIdentifier: "login", sender: nil)
                 storeOauthData()

@@ -67,6 +67,52 @@ final class User {
 }
 
 extension User {
+    
+    // MARK: - Login
+    static func login(parameters: Dictionary<String, String>,
+               completionHandler: @escaping (Int, String) -> ()) {
+        let loginSecret = kSecretKey + ActType.login
+        let token = loginSecret.md5
+        let loginUrlString = kHeaderUrl + RequestURL.kLoginUrlString + "&token=" + token!
+        
+        let url = URL(string: loginUrlString)
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default, headers: nil).responseJSON {                            response in
+                            switch response.result {
+                            case .success(let json):
+                                if let dic = json as? Dictionary<String, AnyObject> {
+                                    if let status = dic["status"] as? Int {
+                                        let info = dic["info"] as! String
+                                        
+                                        // user data
+                                        if status == 1 {
+                                            let data = dic["data"] as? Dictionary<String, String>
+                                            if let data = data {
+                                                let uid = data["uid"]
+                                                let oauth_token = data["oauth_token"]
+                                                let oauth_token_secret = data["oauth_token_secret"]
+                                                
+                                                User.shared.uid = uid ?? ""
+                                                User.shared.oauth_token = oauth_token ?? ""
+                                                User.shared.oauth_token_secret = oauth_token_secret ?? ""
+                                            }
+                                        }
+                                        
+                                        print("login info: \(info)")
+                                        completionHandler(status, info)
+                                    }
+                                }
+                            case .failure(let error):
+                                print("login error = \(error)")
+                            }
+                            
+        }
+        
+    }
+
+    // MARK: - User info
     static func requestUserInfo(completionHandler: @escaping (Bool, String?) -> ()) {
         let stringPara = stringParameters(actTo: ActType.getuinfo)
         let userinfoString = kHeaderUrl + RequestURL.kUserInfoUrlString + stringPara
@@ -125,15 +171,22 @@ extension User {
                             }
         }
     }
-}
-
-extension User {
     
+    // MARK: - Feedback
     static func feedbackWithContent(contentText text: String, completionHandler: (Bool, String) -> ()) {
         let stringPara = stringParameters(actTo: ActType.report)
         let userinfoString = kHeaderUrl + RequestURL.kFeedbackUrlString + stringPara
         let url = URL(string: userinfoString)
         
+        func deviceParameters() -> String {
+            let device = UIDevice.current
+            let model = device.model
+            let systemVersion = device.systemVersion
+            let appVersion = kAppVersion  // may store in device
+            
+            return "appVersion: \(appVersion), systemVersion: \(systemVersion), device: \(model)"
+        }
+
         // config
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "denounce": text,
@@ -150,15 +203,6 @@ extension User {
                 print("feed back error: \(error)")
             }
         }
-    }
-    
-    private static func deviceParameters() -> String {
-        let device = UIDevice.current
-        let model = device.model
-        let systemVersion = device.systemVersion
-        let appVersion = kAppVersion  // may store in device
-        
-        return "appVersion: \(appVersion), systemVersion: \(systemVersion), device: \(model)"
     }
     
 }
