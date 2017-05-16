@@ -11,6 +11,7 @@ import Foundation
 let kHeaderUrl = "https://apiplus.nyato.com"
 let kImageHeaderUrl = "https://img.nyato.com/"
 let kSecretKey = "us8dgf30hjRJGFU21"
+let kAppVersion = "2.0"
 
 struct RequestURL {
     static let kLoginUrlString = "/index.php?app=ios&mod=Member&act=login"
@@ -20,6 +21,7 @@ struct RequestURL {
     static let kSoldExhibitionUrlString = "/index.php?app=ios&mod=Business&act=my_list"
     static let kTicketsUrlString =  "/index.php?app=ios&mod=Business&act=sale_logs"
     static let kTicketMsSendUrlString = "/index.php?app=ios&mod=Business&act=sendTicketSms"
+    static let kFeedbackUrlString = "/index.php?app=ios&mod=Index&act=report"
 }
 
 struct ActType {
@@ -30,5 +32,6 @@ struct ActType {
     static let my_list = "my_list"
     static let sale_logs = "sale_logs"
     static let sendTicketSms = "sendTicketSms"
+    static let report = "report"
 }
 

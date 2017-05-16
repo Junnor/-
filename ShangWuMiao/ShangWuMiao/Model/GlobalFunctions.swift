@@ -42,7 +42,7 @@ func stringParameters(actTo act: String) -> String {
     let token_para = "&token=" + token!
     let app_sign_para = "&app_sign=" + app_sign!
     
-    let version = "&version=2.0"
+    let version = "&version=" + kAppVersion
     
     return token_para + oauth_para + app_time_para + app_device_para + app_sign_para + version
 }

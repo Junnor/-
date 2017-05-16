@@ -19,12 +19,19 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var publishButton: UIButton!
     
     @IBAction func publish() {
+        
+        let text = textView.text
+        User.feedbackWithContent(contentText: text!) { success, info in
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "反馈"
+        
+        textView.text = "请输入反馈内容(最多250个字)"
         
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapGessture)))
         
@@ -47,15 +54,8 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
         textView.resignFirstResponder()
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        print("textViewDidChange")
-    }
+    // MARK: - Text view delegate
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        print("textViewDidBeginEditing")
-
-    }
-
     private var isPlaceholderText = true
         func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if isPlaceholderText {
@@ -63,6 +63,11 @@ class FeebackViewController: UIViewController, UITextViewDelegate {
             self.textView.text = ""
             self.textView.textColor = UIColor.gray
         }
+        return true
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
         return true
     }
     

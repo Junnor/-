@@ -67,8 +67,7 @@ final class User {
 }
 
 extension User {
-    
-    class func requestUserInfo(completionHandler: @escaping (Bool, String?) -> ()) {
+    static func requestUserInfo(completionHandler: @escaping (Bool, String?) -> ()) {
         let stringPara = stringParameters(actTo: ActType.getuinfo)
         let userinfoString = kHeaderUrl + RequestURL.kUserInfoUrlString + stringPara
         let url = URL(string: userinfoString)
@@ -127,3 +126,43 @@ extension User {
         }
     }
 }
+
+extension User {
+    
+    static func feedbackWithContent(contentText text: String, completionHandler: (Bool, String) -> ()) {
+        let stringPara = stringParameters(actTo: ActType.report)
+        let userinfoString = kHeaderUrl + RequestURL.kFeedbackUrlString + stringPara
+        let url = URL(string: userinfoString)
+        
+        // config
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
+                          "denounce": text,
+                          "type": "iOS",
+                          "id": 0,
+                          "denounce_version": deviceParameters()] as [String : Any]
+
+
+        Alamofire.request(url!, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
+            switch response.result {
+            case .success(let json):
+                print("feed back json: \(json)")
+            case .failure(let error):
+                print("feed back error: \(error)")
+            }
+        }
+    }
+    
+    private static func deviceParameters() -> String {
+        let device = UIDevice.current
+        let model = device.model
+        let systemVersion = device.systemVersion
+        let appVersion = kAppVersion  // may store in device
+        
+        return "appVersion: \(appVersion), systemVersion: \(systemVersion), device: \(model)"
+    }
+    
+}
+
+
+
+

@@ -24,7 +24,7 @@
 		8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */; };
 		8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */; };
 		8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */; };
-		8BDBE14C1EC319DD00482FC2 /* GlobalFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE14B1EC319DD00482FC2 /* GlobalFunc.swift */; };
+		8BDBE14C1EC319DD00482FC2 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */; };
 		8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE1541EC31A4800482FC2 /* URLAct.swift */; };
 		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
 		8BE37FFC1EC1AB9B001A6651 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */; };
@@ -156,7 +156,7 @@
 		8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailViewController.swift; sourceTree = "<group>"; };
 		8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
-		8BDBE14B1EC319DD00482FC2 /* GlobalFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunc.swift; sourceTree = "<group>"; };
+		8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		8BDBE1541EC31A4800482FC2 /* URLAct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAct.swift; sourceTree = "<group>"; };
 		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -310,7 +310,7 @@
 			children = (
 				8BE380181EC2EA37001A6651 /* User.swift */,
 				8BDBE1541EC31A4800482FC2 /* URLAct.swift */,
-				8BDBE14B1EC319DD00482FC2 /* GlobalFunc.swift */,
+				8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */,
 				8BE37FFB1EC1AB9B001A6651 /* LoginModel.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
@@ -328,8 +328,8 @@
 				8BE380121EC2A757001A6651 /* TopupCell.swift */,
 				8BE380141EC2A887001A6651 /* BoughtTicketCell.swift */,
 				8BE380161EC2A8A3001A6651 /* TicketOrderCell.swift */,
-				8BE58D661EC440F200CA5953 /* CustomNaviBarView.xib */,
 				8BE58D671EC440F200CA5953 /* CustomNaviBarView.swift */,
+				8BE58D661EC440F200CA5953 /* CustomNaviBarView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -594,7 +594,7 @@
 				8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */,
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
-				8BDBE14C1EC319DD00482FC2 /* GlobalFunc.swift in Sources */,
+				8BDBE14C1EC319DD00482FC2 /* GlobalFunctions.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
