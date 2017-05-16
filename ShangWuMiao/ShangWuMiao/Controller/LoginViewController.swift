@@ -38,7 +38,6 @@ class LoginViewController: UIViewController {
     }
 
     // MARK: - Helper
-    private let loginModel = LoginModel()
     @IBAction func login(_ sender: UIButton) {
         let emptyUname = isEmptyText(parse: unameTextfield.text)
         if emptyUname {
