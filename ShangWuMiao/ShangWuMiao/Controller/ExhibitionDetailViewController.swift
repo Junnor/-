@@ -30,7 +30,7 @@ class ExhibitionDetailViewController: UIViewController, UIScrollViewDelegate {
         naviView = CustomNaviBarView.naviBarViewFromNib()
         naviView.alpha = 0.0
         
-        self.navigationController?.view.insertSubview(naviView, belowSubview: (navigationController?.navigationBar)!)
+        self.view.insertSubview(naviView, belowSubview: (navigationController?.navigationBar)!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +48,7 @@ class ExhibitionDetailViewController: UIViewController, UIScrollViewDelegate {
             let alpha = min(offsetY/naviBarHeight, 1.0)
             self.naviView.alpha = alpha
         } else {
+            self.naviView.alpha = 0.0
         }
     }
 }
