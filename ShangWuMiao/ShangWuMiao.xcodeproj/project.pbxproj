@@ -29,6 +29,8 @@
 		8BCE2BB21ECC375200ACA1BB /* ExInputHintCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB01ECC375200ACA1BB /* ExInputHintCell.xib */; };
 		8BCE2BB51ECC3A5D00ACA1BB /* ExTicketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB31ECC3A5C00ACA1BB /* ExTicketCell.swift */; };
 		8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB41ECC3A5C00ACA1BB /* ExTicketCell.xib */; };
+		8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB71ECC3F9500ACA1BB /* ExFooterView.swift */; };
+		8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BB81ECC3F9500ACA1BB /* ExFooterView.xib */; };
 		8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */; };
 		8BDB068A1EC01A3D00F0A660 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */; };
 		8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */; };
@@ -168,6 +170,8 @@
 		8BCE2BB01ECC375200ACA1BB /* ExInputHintCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExInputHintCell.xib; sourceTree = "<group>"; };
 		8BCE2BB31ECC3A5C00ACA1BB /* ExTicketCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExTicketCell.swift; sourceTree = "<group>"; };
 		8BCE2BB41ECC3A5C00ACA1BB /* ExTicketCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExTicketCell.xib; sourceTree = "<group>"; };
+		8BCE2BB71ECC3F9500ACA1BB /* ExFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExFooterView.swift; sourceTree = "<group>"; };
+		8BCE2BB81ECC3F9500ACA1BB /* ExFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExFooterView.xib; sourceTree = "<group>"; };
 		8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionViewController.swift; sourceTree = "<group>"; };
 		8BDB06891EC01A3D00F0A660 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailViewController.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				8BCE2BB01ECC375200ACA1BB /* ExInputHintCell.xib */,
 				8BCE2BB31ECC3A5C00ACA1BB /* ExTicketCell.swift */,
 				8BCE2BB41ECC3A5C00ACA1BB /* ExTicketCell.xib */,
+				8BCE2BB71ECC3F9500ACA1BB /* ExFooterView.swift */,
+				8BCE2BB81ECC3F9500ACA1BB /* ExFooterView.xib */,
 			);
 			path = ExhibitionDetail;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
 				8BCE2BA41ECC295D00ACA1BB /* CustomNaviBarView.xib in Resources */,
+				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
 				8BCE2BAE1ECC369E00ACA1BB /* ExDescriptionCell.xib in Resources */,
 				8BCE2BB21ECC375200ACA1BB /* ExInputHintCell.xib in Resources */,
 			);
@@ -643,6 +650,7 @@
 				8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */,
 				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
 				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
+				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,
 				8BCE2BA31ECC295D00ACA1BB /* CustomNaviBarView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
