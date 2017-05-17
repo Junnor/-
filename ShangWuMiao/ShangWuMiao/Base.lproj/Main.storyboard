@@ -980,7 +980,7 @@
         <!--Exhibition Detail View Controller-->
         <scene sceneID="neJ-Rj-N6Z">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="JL7-FZ-2LW" customClass="ExhibitionDetailViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="JL7-FZ-2LW" customClass="ExhibitionDetailViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cpS-QJ-1K0"/>
                         <viewControllerLayoutGuide type="bottom" id="ty6-yk-Nzd"/>

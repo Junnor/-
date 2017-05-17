@@ -51,7 +51,6 @@ class ExhibitionDetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
-
     
     // MARK: - Helper
     
@@ -90,7 +89,6 @@ class ExhibitionDetailViewController: UIViewController {
 }
 
 extension ExhibitionDetailViewController: UICollectionViewDataSource {
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return constCellCounts + self.tickts.count
@@ -133,7 +131,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExDescriptionCellID", for: indexPath)
             cell.backgroundColor = UIColor.lightGray
             if let cell = cell as? ExDescriptionCell {
-                cell.titleLabel.text = self.exhibition.addr
+                cell.titleLabel.text = "漫展详细地址：" + self.exhibition.addr
             }
 
             cell.backgroundColor = UIColor.red
@@ -197,17 +195,19 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         var height: CGFloat = 0.0
         switch indexPath.row {
         case 0:
-            height = width * 220 / 375
+            height = collectionView.bounds.height / 3
         case 1:
-            let font = UIFont(name: "AvenirNext-Regular", size: 13)!
-            let str = NSString(string: self.exhibition.exDescription)
-            let rect = str.boundingRect(with: CGSize(width: width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-            height = ceil(rect.height)
+            let font = UIFont.systemFont(ofSize: 17)
+            let str = self.exhibition.exDescription!
+            let tmpHeight = heightForText(text: str, font: font, width: width - 20) + 16
+            height = max(tmpHeight, 50)
+
         case 2:
-            let font = UIFont(name: "AvenirNext-Regular", size: 13)!
-            let str = NSString(string: self.exhibition.addr)
-            let rect = str.boundingRect(with: CGSize(width: width - 20, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
-            height = ceil(rect.height)        case 3:
+            let font = UIFont.systemFont(ofSize: 17)
+            let str = "漫展详细地址：" + self.exhibition.addr
+            let tmpHeight = heightForText(text: str, font: font, width: width - 20) + 16
+            height = max(tmpHeight, 50)
+        case 3:
             height = 120
         default:
             height = 50
@@ -215,6 +215,11 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         }
         
         return CGSize(width: width, height: height)
+    }
+    
+    private func heightForText(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let rect = NSString(string: text).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
+        return ceil(rect.height)
     }
 }
 
