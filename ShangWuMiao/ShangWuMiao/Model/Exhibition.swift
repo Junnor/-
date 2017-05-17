@@ -22,7 +22,9 @@ class Exhibition: NSObject {
     var exid: String!
     var location: String!
     var exDescription: String!
-    
+    var scene_price: String!
+    var presale_price: String!
+
     // for ticket exhibition
     var stauts: String!
     
@@ -59,9 +61,39 @@ class Exhibition: NSObject {
     fileprivate var topupListPage = 1
 
     fileprivate var exhibitions = [Exhibition]()
+    
+    static func fromJSON(_ json: [String: Any]) -> Exhibition {
+        let json = JSON(json)
+
+        let addr = json["addr"].stringValue
+        let cover = json["cover"].stringValue
+        let start_time = json["start_time"].stringValue
+        let end_time = json["end_time"].stringValue
+        let name = json["name"].stringValue
+        let exid = json["eid"].stringValue
+        let location = json["location"].stringValue
+        let description = json["description"].stringValue
+        
+        let scene_price = json["scene_price"].stringValue
+        let presale_price = json["presale_price"].stringValue
+
+        
+        let ex = Exhibition(id: exid,
+                            cover: cover,
+                            name: name,
+                            exDescription: description,
+                            addr: addr,
+                            location: location,
+                            start_time: start_time,
+                            end_time: end_time)
+        
+        ex.scene_price = scene_price
+        ex.presale_price = presale_price
+        return ex
+    }
 }
 
-extension Exhibition {    
+extension Exhibition {
     // digit == true -> 05-11 10:00
     func exhibition(stringTime time: String, digit: Bool) -> String {
         let value = NSString(string: time).doubleValue
@@ -81,23 +113,6 @@ extension Exhibition {
 
 // Data request
 extension Exhibition {
-    
-//    func test() {
-//        let stringPara = stringParameters(actTo: "paySetting")
-//        let userinfoString = kHeaderUrl + "/index.php?app=ios&mod=Index&act=paySetting" + stringPara
-//        
-//        let url = URL(string: userinfoString)
-//        let parameters = ["uid": NSString(string: User.shared.uid).integerValue]
-//        
-//        Alamofire.request(url!, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
-//            switch response.result {
-//            case .success(let json):
-//                print(".. json: \(json)")
-//            case .failure(let error):
-//                print("..error: \(error)")
-//            }
-//        }
-//    }
     
     func requestExhibitionListTickets(completionHandle: @escaping (Bool, String?, [Ticket]) -> ()) {
         let stringPara = stringParameters(actTo: ActType.ticket_list)
@@ -246,24 +261,9 @@ extension Exhibition {
                                             if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
                                                 var tmpExhibitions = [Exhibition]()
                                                 for data in dataArr {
-                                                    // 先这样, 强制转换不好 ！！！
-                                                    let addr = data["addr"] as! String
-                                                    let cover = data["cover"] as! String
-                                                    let start_time = data["start_time"] as! String
-                                                    let end_time = data["end_time"] as! String                                                    
-                                                    let name = data["name"] as! String
-                                                    let exid = data["eid"] as! String
-                                                    let location = data["location"] as! String
-                                                    let description = data["description"] as! String
-                                                    
-                                                    let ex = Exhibition(id: exid,
-                                                                        cover: cover,
-                                                                        name: name,
-                                                                        exDescription: description,
-                                                                        addr: addr,
-                                                                        location: location,
-                                                                        start_time: start_time,
-                                                                        end_time: end_time)
+                                                    print("data = \(data)")
+                                                    print("........................................")
+                                                    let ex = Exhibition.fromJSON(data)
                                                     tmpExhibitions.append(ex)
                                                 }
                                                 
