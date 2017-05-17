@@ -128,30 +128,29 @@ extension Exhibition {
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { response in
                             switch response.result {
-                            case .success(let sourceJson):
-//                                print("exhibition detail json: \(sourceJson)")
+                            case .success(let json):
+//                                print("exhibition detail json: \(json)")
 
-                                guard let dic = sourceJson as? Dictionary<String, Any>,
-                                    let result = dic["result"] as? Int, result == 1 else {
+                                guard let dic = json as? Dictionary<String, Any>,
+                                    let result = dic["result"] as? Int, result == 1,
+                                    let sourceJson = dic["data"] as? [Dictionary<String, AnyObject>] else {
                                         completionHandle(false, "加载失败", [])
                                         return
                                     
                                 }
                                 var tickts = [Ticket]()
-                                if let dicArr = sourceJson as? [Dictionary<String, AnyObject>] {
-                                    for resource in dicArr {
-                                        let json = JSON(resource)
-                                        let id = json["id"].stringValue
-                                        let name = json["name"].stringValue
-                                        let price = json["price"].stringValue
-                                        let proxy_price = json["proxy_price"].stringValue
-                                        
-                                        let ticket = Ticket(ticketId: id, name: name, price: price, proxy_price: proxy_price)
-                                        tickts.append(ticket)
-                                    }
+                                for resource in sourceJson {
+                                    let json = JSON(resource)
+                                    let id = json["id"].stringValue
+                                    let name = json["name"].stringValue
+                                    let price = json["price"].stringValue
+                                    let proxy_price = json["proxy_price"].stringValue
+                                    
+                                    let ticket = Ticket(ticketId: id, name: name, price: price, proxy_price: proxy_price)
+                                    tickts.append(ticket)
                                 }
+                                
                                 completionHandle(true, nil, tickts)
-
                             case .failure(let error):
                                 print("get exhibition detail error: \(error)")
                             }
@@ -261,8 +260,6 @@ extension Exhibition {
                                             if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
                                                 var tmpExhibitions = [Exhibition]()
                                                 for data in dataArr {
-                                                    print("data = \(data)")
-                                                    print("........................................")
                                                     let ex = Exhibition.fromJSON(data)
                                                     tmpExhibitions.append(ex)
                                                 }

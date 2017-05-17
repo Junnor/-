@@ -26,6 +26,11 @@ class ExhibitionDetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: view.bounds.width, height: 1000)
         
         exhibition.requestExhibitionListTickets { (success, info, tickts) in
+            if success {
+                print(".. success")
+            } else {
+                print("request exhibition ticket failure: \(info!)")
+            }
             
         }
     }
