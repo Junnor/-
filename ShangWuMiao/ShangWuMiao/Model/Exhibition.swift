@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 
 class Exhibition: NSObject {
@@ -81,9 +82,71 @@ extension Exhibition {
 // Data request
 extension Exhibition {
     
+//    func test() {
+//        let stringPara = stringParameters(actTo: "paySetting")
+//        let userinfoString = kHeaderUrl + "/index.php?app=ios&mod=Index&act=paySetting" + stringPara
+//        
+//        let url = URL(string: userinfoString)
+//        let parameters = ["uid": NSString(string: User.shared.uid).integerValue]
+//        
+//        Alamofire.request(url!, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+//            switch response.result {
+//            case .success(let json):
+//                print(".. json: \(json)")
+//            case .failure(let error):
+//                print("..error: \(error)")
+//            }
+//        }
+//    }
+    
+    func requestExhibitionListTickets(completionHandle: @escaping (Bool, String?, [Ticket]) -> ()) {
+        let stringPara = stringParameters(actTo: ActType.ticket_list)
+        let userinfoString = kHeaderUrl + RequestURL.kExhibitionTicketList + stringPara
+        
+        let url = URL(string: userinfoString)
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
+                          "eid": NSString(string: self.exid).integerValue]
+        
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { response in
+                            switch response.result {
+                            case .success(let sourceJson):
+//                                print("exhibition detail json: \(sourceJson)")
+
+                                guard let dic = sourceJson as? Dictionary<String, Any>,
+                                    let result = dic["result"] as? Int, result == 1 else {
+                                        completionHandle(false, "加载失败", [])
+                                        return
+                                    
+                                }
+                                var tickts = [Ticket]()
+                                if let dicArr = sourceJson as? [Dictionary<String, AnyObject>] {
+                                    for resource in dicArr {
+                                        let json = JSON(resource)
+                                        let id = json["id"].stringValue
+                                        let name = json["name"].stringValue
+                                        let price = json["price"].stringValue
+                                        let proxy_price = json["proxy_price"].stringValue
+                                        
+                                        let ticket = Ticket(ticketId: id, name: name, price: price, proxy_price: proxy_price)
+                                        tickts.append(ticket)
+                                    }
+                                }
+                                completionHandle(true, nil, tickts)
+
+                            case .failure(let error):
+                                print("get exhibition detail error: \(error)")
+                            }
+        }
+        
+    }
+
+    
     func requestSoldTicketForExhibitionList(loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
-        print("page = \(ticketPage)")
         
         let stringPara = stringParameters(actTo: ActType.my_list)
         let userinfoString = kHeaderUrl + RequestURL.kSoldExhibitionUrlString + stringPara
@@ -160,7 +223,6 @@ extension Exhibition {
     // true for more, false for page 0 or refresh
     func requestExhibitionList(loadMore: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
         exhibitionPage = loadMore ? exhibitionPage + 1 : 1
-        print("page = \(exhibitionPage)")
         
         let stringPara = stringParameters(actTo: ActType.ex_list)
         let userinfoString = kHeaderUrl + RequestURL.kExhibitionUrlString + stringPara

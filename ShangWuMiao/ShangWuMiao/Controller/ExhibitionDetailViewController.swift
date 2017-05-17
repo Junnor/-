@@ -11,6 +11,8 @@ import UIKit
 
 class ExhibitionDetailViewController: UIViewController, UIScrollViewDelegate {
     
+    var exhibition: Exhibition!
+    
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             scrollView.delegate = self
@@ -22,6 +24,10 @@ class ExhibitionDetailViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setNaviView()
         scrollView.contentSize = CGSize(width: view.bounds.width, height: 1000)
+        
+        exhibition.requestExhibitionListTickets { (success, info, tickts) in
+            
+        }
     }
     
     private var naviView: CustomNaviBarView!

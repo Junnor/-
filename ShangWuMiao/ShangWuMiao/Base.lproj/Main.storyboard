@@ -544,8 +544,8 @@
                                                 <constraint firstAttribute="width" constant="80" id="7L8-KJ-nvJ"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="测试电子票" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-43-Asf">
-                                            <rect key="frame" x="98" y="8" width="97" height="23"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="测试电子票" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-43-Asf">
+                                            <rect key="frame" x="98" y="8" width="174" height="23"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -582,6 +582,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="5Rh-r6-RgD" firstAttribute="leading" secondItem="agq-k7-tyO" secondAttribute="leading" id="2Vd-7A-Wbr"/>
+                                        <constraint firstItem="GQP-DJ-D2L" firstAttribute="leading" secondItem="3AF-43-Asf" secondAttribute="trailing" id="5dF-VP-Wph"/>
                                         <constraint firstItem="1OE-QJ-s8c" firstAttribute="leading" secondItem="agq-k7-tyO" secondAttribute="trailing" id="6Ye-CZ-Dl9"/>
                                         <constraint firstItem="3AF-43-Asf" firstAttribute="top" secondItem="C90-tW-Cwv" secondAttribute="top" id="EEV-Lh-OVK"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="GQP-DJ-D2L" secondAttribute="trailing" constant="5" id="JVn-vL-Ff6"/>
@@ -638,7 +639,7 @@
                                         <rect key="frame" x="0.0" y="56" width="375" height="108"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="suE-Ct-elg" id="0ec-TK-DG0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nyato喵币充值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohy-jb-act">
@@ -942,7 +943,7 @@
                                             <outlet property="comicImageView" destination="gAS-ey-bCM" id="eDn-oQ-db2"/>
                                             <outlet property="dateLabel" destination="Ch9-ch-TFO" id="Ple-Ac-LM2"/>
                                             <outlet property="titleLabel" destination="Rjv-8j-D73" id="DVb-ig-TEt"/>
-                                            <segue destination="JL7-FZ-2LW" kind="show" identifier="show comic" id="Kef-4E-MMY"/>
+                                            <segue destination="JL7-FZ-2LW" kind="show" identifier="show exhibition" id="Kef-4E-MMY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

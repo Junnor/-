@@ -17,19 +17,34 @@ class Ticket: NSObject {
     var shop_num: String!
     var orderid: String!
     
+    // for exhibition ticket list
+    var id: String!
+    var name: String!
+    var price: String!
+    var proxy_price: String!
+
     override init() {
         // do nothing
         super.init()
     }
 
-    convenience init(id: String, title: String, cover: String, telphone: String, number: String) {
+    convenience init(orderId: String, title: String, cover: String, telphone: String, number: String) {
         self.init()
         
-        self.orderid = id
+        self.orderid = orderId
         self.ordertitle = title
         self.cover = cover
         self.tel = telphone
         self.shop_num = number
+    }
+    
+    convenience init(ticketId: String, name: String, price: String, proxy_price: String) {
+        self.init()
+        
+        self.id = ticketId
+        self.name = name
+        self.price = price
+        self.proxy_price = proxy_price
     }
     
     
@@ -69,7 +84,6 @@ extension Ticket {
     
     func requestTickets(forExhibitionId exhibitionId: String, loadMore more: Bool, completionHandler: @escaping (Bool, String?, [Ticket]) -> ()) {
         ticketPage = more ? ticketPage + 1 : 1
-        print("page = \(ticketPage)")
         
         let stringPara = stringParameters(actTo: ActType.sale_logs)
         let userinfoString = kHeaderUrl + RequestURL.kTicketsUrlString + stringPara
@@ -101,7 +115,7 @@ extension Ticket {
                                                     let tel = data["tel"] as! String
                                                     let shop_num = data["shop_num"] as! String
 
-                                                    let ticket = Ticket(id: orderid, title: ordertitle, cover: cover, telphone: tel, number: shop_num)
+                                                    let ticket = Ticket(orderId: orderid, title: ordertitle, cover: cover, telphone: tel, number: shop_num)
                                                     
                                                     tmpTickets.append(ticket)
                                                 }

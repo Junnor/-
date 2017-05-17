@@ -54,6 +54,18 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
         self.navigationController?.navigationBar.shadowImage = nil
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "show exhibition" {
+            if let desvc = segue.destination as? ExhibitionDetailViewController,
+                let indexPath = collectionView.indexPathsForSelectedItems?.first {
+                let ex = exhibitions[indexPath.item]
+                desvc.exhibition = ex
+            }
+        }
+    }
+    
     // MARK: - Helper
     @objc private func loadExhibition() {
         exhibition.requestExhibitionList(loadMore: false, completionHandler: { [weak self] success, info, exhibitions in
