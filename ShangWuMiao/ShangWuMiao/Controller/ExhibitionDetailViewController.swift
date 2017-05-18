@@ -62,9 +62,9 @@ class ExhibitionDetailViewController: UIViewController {
                 self?.collectionView.reloadData()
                 
                 let indexPath = IndexPath(item: 0, section: 1)
-                self?.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: UICollectionViewScrollPosition.centeredHorizontally
-                )
-                self?.collectionView.delegate?.collectionView!((self?.collectionView)!, didSelectItemAt: indexPath)
+                self?.collectionView.selectItem(at: indexPath,
+                                                animated: true,
+                                                scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
             } else {
                 print("request exhibition ticket failure: \(info!)")
             }
@@ -168,6 +168,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("cellForItemAt \(indexPath)")
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExHeaderCellID", for: indexPath)
@@ -252,7 +253,6 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
             }
         } else  {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExTicketCellID", for: indexPath)
-            cell.backgroundColor = UIColor.backgroundColor
             if let cell = cell as? ExTicketCell {
                 if tickts.count >= 1 {
                     let tickt = tickts[indexPath.item]
@@ -269,11 +269,13 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                     cell.layer.borderColor = UIColor.red.cgColor
                     
                     if cell.isSelected {
+                        print("isSelected ... \(indexPath)")
                         cell.nameLabel?.textColor = UIColor.white
                         cell.priceLabel?.textColor = UIColor.white
                         cell.backgroundColor = UIColor.red
                         
                     } else {
+                        print("not selected ... \(indexPath)")
                         cell.nameLabel?.textColor = UIColor.red
                         cell.priceLabel?.textColor = UIColor.red
                         cell.backgroundColor = UIColor.backgroundColor
@@ -324,6 +326,27 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
 }
 
 extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("..selected indexPath = \(indexPath)")
+        if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
+            cell.nameLabel?.textColor = UIColor.white
+            cell.priceLabel?.textColor = UIColor.white
+            cell.backgroundColor = UIColor.red
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
+            cell.nameLabel?.textColor = UIColor.red
+            cell.priceLabel?.textColor = UIColor.red
+            cell.backgroundColor = UIColor.backgroundColor
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return section == 1 ? UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10) : UIEdgeInsets.zero
