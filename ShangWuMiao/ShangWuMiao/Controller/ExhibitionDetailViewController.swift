@@ -14,6 +14,12 @@ class ExhibitionDetailViewController: UIViewController {
     
     var exhibition: Exhibition!
     
+    fileprivate let limitLines = 6
+    fileprivate let showMoreButtonWithGap: CGFloat = 50
+    fileprivate let noMoreButtonWithGap: CGFloat = 20
+    fileprivate let limitTextHeight: CGFloat = 170   // (limitetLines * 20 + 50 gap)
+    fileprivate var readMore = false
+    
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView! {
@@ -57,8 +63,10 @@ class ExhibitionDetailViewController: UIViewController {
     private func registerCollectionView() {
         collectionView.register(UINib(nibName: "ExHeaderCell", bundle: nil), forCellWithReuseIdentifier: "ExHeaderCellID")
         collectionView.register(UINib(nibName: "ExDescriptionCell", bundle: nil), forCellWithReuseIdentifier: "ExDescriptionCellID")
+        collectionView.register(UINib(nibName: "ExAddressCell", bundle: nil), forCellWithReuseIdentifier: "ExAddressCellID")
         collectionView.register(UINib(nibName: "ExInputHintCell", bundle: nil), forCellWithReuseIdentifier: "ExInputHintCellID")
         collectionView.register(UINib(nibName: "ExTicketCell", bundle: nil), forCellWithReuseIdentifier: "ExTicketCellID")
+        
         collectionView.register(UINib(nibName: "ExFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "ExFooterViewID")
     }
     
@@ -134,12 +142,22 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
             cell.backgroundColor = UIColor.white
             if let cell = cell as? ExDescriptionCell {
                 cell.titleLabel.text = self.exhibition.exDescription
+                
+                if shouldShowMoreButton() {
+                    cell.moreButton.addTarget(self, action: #selector(moreWords), for: .touchUpInside)
+                    cell.moreButton.setTitle(readMore ? "点击收起" : "展开更多", for: .normal)
+                    cell.titleLabel.numberOfLines = readMore ? 0 : limitLines
+                } else {
+                    cell.moreButton.isHidden = true
+                    cell.bottonConstraint.constant = 8
+                }
+                
             }
             return cell
         } else if indexPath.item == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExDescriptionCellID", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExAddressCellID", for: indexPath)
             cell.backgroundColor = UIColor.backgroundColor
-            if let cell = cell as? ExDescriptionCell {
+            if let cell = cell as? ExAddressCell {
                 cell.titleLabel.text = "漫展详细地址：" + self.exhibition.addr
             }
             
@@ -176,6 +194,19 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
         return footerView
     }
     
+    fileprivate func shouldShowMoreButton() -> Bool {
+        let font = UIFont.systemFont(ofSize: 16)
+        let str = self.exhibition.exDescription!
+        return heightForText(text: str,
+                             font: font,
+                             width: collectionView.bounds.width - 20) + 40 > limitTextHeight
+    }
+    
+    @objc private func moreWords() {
+        self.readMore = !self.readMore
+        self.collectionView.reloadData()
+    }
+    
     @objc private func plusAction() {
         print("... plus")
     }
@@ -187,7 +218,6 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     @objc private func priceChangeAction(sender: UIButton) {
         print(priceChangeAction)
     }
-    
 }
 
 extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
@@ -213,8 +243,15 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         case 1:
             let font = UIFont.systemFont(ofSize: 16)
             let str = self.exhibition.exDescription!
-            let tmpHeight = heightForText(text: str, font: font, width: width - 20) + 16
-            height = max(tmpHeight, 50)
+            var tmpHeight = heightForText(text: str, font: font, width: width - 20)
+            
+            if shouldShowMoreButton() {
+                tmpHeight += showMoreButtonWithGap
+                height = readMore ? tmpHeight : limitTextHeight
+            } else {
+                tmpHeight += noMoreButtonWithGap
+                height = max(tmpHeight, 50)
+            }
 
         case 2:
             let font = UIFont.systemFont(ofSize: 16)
@@ -231,7 +268,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
     
-    private func heightForText(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+    fileprivate func heightForText(text: String, font: UIFont, width: CGFloat) -> CGFloat {
         let rect = NSString(string: text).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
         return ceil(rect.height)
     }

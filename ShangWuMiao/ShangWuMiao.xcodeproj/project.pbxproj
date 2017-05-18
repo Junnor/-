@@ -16,6 +16,8 @@
 		4460C2C91E9B19F3004166DB /* ShangWuMiaoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4460C2C81E9B19F3004166DB /* ShangWuMiaoUITests.swift */; };
 		4460C2EF1E9B1B70004166DB /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4460C2E21E9B1B5B004166DB /* Alamofire.framework */; };
 		4460C2F01E9B1B70004166DB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4460C2E21E9B1B5B004166DB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E1A741ECD42310017F11C /* ExAddressCell.swift */; };
+		8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0E1A751ECD42310017F11C /* ExAddressCell.xib */; };
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
@@ -157,6 +159,8 @@
 		4460C2CA1E9B19F3004166DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4460C2D61E9B1B5A004166DB /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "../Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
+		8B0E1A741ECD42310017F11C /* ExAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExAddressCell.swift; sourceTree = "<group>"; };
+		8B0E1A751ECD42310017F11C /* ExAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExAddressCell.xib; sourceTree = "<group>"; };
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
@@ -359,6 +363,8 @@
 				8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */,
 				8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */,
 				8BCE2BAC1ECC369E00ACA1BB /* ExDescriptionCell.xib */,
+				8B0E1A741ECD42310017F11C /* ExAddressCell.swift */,
+				8B0E1A751ECD42310017F11C /* ExAddressCell.xib */,
 				8BCE2BAF1ECC375200ACA1BB /* ExInputHintCell.swift */,
 				8BCE2BB01ECC375200ACA1BB /* ExInputHintCell.xib */,
 				8BCE2BB31ECC3A5C00ACA1BB /* ExTicketCell.swift */,
@@ -559,6 +565,7 @@
 				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
 				8BCE2BAE1ECC369E00ACA1BB /* ExDescriptionCell.xib in Resources */,
 				8BCE2BB21ECC375200ACA1BB /* ExInputHintCell.xib in Resources */,
+				8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -648,6 +655,7 @@
 				8BE380171EC2A8A3001A6651 /* TicketOrderCell.swift in Sources */,
 				8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */,
 				8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */,
+				8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */,
 				8BE380091EC1D77F001A6651 /* TopupRecordViewController.swift in Sources */,
 				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,

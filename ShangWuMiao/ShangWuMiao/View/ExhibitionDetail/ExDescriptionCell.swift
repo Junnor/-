@@ -10,6 +10,10 @@ import UIKit
 
 class ExDescriptionCell: UICollectionViewCell {
 
+    @IBOutlet weak var bottonConstraint: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var moreButton: UIButton!
 
 }
