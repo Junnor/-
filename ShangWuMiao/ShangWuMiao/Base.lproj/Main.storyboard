@@ -1060,12 +1060,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVv-px-JKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967.1999999999998" y="-40.029985007496258"/>
+            <point key="canvasLocation" x="4698" y="-195"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="nLe-Ph-rc9">
             <objects>
-                <viewController id="dyJ-np-XaX" customClass="SearchViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="dyJ-np-XaX" customClass="SearchViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Bu-ro-57o"/>
                         <viewControllerLayoutGuide type="bottom" id="yka-dR-uqe"/>
@@ -1073,7 +1073,127 @@
                     <view key="view" contentMode="scaleToFill" id="zcV-ns-uhY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OLt-mq-mFE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8Bt-OL-B9Q">
+                                    <size key="itemSize" width="333" height="114"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExhibitionSearchCellIdentifer" id="vQa-4b-tr1" customClass="ComicViewCell" customModule="ShangWuMiao" customModuleProvider="target">
+                                        <rect key="frame" x="21" y="0.0" width="333" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="333" height="114"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PpH-D5-BTr">
+                                                    <rect key="frame" x="10" y="10" width="71" height="93"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="71" id="sRD-QB-evn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-addr-2" translatesAutoresizingMaskIntoConstraints="NO" id="ZbZ-iG-L7W" userLabel="Address Image View">
+                                                    <rect key="frame" x="91" y="66" width="20" height="20"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="buy-2" translatesAutoresizingMaskIntoConstraints="NO" id="i2L-a5-2kQ">
+                                                    <rect key="frame" x="260" y="44.5" width="50" height="25"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="2017年03月20日 - 07月09日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbt-G3-ras">
+                                                    <rect key="frame" x="121" y="43" width="129" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="广州" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHe-wp-N1T">
+                                                    <rect key="frame" x="121" y="68" width="129" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ico-addr-2" translatesAutoresizingMaskIntoConstraints="NO" id="NHd-0G-7iD" userLabel="Date Image View">
+                                                    <rect key="frame" x="91" y="41" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="jeX-Gy-ZIy"/>
+                                                        <constraint firstAttribute="height" constant="20" id="x4L-1k-7Bz"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3b-eg-f0r" userLabel="Sepearte View">
+                                                    <rect key="frame" x="0.0" y="113" width="333" height="1"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="YT5-lQ-T8U"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="2017广州猫展" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="see-JK-zun">
+                                                    <rect key="frame" x="91" y="10" width="159" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购票" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYx-9J-l9h">
+                                                    <rect key="frame" x="260" y="44.5" width="50" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.84127141500000002" green="0.83880445449999996" blue="0.39204735439999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ZbZ-iG-L7W" firstAttribute="width" secondItem="NHd-0G-7iD" secondAttribute="width" id="1AN-aW-IpQ"/>
+                                            <constraint firstItem="i2L-a5-2kQ" firstAttribute="leading" secondItem="dHe-wp-N1T" secondAttribute="trailing" constant="10" id="3jc-hn-eHm"/>
+                                            <constraint firstItem="DYx-9J-l9h" firstAttribute="top" secondItem="i2L-a5-2kQ" secondAttribute="top" id="5CT-7i-b4T"/>
+                                            <constraint firstItem="ZbZ-iG-L7W" firstAttribute="leading" secondItem="NHd-0G-7iD" secondAttribute="leading" id="68G-US-sqI"/>
+                                            <constraint firstItem="DYx-9J-l9h" firstAttribute="leading" secondItem="i2L-a5-2kQ" secondAttribute="leading" id="Aqu-4p-uB7"/>
+                                            <constraint firstItem="i2L-a5-2kQ" firstAttribute="centerY" secondItem="vQa-4b-tr1" secondAttribute="centerY" id="CqQ-JT-PXy"/>
+                                            <constraint firstItem="Hbt-G3-ras" firstAttribute="leading" secondItem="NHd-0G-7iD" secondAttribute="trailing" constant="10" id="EUl-ST-PUc"/>
+                                            <constraint firstItem="i2L-a5-2kQ" firstAttribute="leading" secondItem="see-JK-zun" secondAttribute="trailing" constant="10" id="Fyb-NL-MVR"/>
+                                            <constraint firstItem="DYx-9J-l9h" firstAttribute="bottom" secondItem="i2L-a5-2kQ" secondAttribute="bottom" id="Hx8-rP-ZHW"/>
+                                            <constraint firstAttribute="trailing" secondItem="c3b-eg-f0r" secondAttribute="trailing" id="JG4-xg-oHF"/>
+                                            <constraint firstItem="Hbt-G3-ras" firstAttribute="centerY" secondItem="NHd-0G-7iD" secondAttribute="centerY" id="MhF-NK-CAM"/>
+                                            <constraint firstAttribute="bottom" secondItem="c3b-eg-f0r" secondAttribute="bottom" id="OmA-8r-ADS"/>
+                                            <constraint firstItem="DYx-9J-l9h" firstAttribute="trailing" secondItem="i2L-a5-2kQ" secondAttribute="trailing" id="Ozg-jF-6y4"/>
+                                            <constraint firstItem="NHd-0G-7iD" firstAttribute="leading" secondItem="see-JK-zun" secondAttribute="leading" id="SCH-g6-klT"/>
+                                            <constraint firstItem="ZbZ-iG-L7W" firstAttribute="height" secondItem="NHd-0G-7iD" secondAttribute="height" id="XUw-9U-fje"/>
+                                            <constraint firstItem="ZbZ-iG-L7W" firstAttribute="top" secondItem="NHd-0G-7iD" secondAttribute="bottom" constant="5" id="YrQ-Rz-rRr"/>
+                                            <constraint firstItem="PpH-D5-BTr" firstAttribute="top" secondItem="vQa-4b-tr1" secondAttribute="top" constant="10" id="bSH-9w-nAq"/>
+                                            <constraint firstItem="i2L-a5-2kQ" firstAttribute="leading" secondItem="Hbt-G3-ras" secondAttribute="trailing" constant="10" id="fFQ-xv-acy"/>
+                                            <constraint firstItem="c3b-eg-f0r" firstAttribute="leading" secondItem="vQa-4b-tr1" secondAttribute="leading" id="gRA-Hu-5PC"/>
+                                            <constraint firstItem="see-JK-zun" firstAttribute="leading" secondItem="PpH-D5-BTr" secondAttribute="trailing" constant="10" id="gaY-6F-OSX"/>
+                                            <constraint firstItem="see-JK-zun" firstAttribute="top" secondItem="PpH-D5-BTr" secondAttribute="top" id="lXf-ZM-jJD"/>
+                                            <constraint firstItem="dHe-wp-N1T" firstAttribute="leading" secondItem="Hbt-G3-ras" secondAttribute="leading" id="mF1-0A-S8z"/>
+                                            <constraint firstItem="c3b-eg-f0r" firstAttribute="top" secondItem="PpH-D5-BTr" secondAttribute="bottom" constant="10" id="pIr-bY-wWb"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="i2L-a5-2kQ" secondAttribute="trailing" constant="15" id="po1-zp-JzD"/>
+                                            <constraint firstItem="dHe-wp-N1T" firstAttribute="centerY" secondItem="ZbZ-iG-L7W" secondAttribute="centerY" id="sc8-ne-dvS"/>
+                                            <constraint firstItem="NHd-0G-7iD" firstAttribute="top" secondItem="see-JK-zun" secondAttribute="bottom" constant="10" id="tcC-EP-uvZ"/>
+                                            <constraint firstItem="PpH-D5-BTr" firstAttribute="leading" secondItem="vQa-4b-tr1" secondAttribute="leading" constant="10" id="x5D-mj-Qat"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="dHe-wp-N1T" id="CXd-RK-Gn9"/>
+                                            <outlet property="comicImageView" destination="PpH-D5-BTr" id="q3x-MD-Tc6"/>
+                                            <outlet property="dateLabel" destination="Hbt-G3-ras" id="Eeg-KW-Gt9"/>
+                                            <outlet property="titleLabel" destination="see-JK-zun" id="8e9-Ul-rII"/>
+                                            <segue destination="JL7-FZ-2LW" kind="show" identifier="show search exhibition" id="HGO-XF-caW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="dyJ-np-XaX" id="rHe-bS-psp"/>
+                                    <outlet property="delegate" destination="dyJ-np-XaX" id="D0b-Gu-BIL"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OLt-mq-mFE" secondAttribute="trailing" id="IW8-P3-hnf"/>
+                            <constraint firstItem="OLt-mq-mFE" firstAttribute="leading" secondItem="zcV-ns-uhY" secondAttribute="leading" id="dyk-b9-6IQ"/>
+                            <constraint firstItem="OLt-mq-mFE" firstAttribute="top" secondItem="1Bu-ro-57o" secondAttribute="bottom" id="eOU-5f-byy"/>
+                            <constraint firstItem="yka-dR-uqe" firstAttribute="top" secondItem="OLt-mq-mFE" secondAttribute="bottom" id="ggr-yn-l4w"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="anm-av-Q1H">
                         <barButtonItem key="rightBarButtonItem" title="取消" id="t2V-Wz-ck2">
@@ -1086,15 +1206,22 @@
                             <outlet property="titleView" destination="bbs-9p-O0o" id="LAF-m4-LWu"/>
                         </connections>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="OLt-mq-mFE" id="HI8-s7-v12"/>
+                        <outlet property="searchBar" destination="bbs-9p-O0o" id="PAy-lV-9tT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="661-28-gWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchBar contentMode="redraw" placeholder="搜索漫展" id="bbs-9p-O0o">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="dyJ-np-XaX" id="SCY-MV-4cn"/>
+                    </connections>
                 </searchBar>
             </objects>
-            <point key="canvasLocation" x="4076" y="-779"/>
+            <point key="canvasLocation" x="3900" y="-681"/>
         </scene>
         <!--登陆-->
         <scene sceneID="ky7-rR-TZi">
@@ -1287,4 +1414,7 @@
         <image name="nav-index" width="16" height="16"/>
         <image name="pay-alipay" width="29" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HGO-XF-caW"/>
+    </inferredMetricsTieBreakers>
 </document>

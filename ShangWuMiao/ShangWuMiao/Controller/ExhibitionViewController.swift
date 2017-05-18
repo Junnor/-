@@ -15,6 +15,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let comicCellId = "ComicCellIdentifer"
+    private let segueIdentifier = "show exhibition"
     
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "show exhibition" {
+        if segue.identifier == segueIdentifier {
             if let desvc = segue.destination as? ExhibitionDetailViewController,
                 let indexPath = collectionView.indexPathsForSelectedItems?.first {
                 let ex = exhibitions[indexPath.item]

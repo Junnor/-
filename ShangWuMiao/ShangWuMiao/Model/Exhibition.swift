@@ -253,8 +253,7 @@ extension Exhibition {
                           headers: nil).responseJSON { response in
                             switch response.result {
                             case .success(let json):
-//                                 print("exhibition list json: \(json)")
-//                                 print("........................................")
+                                 print("exhibition list json: \(json)")
                                 if let dic = json as? Dictionary<String, AnyObject> {
                                     if let status = dic["result"] as? Int {
                                         if status == 1 {
