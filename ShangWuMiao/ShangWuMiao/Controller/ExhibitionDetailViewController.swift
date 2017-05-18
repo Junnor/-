@@ -13,16 +13,41 @@ import Kingfisher
 
 class ExhibitionDetailViewController: UIViewController {
     
+    // MARK: - Public property set from segue
     var exhibition: Exhibition!
     
+    // MARK: - Private properties
+    fileprivate let constCellCounts = 4
+    fileprivate var tickts = [Ticket]()
+    private var naviView: CustomNaviBarView!
+
     fileprivate let limitLines = 6
     fileprivate let showMoreButtonWithGap: CGFloat = 50
     fileprivate let noMoreButtonWithGap: CGFloat = 20
     fileprivate let limitTextHeight: CGFloat = 170   // (limitetLines * 20 + 50 gap)
     fileprivate var readMore = false
     fileprivate var originalPrice = true
+    fileprivate var lastSelectedIndexPath = IndexPath(item: 0, section: 1)
     
-    fileprivate weak var phoneTextField: UITextField!
+    // observer ticktsTimes & ticktPrice
+    fileprivate var ticktsTimes = 1 {
+        didSet {
+            if let indexPath = collectionView.indexPathsForSelectedItems?.first {
+                let money = originalPrice ?
+                    self.tickts[indexPath.item].price : self.tickts[indexPath.item].proxy_price
+                self.priceLabel?.text = "\(Float(money!)! * Float(self.ticktsTimes))"
+                
+                self.ticktsTimesLabel?.text = "\(ticktsTimes)"
+            }
+        }
+    }
+    fileprivate var ticktPrice: Float! {
+        didSet {
+            if ticktPrice != nil {
+                self.priceLabel?.text = "\(ticktPrice * Float(self.ticktsTimes))"
+            }
+        }
+    }
     
     lazy fileprivate var shadowView: UIView = {
         let shadow = UIView()
@@ -36,7 +61,11 @@ class ExhibitionDetailViewController: UIViewController {
         return shadow
     }()
     
-     @IBOutlet weak var priceLabel: UILabel!
+    fileprivate weak var phoneTextField: UITextField!
+    fileprivate weak var ticktsTimesLabel: UILabel!
+    
+    // MARK: - Outlets
+    @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -48,9 +77,6 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     // MARK: - View controller lifecycle
-    
-    fileprivate let constCellCounts = 4
-    fileprivate var tickts = [Ticket]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,10 +88,14 @@ class ExhibitionDetailViewController: UIViewController {
                 self?.tickts = tickts
                 self?.collectionView.reloadData()
                 
+                // selection style
                 let indexPath = IndexPath(item: 0, section: 1)
                 self?.collectionView.selectItem(at: indexPath,
                                                 animated: true,
                                                 scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
+                
+                // set initial value
+                self?.priceLabel?.text = self?.tickts[0].price
             } else {
                 print("request exhibition ticket failure: \(info!)")
             }
@@ -97,7 +127,6 @@ class ExhibitionDetailViewController: UIViewController {
         collectionView.register(UINib(nibName: "ExFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "ExFooterViewID")
     }
     
-    private var naviView: CustomNaviBarView!
     private func setNaviView() {
         // custom navigation bar view
         naviView = CustomNaviBarView.naviBarViewFromNib()
@@ -267,6 +296,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                         cell.priceLabel?.textColor = UIColor.white
                         cell.backgroundColor = UIColor.red
                         
+                        self.ticktPrice = Float(cell.priceLabel.text!)!
                     } else {
                         cell.nameLabel?.textColor = UIColor.red
                         cell.priceLabel?.textColor = UIColor.red
@@ -289,7 +319,9 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
         if let footer = footerView as? ExFooterView, indexPath.section == 1 {
             footer.plusButton.addTarget(self, action: #selector(plusAction), for: .touchUpInside)
             footer.minusButton.addTarget(self, action: #selector(minusAction), for: .touchUpInside)
-
+            
+            // weak
+            self.ticktsTimesLabel = footer.sumLabel
         }
         return footerView
     }
@@ -308,11 +340,14 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     }
     
     @objc private func plusAction() {
-        print("... plus")
+        ticktsTimes += 1
     }
     
     @objc private func minusAction() {
-        print("... minus")
+        if ticktsTimes == 1 {
+            return
+        }
+        ticktsTimes -= 1
     }
     
     @objc private func priceChangeAction(sender: UIButton) {
@@ -333,10 +368,15 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelectItemAt")
         if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
             cell.nameLabel?.textColor = UIColor.white
             cell.priceLabel?.textColor = UIColor.white
             cell.backgroundColor = UIColor.red
+            
+            // for tickts count
+            ticktsTimes = (lastSelectedIndexPath == indexPath) ? ticktsTimes : 1
+            lastSelectedIndexPath = indexPath
         }
     }
     
@@ -349,7 +389,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             if !originalPrice {
                 cell.priceLabel?.textColor = UIColor.yellow
             }
-        }
+          }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
