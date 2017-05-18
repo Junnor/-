@@ -1004,9 +1004,9 @@
                                 <rect key="frame" x="0.0" y="618" width="375" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="合计：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPN-Uc-fzD">
-                                        <rect key="frame" x="119.5" y="14" width="52" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="127.5" y="15" width="49" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cq-SP-cGF">
@@ -1034,7 +1034,7 @@
                                     <constraint firstAttribute="trailing" secondItem="2cq-SP-cGF" secondAttribute="trailing" id="39m-9c-hC0"/>
                                     <constraint firstAttribute="height" constant="49" id="AJr-Hk-Pjg"/>
                                     <constraint firstItem="2cq-SP-cGF" firstAttribute="leading" secondItem="AP1-15-nMT" secondAttribute="trailing" constant="20" id="Qtm-Yg-fj1"/>
-                                    <constraint firstItem="AP1-15-nMT" firstAttribute="leading" secondItem="GPN-Uc-fzD" secondAttribute="trailing" constant="20" id="djZ-sx-1mW"/>
+                                    <constraint firstItem="AP1-15-nMT" firstAttribute="leading" secondItem="GPN-Uc-fzD" secondAttribute="trailing" constant="15" id="djZ-sx-1mW"/>
                                     <constraint firstItem="AP1-15-nMT" firstAttribute="centerY" secondItem="fOH-aB-ByU" secondAttribute="centerY" id="jip-Af-yBa"/>
                                     <constraint firstItem="2cq-SP-cGF" firstAttribute="top" secondItem="fOH-aB-ByU" secondAttribute="top" id="vZT-4J-t78"/>
                                     <constraint firstAttribute="bottom" secondItem="2cq-SP-cGF" secondAttribute="bottom" id="wJi-hg-NRe"/>

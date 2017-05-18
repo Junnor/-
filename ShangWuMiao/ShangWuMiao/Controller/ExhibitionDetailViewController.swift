@@ -116,9 +116,12 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                 
                 cell.nameLabel.text = self.exhibition.name
                 cell.presaleLabel.text = self.exhibition.presale_price
-                cell.scenePriceLabel.text = self.exhibition.scene_price
                 cell.locationLabel.text = self.exhibition.location
                 
+                let attributedText = NSMutableAttributedString(string: self.exhibition.scene_price)
+                attributedText.addAttributes([NSBaselineOffsetAttributeName:0, NSStrikethroughStyleAttributeName: 1], range: NSRange(location: 0, length: NSString(string: self.exhibition.scene_price).length))
+                cell.scenePriceLabel.attributedText = attributedText
+
                 let startTime = exhibition.exhibition(stringTime: self.exhibition.start_time, digit: true)
                 let endTime = exhibition.exhibition(stringTime: self.exhibition.end_time, digit: true)
                 
@@ -206,7 +209,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         var height: CGFloat = 0.0
         switch indexPath.row {
         case 0:
-            height = collectionView.bounds.height / 3
+            height = collectionView.bounds.height * 2 / 5
         case 1:
             let font = UIFont.systemFont(ofSize: 16)
             let str = self.exhibition.exDescription!

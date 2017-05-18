@@ -260,8 +260,6 @@ extension Exhibition {
                                             if let dataArr = dic["data"] as? Array<Dictionary<String, AnyObject>> {
                                                 var tmpExhibitions = [Exhibition]()
                                                 for data in dataArr {
-                                                    print("list .. \(data)")
-                                                    print("---------------------------")
                                                     let ex = Exhibition.fromJSON(data)
                                                     tmpExhibitions.append(ex)
                                                 }
