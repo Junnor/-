@@ -6,6 +6,7 @@
 //  Copyright © 2017年 moelove. All rights reserved.
 //
 // navigation bar 的设置没弄好
+// colection view 的选择处理一团糟
 
 import UIKit
 import Kingfisher
@@ -168,7 +169,6 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellForItemAt \(indexPath)")
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExHeaderCellID", for: indexPath)
@@ -257,28 +257,24 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                 if tickts.count >= 1 {
                     let tickt = tickts[indexPath.item]
                     cell.nameLabel?.text = tickt.name
-                    cell.priceLabel?.text = tickt.price
-                    
-                    if originalPrice {
-                        cell.priceLabel?.textColor = UIColor.white
-                    } else {
-                        cell.priceLabel?.textColor = UIColor.yellow
-                    }
+                    cell.priceLabel?.text = originalPrice ? tickt.price : tickt.proxy_price
                     
                     cell.layer.borderWidth = 1.0
                     cell.layer.borderColor = UIColor.red.cgColor
                     
                     if cell.isSelected {
-                        print("isSelected ... \(indexPath)")
                         cell.nameLabel?.textColor = UIColor.white
                         cell.priceLabel?.textColor = UIColor.white
                         cell.backgroundColor = UIColor.red
                         
                     } else {
-                        print("not selected ... \(indexPath)")
                         cell.nameLabel?.textColor = UIColor.red
                         cell.priceLabel?.textColor = UIColor.red
                         cell.backgroundColor = UIColor.backgroundColor
+                    }
+                    
+                    if !originalPrice && !cell.isSelected {
+                        cell.priceLabel?.textColor = UIColor.yellow
                     }
                 }
             }
@@ -321,7 +317,12 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     
     @objc private func priceChangeAction(sender: UIButton) {
         originalPrice = !originalPrice
+        
+        let lastSelectedIndex = collectionView.indexPathsForSelectedItems?.first
+
         self.collectionView.reloadData()
+        
+        self.collectionView.selectItem(at: lastSelectedIndex, animated: true, scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
     }
 }
 
@@ -332,7 +333,6 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("..selected indexPath = \(indexPath)")
         if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
             cell.nameLabel?.textColor = UIColor.white
             cell.priceLabel?.textColor = UIColor.white
@@ -345,6 +345,10 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             cell.nameLabel?.textColor = UIColor.red
             cell.priceLabel?.textColor = UIColor.red
             cell.backgroundColor = UIColor.backgroundColor
+            
+            if !originalPrice {
+                cell.priceLabel?.textColor = UIColor.yellow
+            }
         }
     }
     
