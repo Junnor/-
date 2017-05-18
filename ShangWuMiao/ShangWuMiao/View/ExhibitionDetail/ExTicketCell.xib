@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="2017漫展" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKu-Hu-wUA">
-                        <rect key="frame" x="10" y="8" width="373.5" height="55"/>
+                        <rect key="frame" x="15" y="8" width="363.5" height="55"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="58.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5o-I4-tkN">
-                        <rect key="frame" x="385.5" y="8" width="42.5" height="55"/>
+                        <rect key="frame" x="380.5" y="8" width="42.5" height="55"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -33,8 +33,8 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="BKu-Hu-wUA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="D5m-6t-VlZ"/>
-                <constraint firstAttribute="trailing" secondItem="a5o-I4-tkN" secondAttribute="trailing" constant="10" id="KVU-Wv-ATy"/>
+                <constraint firstItem="BKu-Hu-wUA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="D5m-6t-VlZ"/>
+                <constraint firstAttribute="trailing" secondItem="a5o-I4-tkN" secondAttribute="trailing" constant="15" id="KVU-Wv-ATy"/>
                 <constraint firstItem="BKu-Hu-wUA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="NL7-YP-hMJ"/>
                 <constraint firstItem="a5o-I4-tkN" firstAttribute="leading" secondItem="BKu-Hu-wUA" secondAttribute="trailing" constant="2" id="e05-MO-xIO"/>
                 <constraint firstAttribute="bottom" secondItem="BKu-Hu-wUA" secondAttribute="bottom" constant="8" id="f5l-qV-7j5"/>
