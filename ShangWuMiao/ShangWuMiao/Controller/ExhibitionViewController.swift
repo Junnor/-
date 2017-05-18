@@ -68,7 +68,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - Helper
     @objc private func loadExhibition() {
-        exhibition.requestExhibitionList(loadMore: false, completionHandler: { [weak self] success, info, exhibitions in
+        exhibition.requestExhibitionList(withKeyword: nil, loadMore: false, completionHandler: { [weak self] success, info, exhibitions in
             self?.collectionView.mj_header.endRefreshing()
             if success {
                 if self != nil {
@@ -90,7 +90,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     
     
     @objc private func loadMore() {
-        exhibition.requestExhibitionList(loadMore: true, completionHandler: { [weak self] success, info, exhibitions in
+        exhibition.requestExhibitionList(withKeyword: nil, loadMore: true, completionHandler: { [weak self] success, info, exhibitions in
             self?.collectionView.mj_footer.endRefreshing()
             if success {
                 if self != nil {

@@ -235,7 +235,7 @@ extension Exhibition {
     }
 
     // true for more, false for page 0 or refresh
-    func requestExhibitionList(loadMore: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
+    func requestExhibitionList(withKeyword keyword:  String?, loadMore: Bool, completionHandler: @escaping (Bool, String?, [Exhibition]) -> ()) {
         exhibitionPage = loadMore ? exhibitionPage + 1 : 1
         
         let stringPara = stringParameters(actTo: ActType.ex_list)
@@ -243,7 +243,8 @@ extension Exhibition {
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
-                          "p": self.exhibitionPage]
+                          "p": self.exhibitionPage,
+                          "keyword": keyword ?? ""] as [String : Any]
         
         Alamofire.request(url!,
                           method: .post,
