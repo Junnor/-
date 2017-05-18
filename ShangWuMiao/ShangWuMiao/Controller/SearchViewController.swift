@@ -12,16 +12,56 @@ import Kingfisher
 
 class SearchViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Private properties
     private let exhibitionCellId = "ExhibitionSearchCellIdentifer"
     private let segueIdentifier = "show search exhibition"
     
+    private let exhibition = Exhibition()
+    private var exhibitions = [Exhibition]()
+    
+    fileprivate lazy var shadowView: UIView! = {
+        let shadow = UIView(frame: self.view.bounds)
+        shadow.isHidden = true
+        shadow.backgroundColor = UIColor.backgroundColor
+        shadow.alpha = 0.7
+        shadow.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                           action: #selector(tapGesture)))
+        self.view.insertSubview(shadow, aboveSubview: self.collectionView)
+
+        return shadow
+    }()
+    
+    @objc private func tapGesture() {
+        self.searchBar.resignFirstResponder()
+        closeShadowView()
+    }
+    
+    @objc private func fireShadowView() {
+        shadowView.isHidden = false
+    }
+    
+    @objc private func closeShadowView() {
+        shadowView.isHidden = true
+    }
+
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // observer
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(fireShadowView),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(closeShadowView),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+        // layout
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.itemSize = CGSize(width: view.bounds.width, height: 120)
         layout?.minimumLineSpacing = 0
@@ -46,9 +86,24 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView?.mj_header = headerRefresh
     }
     
-    private let exhibition = Exhibition()
-    private var exhibitions = [Exhibition]()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+    }
     
+    private var forword = true
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if forword {  // only perform once
+            forword = false
+            
+            self.searchBar.becomeFirstResponder()
+//            shadowView.isHidden = false
+        }
+    }
+
     // MARK: - Navigation
     
     @IBAction func backAction(_ sender: UIBarButtonItem) {
@@ -141,7 +196,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        
+
         self.collectionView.mj_header.beginRefreshing()
     }
 }
