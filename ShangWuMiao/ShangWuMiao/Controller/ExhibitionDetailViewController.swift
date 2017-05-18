@@ -20,7 +20,7 @@ class ExhibitionDetailViewController: UIViewController {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
-            
+            collectionView.backgroundColor = UIColor.backgroundColor
             collectionView.showsVerticalScrollIndicator = false
         }
     }
@@ -97,7 +97,6 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExHeaderCellID", for: indexPath)
-            cell.backgroundColor = UIColor.white
             if let cell = cell as? ExHeaderCell {
                 if let url = URL(string: kImageHeaderUrl + self.exhibition.cover!) {
                     let resourcce = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
@@ -106,6 +105,13 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                                       options: [.transition(.fade(1))],
                                       progressBlock: nil,
                                       completionHandler: nil)
+                    
+                    
+                    cell.backgroundImageView.kf.setImage(with: resourcce,
+                                                 placeholder: nil,
+                                                 options: [.transition(.fade(1))],
+                                                 progressBlock: nil,
+                                                 completionHandler: nil)
                 }
                 
                 cell.nameLabel.text = self.exhibition.name
@@ -129,22 +135,23 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
             return cell
         } else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExDescriptionCellID", for: indexPath)
-            cell.backgroundColor = UIColor.lightGray
+            cell.backgroundColor = UIColor.backgroundColor
             if let cell = cell as? ExDescriptionCell {
                 cell.titleLabel.text = "漫展详细地址：" + self.exhibition.addr
             }
-
-            cell.backgroundColor = UIColor.red
-
+            
             return cell
         } else if indexPath.item == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExInputHintCellID", for: indexPath)
-            cell.backgroundColor = UIColor.gray
+            cell.backgroundColor = UIColor.white
+            if let cell = cell as? ExInputHintCell {
+                cell.priceButton.addTarget(self, action: #selector(priceChangeAction(sender:)), for: .touchUpInside)
+            }
             
             return cell
         }  else  {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExTicketCellID", for: indexPath)
-            cell.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor.backgroundColor
             if let cell = cell as? ExTicketCell {
                 let tickt = tickts[indexPath.item - constCellCounts]
                 cell.nameLabel.text = tickt.name
@@ -174,6 +181,10 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
         print("... minus")
     }
     
+    @objc private func priceChangeAction(sender: UIButton) {
+        print(priceChangeAction)
+    }
+    
 }
 
 extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
@@ -197,13 +208,13 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         case 0:
             height = collectionView.bounds.height / 3
         case 1:
-            let font = UIFont.systemFont(ofSize: 17)
+            let font = UIFont.systemFont(ofSize: 16)
             let str = self.exhibition.exDescription!
             let tmpHeight = heightForText(text: str, font: font, width: width - 20) + 16
             height = max(tmpHeight, 50)
 
         case 2:
-            let font = UIFont.systemFont(ofSize: 17)
+            let font = UIFont.systemFont(ofSize: 16)
             let str = "漫展详细地址：" + self.exhibition.addr
             let tmpHeight = heightForText(text: str, font: font, width: width - 20) + 16
             height = max(tmpHeight, 50)
