@@ -336,7 +336,9 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
     
     @objc private func moreWords() {
         self.readMore = !self.readMore
-        self.collectionView.reloadData()
+        
+        // just reload the specific indexPath
+        self.collectionView.reloadItems(at: [IndexPath(item: 1, section: 0)])
     }
     
     @objc private func plusAction() {
