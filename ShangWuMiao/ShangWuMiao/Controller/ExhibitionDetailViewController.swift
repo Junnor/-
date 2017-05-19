@@ -85,8 +85,26 @@ class ExhibitionDetailViewController: UIViewController {
         
         registerCollectionView()
         setNaviView()
-        setBlurView()
+        blurView = ExBlurView.blurViewFromNib()
+        loadExhibitionData()
+    
+        // keyboard notification
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardNotification(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
+                                               object: nil)
+    }
         
+     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    // MARK: - Helper
+    
+    private func loadExhibitionData() {
         exhibition.requestExhibitionListTickets { [weak self] (success, info, tickts) in
             if success {
                 self?.tickts = tickts
@@ -104,22 +122,7 @@ class ExhibitionDetailViewController: UIViewController {
                 print("request exhibition ticket failure: \(info!)")
             }
         }
-    
-        // keyboard notification
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardNotification(notification:)),
-                                               name: NSNotification.Name.UIKeyboardWillChangeFrame,
-                                               object: nil)
     }
-        
-     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-    }
-    
-    // MARK: - Helper
     
     private func registerCollectionView() {
         collectionView.register(UINib(nibName: "ExHeaderCell", bundle: nil), forCellWithReuseIdentifier: "ExHeaderCellID")
@@ -139,16 +142,13 @@ class ExhibitionDetailViewController: UIViewController {
         self.view.insertSubview(naviView, belowSubview: (navigationController?.navigationBar)!)
     }
     
-    private func setBlurView() {
-        blurView = ExBlurView.blurViewFromNib()
-    }
-
     @objc fileprivate func textFieldResignFirstResonder() {
         shadowView.isHidden = true
         phoneTextField.resignFirstResponder()
     }
     
     @IBAction func buy(_ sender: Any) {
+        // TODO: pay
         print("... buy")
     }
     
@@ -156,11 +156,17 @@ class ExhibitionDetailViewController: UIViewController {
     private let naviBarHeight: CGFloat = 64
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        if offsetY > 0 {
-            let alpha = min(offsetY/naviBarHeight, 1.0)
-            self.naviView.alpha = alpha
-        } else {
-            self.naviView.alpha = 0.0
+        
+        // for navi bar
+        self.naviView.alpha = (offsetY > 0) ? min(offsetY/naviBarHeight, 1.0) : 0.0
+        
+        // for blur view
+        var transform = CATransform3DIdentity
+        if offsetY < 0 {
+            let scale = -(offsetY * 2) / self.blurView.bounds.size.height;
+            transform = CATransform3DTranslate(transform, 0, offsetY, 0);
+            transform = CATransform3DScale(transform, 1.0 + scale, 1.0 + scale, 0);
+            self.blurView.layer.transform = transform;
         }
     }
 }
