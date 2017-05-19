@@ -39,3 +39,21 @@ extension String  {
         return String(format: hash as String)
     }
 }
+
+
+extension UIColor {
+    static var background: UIColor {
+        return UIColor(red: 239/255.0, green: 239/255.0, blue: 244/255.0, alpha: 1.0)
+    }
+    
+    static var themeRed: UIColor {
+        return UIColor(red: 255/255.0, green: 89/255.0, blue: 104/255.0, alpha: 1.0)
+    }
+    
+    
+    static var themeYellow: UIColor {
+        return UIColor(red: 255/255.0, green: 214/255.0, blue: 0.0, alpha: 1.0)
+    }
+
+}
+

@@ -34,7 +34,9 @@
 		8B03528E1ECEB9F000E46DEE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03528D1ECEB9F000E46DEE /* SystemConfiguration.framework */; };
 		8B0352E01ECEBF6800E46DEE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352DF1ECEBF6800E46DEE /* libz.tbd */; };
 		8B0352E21ECEBFAE00E46DEE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352E11ECEBFAE00E46DEE /* libc++.tbd */; };
-		8B0352E61ECED6A400E46DEE /* ClassHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352E51ECED6A400E46DEE /* ClassHelper.swift */; };
+		8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */; };
+		8B0352EB1ECEE17D00E46DEE /* URLAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352EA1ECEE17D00E46DEE /* URLAct.swift */; };
+		8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */; };
 		8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E1A741ECD42310017F11C /* ExAddressCell.swift */; };
 		8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0E1A751ECD42310017F11C /* ExAddressCell.xib */; };
 		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
@@ -58,8 +60,6 @@
 		8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */; };
 		8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */; };
 		8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */; };
-		8BDBE14C1EC319DD00482FC2 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */; };
-		8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDBE1541EC31A4800482FC2 /* URLAct.swift */; };
 		8BDE8EC51EC15E860000C1C8 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */; };
 		8BE380051EC1D71C001A6651 /* CommisionSoldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */; };
 		8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE380061EC1D73D001A6651 /* FeebackViewController.swift */; };
@@ -209,7 +209,9 @@
 		8B0352DE1ECEBE0500E46DEE /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
 		8B0352DF1ECEBF6800E46DEE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8B0352E11ECEBFAE00E46DEE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		8B0352E51ECED6A400E46DEE /* ClassHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHelper.swift; sourceTree = "<group>"; };
+		8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHelper.swift; sourceTree = "<group>"; };
+		8B0352EA1ECEE17D00E46DEE /* URLAct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAct.swift; sourceTree = "<group>"; };
+		8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		8B0E1A741ECD42310017F11C /* ExAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExAddressCell.swift; sourceTree = "<group>"; };
 		8B0E1A751ECD42310017F11C /* ExAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExAddressCell.xib; sourceTree = "<group>"; };
 		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
@@ -233,8 +235,6 @@
 		8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionDetailViewController.swift; sourceTree = "<group>"; };
 		8BDB068F1EC01DBC00F0A660 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		8BDB06AF1EC03C2F00F0A660 /* ComicViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicViewCell.swift; sourceTree = "<group>"; };
-		8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
-		8BDBE1541EC31A4800482FC2 /* URLAct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLAct.swift; sourceTree = "<group>"; };
 		8BDE8EC41EC15E860000C1C8 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		8BDE8EC81EC193260000C1C8 /* ShangWuMiao-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ShangWuMiao-Bridging-Header.h"; sourceTree = "<group>"; };
 		8BE380041EC1D71C001A6651 /* CommisionSoldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommisionSoldViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +322,7 @@
 				8B7A48D61EC0104500276058 /* View */,
 				8B7A48D51EC0103E00276058 /* Model */,
 				8B7A48D41EC0103400276058 /* Controller */,
+				8B0352E71ECEE16200E46DEE /* Helper */,
 				4460C2AC1E9B19F3004166DB /* Main.storyboard */,
 				4460C2AF1E9B19F3004166DB /* Assets.xcassets */,
 				4460C2B11E9B19F3004166DB /* LaunchScreen.storyboard */,
@@ -480,10 +481,19 @@
 			path = openssl;
 			sourceTree = "<group>";
 		};
+		8B0352E71ECEE16200E46DEE /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8B0352EA1ECEE17D00E46DEE /* URLAct.swift */,
+				8B0352E81ECEE16F00E46DEE /* ClassHelper.swift */,
+				8B0352EC1ECEE18500E46DEE /* GlobalFunctions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		8B7A48D41EC0103400276058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8B0352E51ECED6A400E46DEE /* ClassHelper.swift */,
 				8BF9B4681EC069360057531A /* LoginViewController.swift */,
 				8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */,
 				8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */,
@@ -503,8 +513,6 @@
 		8B7A48D51EC0103E00276058 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8BDBE1541EC31A4800482FC2 /* URLAct.swift */,
-				8BDBE14B1EC319DD00482FC2 /* GlobalFunctions.swift */,
 				8BE380181EC2EA37001A6651 /* User.swift */,
 				8B4753011ECE7E6400EDD02A /* UserPay.swift */,
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
@@ -764,11 +772,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BDBE1551EC31A4800482FC2 /* URLAct.swift in Sources */,
 				4460C2A91E9B19F3004166DB /* AppDelegate.swift in Sources */,
 				8B03527C1ECEB95E00E46DEE /* RSADataVerifier.m in Sources */,
 				8BE3800D1EC1DA7B001A6651 /* TopupViewController.swift in Sources */,
-				8BDBE14C1EC319DD00482FC2 /* GlobalFunctions.swift in Sources */,
 				8BE380111EC2A38A001A6651 /* TopupRecordCell.swift in Sources */,
 				8BE3800B1EC1D799001A6651 /* SoldTicketViewController.swift in Sources */,
 				8BE380151EC2A887001A6651 /* BoughtTicketCell.swift in Sources */,
@@ -793,12 +799,14 @@
 				8BCE2BA31ECC295D00ACA1BB /* CustomNaviBarView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
-				8B0352E61ECED6A400E46DEE /* ClassHelper.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */,
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,
 				8BDB06901EC01DBC00F0A660 /* TabBarViewController.swift in Sources */,
+				8B0352E91ECEE16F00E46DEE /* ClassHelper.swift in Sources */,
+				8B0352EB1ECEE17D00E46DEE /* URLAct.swift in Sources */,
 				8BF9B4691EC069360057531A /* LoginViewController.swift in Sources */,
+				8B0352ED1ECEE18500E46DEE /* GlobalFunctions.swift in Sources */,
 				8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */,
 				8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,

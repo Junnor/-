@@ -71,7 +71,7 @@ class ExhibitionDetailViewController: UIViewController {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
-            collectionView.backgroundColor = UIColor.backgroundColor
+            collectionView.backgroundColor = UIColor.background
             collectionView.showsVerticalScrollIndicator = false
         }
     }
@@ -252,7 +252,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                 return cell
             } else if indexPath.item == 2 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExAddressCellID", for: indexPath)
-                cell.backgroundColor = UIColor.backgroundColor
+                cell.backgroundColor = UIColor.background
                 if let cell = cell as? ExAddressCell {
                     cell.titleLabel.text = "漫展详细地址：" + self.exhibition.addr
                 }
@@ -268,12 +268,12 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                     cell.priceButton.addTarget(self, action: #selector(priceChangeAction(sender:)), for: .touchUpInside)
                     cell.priceButton.setTitle(originalPrice ? "显示代理价格" : "返回原价", for: .normal)
                     if originalPrice {
-                        cell.priceButton.backgroundColor = UIColor.backgroundColor
+                        cell.priceButton.backgroundColor = UIColor.background
                         cell.priceButton.layer.borderWidth = 1.0
-                        cell.priceButton.layer.borderColor = UIColor.red.cgColor
-                        cell.priceButton.setTitleColor(UIColor.red, for: .normal)
+                        cell.priceButton.layer.borderColor = UIColor.themeRed.cgColor
+                        cell.priceButton.setTitleColor(UIColor.themeRed, for: .normal)
                     } else {
-                        cell.priceButton.backgroundColor = UIColor.red
+                        cell.priceButton.backgroundColor = UIColor.themeRed
                         cell.priceButton.setTitleColor(UIColor.white, for: .normal)
                     }
                 }
@@ -289,22 +289,22 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                     cell.priceLabel?.text = originalPrice ? tickt.price : tickt.proxy_price
                     
                     cell.layer.borderWidth = 1.0
-                    cell.layer.borderColor = UIColor.red.cgColor
+                    cell.layer.borderColor = UIColor.themeRed.cgColor
                     
                     if cell.isSelected {
                         cell.nameLabel?.textColor = UIColor.white
                         cell.priceLabel?.textColor = UIColor.white
-                        cell.backgroundColor = UIColor.red
+                        cell.backgroundColor = UIColor.themeRed
                         
                         self.ticktPrice = Float(cell.priceLabel.text!)!
                     } else {
-                        cell.nameLabel?.textColor = UIColor.red
-                        cell.priceLabel?.textColor = UIColor.red
-                        cell.backgroundColor = UIColor.backgroundColor
+                        cell.nameLabel?.textColor = UIColor.themeRed
+                        cell.priceLabel?.textColor = UIColor.themeRed
+                        cell.backgroundColor = UIColor.background
                     }
                     
                     if !originalPrice && !cell.isSelected {
-                        cell.priceLabel?.textColor = UIColor.yellow
+                        cell.priceLabel?.textColor = UIColor.themeYellow
                     }
                 }
             }
@@ -374,7 +374,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
         if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
             cell.nameLabel?.textColor = UIColor.white
             cell.priceLabel?.textColor = UIColor.white
-            cell.backgroundColor = UIColor.red
+            cell.backgroundColor = UIColor.themeRed
             
             // for tickts count
             ticktsTimes = (lastSelectedIndexPath == indexPath) ? ticktsTimes : 1
@@ -384,12 +384,12 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? ExTicketCell {
-            cell.nameLabel?.textColor = UIColor.red
-            cell.priceLabel?.textColor = UIColor.red
-            cell.backgroundColor = UIColor.backgroundColor
+            cell.nameLabel?.textColor = UIColor.themeRed
+            cell.priceLabel?.textColor = UIColor.themeRed
+            cell.backgroundColor = UIColor.background
             
             if !originalPrice {
-                cell.priceLabel?.textColor = UIColor.yellow
+                cell.priceLabel?.textColor = UIColor.themeYellow
             }
           }
     }

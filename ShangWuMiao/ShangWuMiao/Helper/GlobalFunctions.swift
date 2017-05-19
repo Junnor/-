@@ -89,11 +89,3 @@ private func getStoredOauthData() {
     User.shared.oauth_token_secret = stored_oauth_token_secret
 }
 
-
-extension UIColor {
-    static var backgroundColor: UIColor {
-        return UIColor(red: 239/255.0, green: 239/255.0, blue: 244/255.0, alpha: 1.0)
-    }
-}
-
-

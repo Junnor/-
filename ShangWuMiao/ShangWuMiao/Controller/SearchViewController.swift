@@ -26,7 +26,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
     fileprivate lazy var shadowView: UIView! = {
         let shadow = UIView(frame: self.view.bounds)
         shadow.isHidden = true
-        shadow.backgroundColor = UIColor.backgroundColor
+        shadow.backgroundColor = UIColor.background
         shadow.alpha = 0.7
         shadow.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                            action: #selector(tapGesture)))

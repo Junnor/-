@@ -30,7 +30,6 @@ class ExhibitionTicketTableViewController: UITableViewController {
         tableView?.mj_header = headerRefresh
         
         tableView?.mj_header.beginRefreshing()
-
     }
 
     private var tickets = [Ticket]()

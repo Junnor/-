@@ -32,6 +32,12 @@ class TopupViewController: UIViewController {
         mcoinsLabel?.text = "\(User.shared.mcoins)"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("top up vc viewWillAppear")
+    }
+    
     fileprivate var currentMcoinsCount = 10 {
         didSet {
             mcoinsSumLabel?.text = "\(currentMcoinsCount)"
