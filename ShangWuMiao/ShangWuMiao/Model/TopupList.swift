@@ -66,14 +66,6 @@ extension TopupList {
                                     if let data = dic["data"] as? [Dictionary<String, AnyObject>] {
                                         var tmpLists = [TopupList]()
                                         for listDic in data {
-//                                            guard let price = listDic["order_price"] as? String,
-//                                            let id = listDic["orderid"] as? String,
-//                                            let title = listDic["ordertitle"] as? String,
-//                                                let payStatus = listDic["pay_status"] as? Int else {
-//                                                    completionHandler(false, "cast top up list data failure", [])
-//                                                    return
-//                                            }
-                                            
                                             let price = listDic["order_price"] as! String
                                             let id = listDic["orderid"] as! String
                                             let title = listDic["ordertitle"] as! String
@@ -90,7 +82,6 @@ extension TopupList {
                                         completionHandler(true, nil, tmpLists)
                                     }
                                 }
-                                print("top up list json: \(json)")
                             case .failure(let error):
                                 print("request top up list error: \(error)")
                             }
