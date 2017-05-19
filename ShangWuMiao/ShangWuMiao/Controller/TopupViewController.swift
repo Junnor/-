@@ -21,6 +21,7 @@ class TopupViewController: UIViewController {
         }
     }
     
+    fileprivate let userPay = UserPay()
     fileprivate let topupIdentifier = "top up identifier"
 
     override func viewDidLoad() {
@@ -31,7 +32,7 @@ class TopupViewController: UIViewController {
         mcoinsLabel?.text = "\(User.shared.mcoins)"
     }
     
-    private var currentMcoinsCount = 10 {
+    fileprivate var currentMcoinsCount = 10 {
         didSet {
             mcoinsSumLabel?.text = "\(currentMcoinsCount)"
             sumIndicatorLabel?.text = "\(currentMcoinsCount)"
@@ -79,8 +80,19 @@ extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
             print("using alipay")
+            userPay.pay(withType: Pay.alipay,
+                        orderPrice: Float(currentMcoinsCount),
+                        completionHandler: { (success, info) in
+                
+            })
         } else {  // wechat
             print("using wechat")
+            userPay.pay(withType: Pay.wechat,
+                        orderPrice: Float(currentMcoinsCount),
+                        completionHandler: { (success, info) in
+      
+            })
+        
         }
     }
 }

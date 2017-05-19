@@ -18,6 +18,7 @@
 		4460C2F01E9B1B70004166DB /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4460C2E21E9B1B5B004166DB /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E1A741ECD42310017F11C /* ExAddressCell.swift */; };
 		8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0E1A751ECD42310017F11C /* ExAddressCell.xib */; };
+		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
@@ -161,6 +162,7 @@
 		590987E7D1A7B64976B5ADA9 /* Pods-ShangWuMiao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShangWuMiao.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShangWuMiao/Pods-ShangWuMiao.release.xcconfig"; sourceTree = "<group>"; };
 		8B0E1A741ECD42310017F11C /* ExAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExAddressCell.swift; sourceTree = "<group>"; };
 		8B0E1A751ECD42310017F11C /* ExAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExAddressCell.xib; sourceTree = "<group>"; };
+		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				8BF6E7551EC3092B004FE5BB /* Exhibition.swift */,
 				8B84EAD41EC54720001B1BFF /* Ticket.swift */,
 				8B84EB011EC587FB001B1BFF /* TopupList.swift */,
+				8B4753011ECE7E6400EDD02A /* UserPay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				8BDB06881EC0178100F0A660 /* ExhibitionViewController.swift in Sources */,
 				8BF6E7561EC3092B004FE5BB /* Exhibition.swift in Sources */,
 				8BCE2BB11ECC375200ACA1BB /* ExInputHintCell.swift in Sources */,
+				8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

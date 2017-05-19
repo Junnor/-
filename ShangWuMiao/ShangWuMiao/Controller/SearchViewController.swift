@@ -193,7 +193,7 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
 }
 
 extension SearchViewController: UISearchBarDelegate {
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
 
