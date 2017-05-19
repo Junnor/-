@@ -7,8 +7,7 @@
 //
 
 import UIKit
-
-import UIKit
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,5 +49,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
+    // pay callback
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        print(".. application open url: \(url)")
+        if url.host == "safepay" {
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
+                let json = JSON(response as Any)
+                print("processOrder response: \(String(describing: json))")
+                let status = json["resultStatus"].intValue
+                print("processOrder resultStatus: \(status)")
+
+                // tell database
+                UserPay.payResult(tradeStatus: status, callback: { success, info in
+                    if success {
+                        print("... tell me succes")
+                    } else {
+                        print("... tell me failure: \(info!)")
+                    }
+                })
+            })
+            
+            AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
+                print("processAuth_V2Result response: \(String(describing: response))")
+            })
+        }
+        
+        return true
+    }
 }

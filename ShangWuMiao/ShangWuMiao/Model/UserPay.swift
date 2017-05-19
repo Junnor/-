@@ -15,10 +15,13 @@ enum Pay: String {
     case alipay = "alipay"
 }
 
-class UserPay {
+final class UserPay {
+    
+    // MARK: - singleton
+    static let shared = UserPay()
+    private init() {}
     
     var orderPrice: Float!
-    var tradeNo: String!
     var order_id: String!
     
     // for alipay
@@ -27,18 +30,11 @@ class UserPay {
     // for wechat
     var wechat_sign_str: String!
     var appid: String!
-
-    
-    convenience init(orderPrice: Float) {
-        self.init()
-        
-        self.orderPrice = orderPrice
-    }
 }
 
 extension UserPay {
-    func pay(withType payType: Pay, orderPrice: Float, completionHandler: @escaping (Bool, String?) -> ()) {
-        self.orderPrice = orderPrice
+    static func pay(withType payType: Pay, orderPrice: Float, completionHandler: @escaping (Bool, String?) -> ()) {
+        UserPay.shared.orderPrice = orderPrice
         
         let stringPara = stringParameters(actTo: ActType.rechargeMb)
         let userinfoString = kHeaderUrl + RequestURL.kRechargeUrlString + stringPara
@@ -60,12 +56,12 @@ extension UserPay {
                                 let info = json["info"].stringValue
                                 if json["status"].intValue == 1 {
                                     let order_id = json["order_id"].stringValue
-                                    self.order_id = order_id
+                                    UserPay.shared.order_id = order_id
                                     switch payType {
                                     case .alipay:
                                         let sign_str = json["sign_str"].stringValue
                                         
-                                        self.alipay_sign_str = sign_str
+                                        UserPay.shared.alipay_sign_str = sign_str
                                     case .wechat:
                                         if let wechatSource = json["wx_sign"].dictionary {
                                             let wechat = JSON(wechatSource)
@@ -79,11 +75,12 @@ extension UserPay {
 //                                            let prepayid = wechat["prepayid"].stringValue
 //                                            let timestamp = wechat["timestamp"].stringValue
                                             
-                                            self.wechat_sign_str = sign
-                                            self.appid = appid
+                                            UserPay.shared.wechat_sign_str = sign
+                                            UserPay.shared.appid = appid
                                         }
                                     }
                                     completionHandler(true, nil)
+                                    return
                                 }
                                 completionHandler(false, info)
                             case .failure(let error):
@@ -94,15 +91,15 @@ extension UserPay {
         
     }
     
-    func paySuccess(callback completionHandler: @escaping (Bool, String?) -> ()) {
+    static func payResult(tradeStatus status: Int, callback completionHandler: @escaping (Bool, String?) -> ()) {
         let stringPara = stringParameters(actTo: ActType.recharge_back)
         let userinfoString = kHeaderUrl + RequestURL.kRechargeBackUrlString + stringPara
         
         let url = URL(string: userinfoString)
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
-                          "order_price": self.orderPrice,
-                          "out_trade_no": self.orderPrice,
-                          "trade_status": 9000] as [String : Any]
+                          "order_price": UserPay.shared.orderPrice,
+                          "out_trade_no": UserPay.shared.order_id,
+                          "trade_status": status] as [String : Any]
         
         Alamofire.request(url!,
                           method: .post,
@@ -113,8 +110,13 @@ extension UserPay {
                             case .success(let jsonResource):
                                 print("pay success json: \(jsonResource)")
                                 let json = JSON(jsonResource)
-                                print("info = \(json["info"].stringValue)")
-                                completionHandler(true, nil)
+                                let info = json["info"].stringValue
+                                guard let status = json["status"].int,
+                                status == 1 else {
+                                    completionHandler(false, info)
+                                    return
+                                }
+                                completionHandler(true, info)
                             case .failure(let error):
                                 print("pay callback error: \(error)")
                             }

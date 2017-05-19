@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TopupViewController: UIViewController {
     
     @IBOutlet weak var mcoinsLabel: UILabel!
@@ -21,7 +22,6 @@ class TopupViewController: UIViewController {
         }
     }
     
-    fileprivate let userPay = UserPay()
     fileprivate let topupIdentifier = "top up identifier"
 
     override func viewDidLoad() {
@@ -37,6 +37,14 @@ class TopupViewController: UIViewController {
             mcoinsSumLabel?.text = "\(currentMcoinsCount)"
             sumIndicatorLabel?.text = "\(currentMcoinsCount)"
         }
+    }
+    
+    fileprivate func alipayAction() {
+        AlipaySDK.defaultService().payOrder(UserPay.shared.alipay_sign_str,
+                                            fromScheme: "nyatoalipay",
+                                            callback: { response in
+                                                print("alipay payOrder call back = \(String(describing: response))")
+        })
     }
     
     @IBAction func mcoinsHundredPlusAction(_ sender: Any) {
@@ -79,15 +87,17 @@ extension TopupViewController: UITableViewDataSource {
 extension TopupViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {   // alipay
-            print("using alipay")
-            userPay.pay(withType: Pay.alipay,
-                        orderPrice: Float(currentMcoinsCount),
-                        completionHandler: { (success, info) in
-                
+            UserPay.pay(withType: Pay.alipay,
+                        orderPrice: Float(1),
+                        completionHandler: { [weak self] (success, info) in
+                            if success {
+                                self?.alipayAction()
+                            } else {
+                                print("alipay pay failure: \(info!)")
+                            }
             })
         } else {  // wechat
-            print("using wechat")
-            userPay.pay(withType: Pay.wechat,
+            UserPay.pay(withType: Pay.wechat,
                         orderPrice: Float(currentMcoinsCount),
                         completionHandler: { (success, info) in
       

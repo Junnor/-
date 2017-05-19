@@ -34,6 +34,7 @@
 		8B03528E1ECEB9F000E46DEE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B03528D1ECEB9F000E46DEE /* SystemConfiguration.framework */; };
 		8B0352E01ECEBF6800E46DEE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352DF1ECEBF6800E46DEE /* libz.tbd */; };
 		8B0352E21ECEBFAE00E46DEE /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B0352E11ECEBFAE00E46DEE /* libc++.tbd */; };
+		8B0352E61ECED6A400E46DEE /* ClassHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0352E51ECED6A400E46DEE /* ClassHelper.swift */; };
 		8B0E1A761ECD42310017F11C /* ExAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0E1A741ECD42310017F11C /* ExAddressCell.swift */; };
 		8B0E1A771ECD42310017F11C /* ExAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0E1A751ECD42310017F11C /* ExAddressCell.xib */; };
 		8B4753021ECE7E6400EDD02A /* UserPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4753011ECE7E6400EDD02A /* UserPay.swift */; };
@@ -208,6 +209,7 @@
 		8B0352DE1ECEBE0500E46DEE /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
 		8B0352DF1ECEBF6800E46DEE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8B0352E11ECEBFAE00E46DEE /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8B0352E51ECED6A400E46DEE /* ClassHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassHelper.swift; sourceTree = "<group>"; };
 		8B0E1A741ECD42310017F11C /* ExAddressCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExAddressCell.swift; sourceTree = "<group>"; };
 		8B0E1A751ECD42310017F11C /* ExAddressCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExAddressCell.xib; sourceTree = "<group>"; };
 		8B4753011ECE7E6400EDD02A /* UserPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPay.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 		8B7A48D41EC0103400276058 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8B0352E51ECED6A400E46DEE /* ClassHelper.swift */,
 				8BF9B4681EC069360057531A /* LoginViewController.swift */,
 				8BDB06871EC0178100F0A660 /* ExhibitionViewController.swift */,
 				8BDB068B1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift */,
@@ -790,6 +793,7 @@
 				8BCE2BA31ECC295D00ACA1BB /* CustomNaviBarView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
+				8B0352E61ECED6A400E46DEE /* ClassHelper.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */,
 				8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */,
 				8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */,

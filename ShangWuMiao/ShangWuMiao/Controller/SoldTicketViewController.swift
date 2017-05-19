@@ -23,16 +23,8 @@ class SoldTicketViewController: UIViewController, UITableViewDataSource, UITable
         title = "已购票的漫展"
         
         // set navigation bar
-        let backImage = UIImage(named: "nav-expoed")
-        backImage?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: backImage!.size.width - 1, bottom: 0, right: 0))
-        
-        let appearance = UIBarButtonItem.appearance()
-        appearance.setBackButtonBackgroundImage(backImage, for: .normal, barMetrics: .default)
-        
-        let backItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
+        customizeBackItem()
 
-        
         // refresh
         let headerHandler = #selector(loadTicketExhibition)
         

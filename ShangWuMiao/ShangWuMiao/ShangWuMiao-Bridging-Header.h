@@ -9,7 +9,10 @@
 #ifndef ShangWuMiao_Bridging_Header_h
 #define ShangWuMiao_Bridging_Header_h
 
+// string md5
 #import <CommonCrypto/CommonCrypto.h>
+#import <AlipaySDK/AlipaySDK.h>
+
 
 #endif /* ShangWuMiao_Bridging_Header_h */
 

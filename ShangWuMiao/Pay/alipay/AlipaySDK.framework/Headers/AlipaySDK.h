@@ -12,7 +12,7 @@
 /////////// version:15.3.3  motify:2017.03.07 ///////////
 ////////////////////////////////////////////////////////
 
-
+#import <UIKit/UIKit.h>
 #import "APayAuthInfo.h"
 typedef enum {
     ALIPAY_TIDFACTOR_IMEI,
