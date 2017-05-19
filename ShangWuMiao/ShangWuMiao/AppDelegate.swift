@@ -51,13 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // pay callback
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-//        print(".. application open url: \(url)")
         if url.host == "safepay" {
             AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { response in
                 let json = JSON(response as Any)
                 print("processOrder response: \(String(describing: json))")
                 let status = json["resultStatus"].intValue
-                print("processOrder resultStatus: \(status)")
+
+                UserPay.shared.paySuccess = status == 9000 ? true : false
 
                 // tell database
                 UserPay.payResult(tradeStatus: status, callback: { success, info in
@@ -71,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             AlipaySDK.defaultService().processAuth_V2Result(url, standbyCallback: { response in
                 print("processAuth_V2Result response: \(String(describing: response))")
+                // TODO:
             })
         }
         

@@ -30,6 +30,9 @@ final class UserPay {
     // for wechat
     var wechat_sign_str: String!
     var appid: String!
+    
+    // for 
+    var paySuccess: Bool!
 }
 
 extension UserPay {

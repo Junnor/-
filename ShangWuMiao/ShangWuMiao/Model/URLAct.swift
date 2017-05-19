@@ -12,6 +12,7 @@ let kHeaderUrl = "https://apiplus.nyato.com"
 let kImageHeaderUrl = "https://img.nyato.com/"
 let kSecretKey = "us8dgf30hjRJGFU21"
 let kAppVersion = "2.0"
+let kAlipaySchema = "NyatoVendorAlipay"
 
 struct RequestURL {
     static let kLoginUrlString = "/index.php?app=ios&mod=Member&act=login"

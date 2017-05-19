@@ -41,7 +41,7 @@ class TopupViewController: UIViewController {
     
     fileprivate func alipayAction() {
         AlipaySDK.defaultService().payOrder(UserPay.shared.alipay_sign_str,
-                                            fromScheme: "nyatoalipay",
+                                            fromScheme: kAlipaySchema,
                                             callback: { response in
                                                 print("alipay payOrder call back = \(String(describing: response))")
         })
