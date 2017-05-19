@@ -10,7 +10,7 @@ import UIKit
 
 class ExHeaderCell: UICollectionViewCell {
 
-    @IBOutlet weak var backgroundImageView: UIImageView!
+//    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var exImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!

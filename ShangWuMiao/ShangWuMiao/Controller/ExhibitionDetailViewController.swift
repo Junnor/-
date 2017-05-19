@@ -20,6 +20,8 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate let constCellCounts = 4
     fileprivate var tickts = [Ticket]()
     private var naviView: CustomNaviBarView!
+    fileprivate var blurView: ExBlurView!
+    fileprivate var layerBlurView = false
 
     fileprivate let limitLines = 6
     fileprivate let showMoreButtonWithGap: CGFloat = 50
@@ -73,6 +75,7 @@ class ExhibitionDetailViewController: UIViewController {
             collectionView.delegate = self
             collectionView.backgroundColor = UIColor.background
             collectionView.showsVerticalScrollIndicator = false
+            collectionView.alwaysBounceVertical = true
         }
     }
     
@@ -82,6 +85,7 @@ class ExhibitionDetailViewController: UIViewController {
         
         registerCollectionView()
         setNaviView()
+        setBlurView()
         
         exhibition.requestExhibitionListTickets { [weak self] (success, info, tickts) in
             if success {
@@ -134,6 +138,10 @@ class ExhibitionDetailViewController: UIViewController {
         
         self.view.insertSubview(naviView, belowSubview: (navigationController?.navigationBar)!)
     }
+    
+    private func setBlurView() {
+        blurView = ExBlurView.blurViewFromNib()
+    }
 
     @objc fileprivate func textFieldResignFirstResonder() {
         shadowView.isHidden = true
@@ -168,13 +176,10 @@ extension ExhibitionDetailViewController {
             let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
-            print("...end frame = \(endFrame!)")
+            // TODO: keyboard
             if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
-                print("... 0")
-
                 self.collectionView.frame.origin.y = 0
             } else {
-                print("... -50")
                 self.collectionView.frame.origin.y = -50
             }
             UIView.animate(withDuration: duration,
@@ -210,12 +215,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                                                      progressBlock: nil,
                                                      completionHandler: nil)
                         
-                        
-                        cell.backgroundImageView.kf.setImage(with: resourcce,
-                                                             placeholder: nil,
-                                                             options: [.transition(.fade(1))],
-                                                             progressBlock: nil,
-                                                             completionHandler: nil)
+                        blurView.blurImageView.kf.setImage(with: resourcce)
                     }
                     
                     cell.nameLabel.text = self.exhibition.name
@@ -230,6 +230,15 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
                     let endTime = exhibition.exhibition(stringTime: self.exhibition.end_time, digit: true)
                     
                     cell.timeLabel.text = "\(startTime) - \(endTime)"
+                    
+                    // blur view
+                    if !self.layerBlurView {
+                        self.layerBlurView = true
+                        
+                        self.blurView.frame = cell.frame;
+                        self.blurView.layer.zPosition = -1
+                        self.collectionView.insertSubview(self.blurView, at: 0)
+                    }
                 }
                 
                 return cell
