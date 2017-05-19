@@ -11,5 +11,6 @@ target 'ShangWuMiao' do
   pod 'MJRefresh'
   pod 'SwiftyJSON'
   pod 'Alamofire', '~> 4.4'
+  pod 'SVProgressHUD'
 
 end
