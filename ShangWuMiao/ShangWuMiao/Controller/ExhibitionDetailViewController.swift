@@ -9,6 +9,7 @@
 
 import UIKit
 import Kingfisher
+import SVProgressHUD
 
 class ExhibitionDetailViewController: UIViewController {
     
@@ -25,7 +26,7 @@ class ExhibitionDetailViewController: UIViewController {
             collectionView.alwaysBounceVertical = true
         }
     }
-
+    
     // MARK: - Public property set from segue
     var exhibition: Exhibition!
     
@@ -34,7 +35,7 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate var tickts = [Ticket]()
     fileprivate var blurView: ExBlurView!
     fileprivate var layerBlurView = false
-
+    
     fileprivate let limitLines = 6
     fileprivate let showMoreButtonWithGap: CGFloat = 50
     fileprivate let noMoreButtonWithGap: CGFloat = 20
@@ -88,14 +89,14 @@ class ExhibitionDetailViewController: UIViewController {
         registerCollectionView()
         blurView = ExBlurView.blurViewFromNib()
         loadExhibitionData()
-
+        
         // keyboard notification
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
                                                name: NSNotification.Name.UIKeyboardWillChangeFrame,
                                                object: nil)
     }
-        
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -154,14 +155,70 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     @IBAction func buy(_ sender: Any) {
-        // TODO: pay
-        print("... buy")
+        let result = isPhoneNumber(phoneNumber: self.phoneTextField.text)
+        if result.info != nil {
+            SVProgressHUD.showInfo(withStatus: result.info!)
+        } else {
+            if let price = Float((priceLabel?.text)!) {
+                // TODO: - Test price
+                let testPrice: Float = 1.0
+                let message = "确认购买门票？\n [请确认手机号码无误] \n\n 数量：\(ticktsTimes) \n\n 总价：\(testPrice)"
+                let alert = UIAlertController(title: "确认购买", message: message, preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "取消", style: .default, handler: nil)
+                let ok = UIAlertAction(title: "确定", style: .destructive) { [weak self] _ in
+                    if User.shared.mcoins >= price {
+                        if self != nil {
+                            let tickt = self?.tickts[(self?.lastSelectedIndexPath.item)!]
+                            User.buyTickt(ticktId: Int(tickt!.id)!,
+                                          counts: (self?.ticktsTimes)!,
+                                          phone: (self?.phoneTextField.text!)!,
+                                          price: testPrice,
+                                          callBack: { success, info in
+                                            if success {
+                                                if let ticktsvc = self?.storyboard?.instantiateViewController(withIdentifier: "SoldTicketViewController") as? SoldTicketViewController {
+                                                    self?.navigationController?.pushViewController(ticktsvc, animated: true)
+                                                }
+                                                SVProgressHUD.showSuccess(withStatus: info)
+                                            } else {
+                                                SVProgressHUD.showError(withStatus: info)
+                                            }
+                            })
+                        }
+                    } else {
+                        if let topupvc = self?.storyboard?.instantiateViewController(withIdentifier: "TopupViewController") as? TopupViewController {
+                            self?.navigationController?.pushViewController(topupvc, animated: true)
+                        }
+                    }
+                }
+                alert.addAction(cancel)
+                alert.addAction(ok)
+                present(alert, animated: true, completion: nil)
+            }
+            
+        }
     }
+    
+    private func isPhoneNumber(phoneNumber:String?) -> (success: Bool, info: String?) {
+        if let phoneNumber = phoneNumber {
+            if phoneNumber.characters.count == 0 {
+                return (false, "手机号码不能为空...")
+            }
+            let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"
+            let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+            if regexMobile.evaluate(with: phoneNumber) == true {
+                return (true, nil)
+            } else {
+                return (false, "请输入正确的手机号码...")
+            }
+        }
+        return (false, "手机号码不能为空...")
+    }
+    
     
     // set navigation bar
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-
+        
         // for navi bar
         naviBarTintColorWith(offsetY: offsetY)
         
@@ -194,6 +251,7 @@ class ExhibitionDetailViewController: UIViewController {
             self.navigationController?.navigationBar.shadowImage = UIImage()
         }
     }
+    
 }
 
 // MARK: - Keyboard action
@@ -396,7 +454,7 @@ extension ExhibitionDetailViewController: UICollectionViewDataSource {
         originalPrice = !originalPrice
         
         let lastSelectedIndex = collectionView.indexPathsForSelectedItems?.first
-
+        
         self.collectionView.reloadData()
         
         self.collectionView.selectItem(at: lastSelectedIndex, animated: true, scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
@@ -431,7 +489,7 @@ extension ExhibitionDetailViewController: UICollectionViewDelegateFlowLayout {
             if !originalPrice {
                 cell.priceLabel?.textColor = UIColor.themeYellow
             }
-          }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

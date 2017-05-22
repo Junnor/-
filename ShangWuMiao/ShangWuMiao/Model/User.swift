@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 final class User {
     
@@ -50,7 +51,7 @@ final class User {
     // 金额, 有两位小数点
     var mcoins: Float = 0.00
     
-
+    
     // MARK: - clean after sign out
     func clean() {
         uid = ""
@@ -70,7 +71,7 @@ extension User {
     
     // MARK: - Login
     static func login(parameters: Dictionary<String, String>,
-               completionHandler: @escaping (Int, String) -> ()) {
+                      completionHandler: @escaping (Int, String) -> ()) {
         let loginSecret = kSecretKey + ActType.login
         let token = loginSecret.md5
         let loginUrlString = kHeaderUrl + RequestURL.kLoginUrlString + "&token=" + token!
@@ -107,11 +108,39 @@ extension User {
                             case .failure(let error):
                                 print("login error = \(error)")
                             }
-                            
         }
         
     }
-
+    
+    // MARK: - Buy tickt
+    static func buyTickt(ticktId id: Int, counts: Int, phone: String, price: Float, callBack: @escaping (Bool, String) -> ()) {
+        let stringPara = stringParameters(actTo: ActType.buyTicket)
+        let userinfoString = kHeaderUrl + RequestURL.kBuyTicktUrlString + stringPara
+        let url = URL(string: userinfoString)
+        
+        let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
+                          "ticket_id": id,
+                          "shop_num": counts,
+                          "tel": phone,
+                          "price": price] as [String : Any]
+        Alamofire.request(url!,
+                          method: .post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil).responseJSON { response in
+                            switch response.result {
+                            case .success(let source):
+                                let json = JSON(source)
+                                let info = json["info"].stringValue
+                                let status = json["status"].intValue
+                                callBack(status == 1, info)
+                            case .failure(let error):
+                                print("buy tickts error: \(error)")
+                                callBack(false, "购票错误")
+                            }
+        }
+    }
+    
     // MARK: - User info
     static func requestUserInfo(completionHandler: @escaping (Bool, String?) -> ()) {
         let stringPara = stringParameters(actTo: ActType.getuinfo)
@@ -186,15 +215,15 @@ extension User {
             
             return "appVersion: \(appVersion), systemVersion: \(systemVersion), device: \(model)"
         }
-
+        
         // config
         let parameters = ["uid": NSString(string: User.shared.uid).integerValue,
                           "denounce": text,
                           "type": "iOS",
                           "id": 0,
                           "denounce_version": deviceParameters()] as [String : Any]
-
-
+        
+        
         Alamofire.request(url!, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
             switch response.result {
             case .success(let json):
