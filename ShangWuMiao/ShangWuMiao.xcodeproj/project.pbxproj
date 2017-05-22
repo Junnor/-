@@ -45,8 +45,6 @@
 		8B84EACC1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */; };
 		8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EAD41EC54720001B1BFF /* Ticket.swift */; };
 		8B84EB021EC587FB001B1BFF /* TopupList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84EB011EC587FB001B1BFF /* TopupList.swift */; };
-		8BCE2BA31ECC295D00ACA1BB /* CustomNaviBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA11ECC295D00ACA1BB /* CustomNaviBarView.swift */; };
-		8BCE2BA41ECC295D00ACA1BB /* CustomNaviBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA21ECC295D00ACA1BB /* CustomNaviBarView.xib */; };
 		8BCE2BA91ECC351700ACA1BB /* ExHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */; };
 		8BCE2BAA1ECC351700ACA1BB /* ExHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */; };
 		8BCE2BAD1ECC369E00ACA1BB /* ExDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */; };
@@ -222,8 +220,6 @@
 		8B84EACB1EC54546001B1BFF /* ExhibitionTicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExhibitionTicketTableViewController.swift; sourceTree = "<group>"; };
 		8B84EAD41EC54720001B1BFF /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		8B84EB011EC587FB001B1BFF /* TopupList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopupList.swift; sourceTree = "<group>"; };
-		8BCE2BA11ECC295D00ACA1BB /* CustomNaviBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNaviBarView.swift; sourceTree = "<group>"; };
-		8BCE2BA21ECC295D00ACA1BB /* CustomNaviBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomNaviBarView.xib; sourceTree = "<group>"; };
 		8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExHeaderCell.swift; sourceTree = "<group>"; };
 		8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExHeaderCell.xib; sourceTree = "<group>"; };
 		8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExDescriptionCell.swift; sourceTree = "<group>"; };
@@ -543,8 +539,6 @@
 		8BCE2B991ECC294000ACA1BB /* ExhibitionDetail */ = {
 			isa = PBXGroup;
 			children = (
-				8BCE2BA11ECC295D00ACA1BB /* CustomNaviBarView.swift */,
-				8BCE2BA21ECC295D00ACA1BB /* CustomNaviBarView.xib */,
 				8BCE2BA71ECC351700ACA1BB /* ExHeaderCell.swift */,
 				8BCE2BA81ECC351700ACA1BB /* ExHeaderCell.xib */,
 				8BCE2BAB1ECC369E00ACA1BB /* ExDescriptionCell.swift */,
@@ -702,7 +696,6 @@
 				8BCE2BB61ECC3A5D00ACA1BB /* ExTicketCell.xib in Resources */,
 				4460C2B01E9B19F3004166DB /* Assets.xcassets in Resources */,
 				4460C2AE1E9B19F3004166DB /* Main.storyboard in Resources */,
-				8BCE2BA41ECC295D00ACA1BB /* CustomNaviBarView.xib in Resources */,
 				8BCE2BBA1ECC3F9500ACA1BB /* ExFooterView.xib in Resources */,
 				8BCE2BAE1ECC369E00ACA1BB /* ExDescriptionCell.xib in Resources */,
 				8BCE2BB21ECC375200ACA1BB /* ExInputHintCell.xib in Resources */,
@@ -804,7 +797,6 @@
 				8BE380071EC1D73D001A6651 /* FeebackViewController.swift in Sources */,
 				8BCE2BB91ECC3F9500ACA1BB /* ExFooterView.swift in Sources */,
 				8B05263C1ECF002A0090F11B /* ExBlurView.swift in Sources */,
-				8BCE2BA31ECC295D00ACA1BB /* CustomNaviBarView.swift in Sources */,
 				8BDB06B01EC03C2F00F0A660 /* ComicViewCell.swift in Sources */,
 				8B84EAD51EC54720001B1BFF /* Ticket.swift in Sources */,
 				8BDB068C1EC01A4F00F0A660 /* ExhibitionDetailViewController.swift in Sources */,

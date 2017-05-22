@@ -5,7 +5,6 @@
 //  Created by Ju on 2017/5/8.
 //  Copyright © 2017年 moelove. All rights reserved.
 //
-// navigation bar 的设置没弄好
 // colection view 的选择处理一团糟
 
 import UIKit
@@ -13,13 +12,26 @@ import Kingfisher
 
 class ExhibitionDetailViewController: UIViewController {
     
+    // MARK: - Outlets
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.dataSource = self
+            collectionView.delegate = self
+            collectionView.backgroundColor = UIColor.background
+            collectionView.showsVerticalScrollIndicator = false
+            collectionView.alwaysBounceVertical = true
+        }
+    }
+
     // MARK: - Public property set from segue
     var exhibition: Exhibition!
     
     // MARK: - Private properties
     fileprivate let constCellCounts = 4
     fileprivate var tickts = [Ticket]()
-    private var naviView: CustomNaviBarView!
     fileprivate var blurView: ExBlurView!
     fileprivate var layerBlurView = false
 
@@ -66,28 +78,17 @@ class ExhibitionDetailViewController: UIViewController {
     fileprivate weak var phoneTextField: UITextField!
     fileprivate weak var ticktsTimesLabel: UILabel!
     
-    // MARK: - Outlets
-    @IBOutlet weak var priceLabel: UILabel!
-    
-    @IBOutlet weak var collectionView: UICollectionView! {
-        didSet {
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.backgroundColor = UIColor.background
-            collectionView.showsVerticalScrollIndicator = false
-            collectionView.alwaysBounceVertical = true
-        }
-    }
-    
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.titleLabel?.text = self.exhibition.name
+        self.titleLabel?.isHidden = true
+        
         registerCollectionView()
-        setNaviView()
         blurView = ExBlurView.blurViewFromNib()
         loadExhibitionData()
-    
+
         // keyboard notification
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardNotification(notification:)),
@@ -95,11 +96,24 @@ class ExhibitionDetailViewController: UIViewController {
                                                object: nil)
     }
         
-     override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        if currentBarTintColor != nil {
+            let image = UIImage.from(color: currentBarTintColor)
+            self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+            self.navigationController?.navigationBar.shadowImage = image
+        } else {
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
     }
     
     // MARK: - Helper
@@ -134,14 +148,6 @@ class ExhibitionDetailViewController: UIViewController {
         collectionView.register(UINib(nibName: "ExFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "ExFooterViewID")
     }
     
-    private func setNaviView() {
-        // custom navigation bar view
-        naviView = CustomNaviBarView.naviBarViewFromNib()
-        naviView.alpha = 0.0
-        
-        self.view.insertSubview(naviView, belowSubview: (navigationController?.navigationBar)!)
-    }
-    
     @objc fileprivate func textFieldResignFirstResonder() {
         shadowView.isHidden = true
         phoneTextField.resignFirstResponder()
@@ -153,12 +159,11 @@ class ExhibitionDetailViewController: UIViewController {
     }
     
     // set navigation bar
-    private let naviBarHeight: CGFloat = 64
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
-        
+
         // for navi bar
-        self.naviView.alpha = (offsetY > 0) ? min(offsetY/naviBarHeight, 1.0) : 0.0
+        naviBarTintColorWith(offsetY: offsetY)
         
         // for blur view
         var transform = CATransform3DIdentity
@@ -167,6 +172,26 @@ class ExhibitionDetailViewController: UIViewController {
             transform = CATransform3DTranslate(transform, 0, offsetY, 0);
             transform = CATransform3DScale(transform, 1.0 + scale, 1.0 + scale, 0);
             self.blurView.layer.transform = transform;
+        }
+    }
+    
+    private var currentBarTintColor: UIColor!
+    private func naviBarTintColorWith(offsetY: CGFloat) {
+        if offsetY >= 0 {
+            let alpha = min(offsetY / 64, 1.0)
+            let color = UIColor.naviBarTintColor(alpha: alpha)
+            
+            currentBarTintColor = color
+            
+            let image = UIImage.from(color: color)
+            self.navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+            self.navigationController?.navigationBar.shadowImage = image
+            
+            self.titleLabel?.alpha = alpha
+            self.titleLabel?.isHidden = false
+        } else {
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationController?.navigationBar.shadowImage = UIImage()
         }
     }
 }

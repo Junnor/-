@@ -20,7 +20,7 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - View controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.itemSize = CGSize(width: view.bounds.width, height: 120)
         layout?.minimumLineSpacing = 0
@@ -40,12 +40,6 @@ class ExhibitionViewController: UIViewController, UICollectionViewDataSource, UI
     
     private let exhibition = Exhibition()
     private var exhibitions = [Exhibition]()
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-    }
     
     // MARK: - Navigation
     

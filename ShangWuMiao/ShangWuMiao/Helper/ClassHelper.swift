@@ -8,8 +8,17 @@
 
 import UIKit
 
-class ClassHelper: NSObject {
-
+extension UIImage {
+    static func from(color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
 }
 
 extension UIViewController {
@@ -42,6 +51,15 @@ extension String  {
 
 
 extension UIColor {
+    
+    static func naviBarTintColor(alpha: CGFloat) -> UIColor {
+        return UIColor(red: 31/255.0, green: 31/255.0, blue: 31/255.0, alpha: alpha)
+    }
+    
+    static var barTintColor: UIColor {
+        return UIColor(red: 31/255.0, green: 31/255.0, blue: 31/255.0, alpha: 1.0)
+    }
+
     static var background: UIColor {
         return UIColor(red: 239/255.0, green: 239/255.0, blue: 244/255.0, alpha: 1.0)
     }

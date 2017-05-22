@@ -977,7 +977,7 @@
             </objects>
             <point key="canvasLocation" x="2236" y="-214.54272863568218"/>
         </scene>
-        <!--Exhibition Detail View Controller-->
+        <!--Title-->
         <scene sceneID="neJ-Rj-N6Z">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="JL7-FZ-2LW" customClass="ExhibitionDetailViewController" customModule="ShangWuMiao" customModuleProvider="target" sceneMemberID="viewController">
@@ -1053,12 +1053,25 @@
                             <constraint firstItem="E7M-YJ-y0d" firstAttribute="top" secondItem="yi0-Cp-kgR" secondAttribute="top" id="w6e-QP-DgF"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="p6W-ae-g8G">
+                        <connections>
+                            <outlet property="titleView" destination="Qh7-2q-aem" id="mHY-iE-uWd"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="E7M-YJ-y0d" id="s8h-qG-yCd"/>
                         <outlet property="priceLabel" destination="AP1-15-nMT" id="4WA-h2-f2a"/>
+                        <outlet property="titleLabel" destination="Qh7-2q-aem" id="1rY-xG-ORQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xVv-px-JKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qh7-2q-aem">
+                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
             <point key="canvasLocation" x="4698" y="-195"/>
         </scene>

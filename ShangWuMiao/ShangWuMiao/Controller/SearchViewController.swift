@@ -78,13 +78,6 @@ class SearchViewController: UIViewController, UICollectionViewDataSource, UIColl
         collectionView?.mj_header = headerRefresh
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
-    }
-    
     private var forword = true
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
